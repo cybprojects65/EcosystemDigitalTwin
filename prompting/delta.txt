@@ -1,0 +1,310 @@
+temperature goes from 10 to 20 degrees
+biodiversity goes from low to high
+habitat suitability goes from poor to excellent
+ecosystem risk goes from moderate to severe
+species abundance goes from stable to declining
+precipitation goes from dry to wet conditions
+humidity goes from 30 to 80 percent
+elevation goes from lowlands to mountains
+vegetation cover goes from sparse to dense
+soil moisture goes from dry to saturated
+temperature changes from cold to warm
+rainfall changes from seasonal to constant
+biodiversity changes from rich to depleted
+ecosystem stability changes from stable to unstable
+habitat quality changes from degraded to healthy
+species richness changes from low to high
+urbanization changes from limited to widespread
+pollution changes from minor to extreme
+climate conditions change from humid to arid
+water availability changes from abundant to scarce
+temperature increases by 1 degree
+temperature increases by 2 degrees
+temperature increases by 5 degrees
+temperature increases by 10 percent
+rainfall increases by 5 percent
+rainfall increases by 20 percent
+precipitation increases by 50 mm
+humidity increases by 15 percent
+biodiversity increases by 1 percent
+species abundance increases by 10 percent
+ecosystem resilience increases by 20 percent
+habitat suitability increases by 5 percent
+vegetation cover increases by 30 percent
+soil moisture increases by 10 percent
+water availability increases by 25 percent
+species richness increases by 15 percent
+forest cover increases by 40 percent
+river flow increases by 10 percent
+ecosystem productivity increases by 12 percent
+carbon storage increases by 8 percent
+temperature decreases by 1 degree
+temperature decreases by 3 degrees
+rainfall decreases by 10 percent
+precipitation decreases by 50 mm
+humidity decreases by 20 percent
+biodiversity decreases by 5 percent
+species abundance decreases by 15 percent
+ecosystem resilience decreases by 30 percent
+habitat suitability decreases by 10 percent
+vegetation cover decreases by 25 percent
+soil moisture decreases by 12 percent
+water availability decreases by 35 percent
+species richness decreases by 18 percent
+forest cover decreases by 40 percent
+river flow decreases by 22 percent
+ecosystem productivity decreases by 14 percent
+carbon storage decreases by 9 percent
+pollution decreases by 20 percent
+urbanization decreases by 5 percent
+what if biodiversity increases by 1 percent
+what if biodiversity increases by 5 percent
+what if biodiversity decreases by 10 percent
+what if temperature increases by 1 degree
+what if temperature increases by 2 degrees
+what if temperature decreases by 3 degrees
+what if rainfall increases by 20 percent
+what if rainfall decreases by 30 percent
+what if precipitation changes by 50 mm
+what if humidity increases by 10 percent
+what if humidity decreases by 15 percent
+what if habitat suitability increases by 25 percent
+what if habitat suitability decreases by 10 percent
+what if ecosystem resilience increases by 12 percent
+what if ecosystem resilience decreases by 18 percent
+what if species abundance increases by 40 percent
+what if species abundance decreases by 20 percent
+what if vegetation cover increases by 30 percent
+what if vegetation cover decreases by 35 percent
+what if water availability increases by 50 percent
+what if water availability decreases by 45 percent
+what happens if biodiversity increases by 1 percent
+what happens if biodiversity decreases by 5 percent
+what happens if temperature increases by 1 degree
+what happens if temperature decreases by 2 degrees
+what happens if rainfall increases by 15 percent
+what happens if rainfall decreases by 10 percent
+what happens if humidity changes by 20 percent
+what happens if habitat suitability increases by 8 percent
+what happens if habitat suitability decreases by 12 percent
+what happens if ecosystem resilience changes by 25 percent
+what happens if species richness increases by 18 percent
+what happens if species richness decreases by 22 percent
+what happens if vegetation cover changes by 35 percent
+what happens if soil moisture decreases by 10 percent
+what happens if water availability increases by 40 percent
+what happens if pollution decreases by 30 percent
+what happens if urbanization increases by 20 percent
+what happens if deforestation increases by 15 percent
+what happens if flooding increases by 5 percent
+what happens if drought severity increases by 12 percent
+temperature changes by 1 degree
+temperature changes by 2 degrees
+temperature changes by 5 degrees
+rainfall changes by 10 percent
+rainfall changes by 25 percent
+precipitation changes by 100 mm
+humidity changes by 15 percent
+biodiversity changes by 5 percent
+species abundance changes by 20 percent
+ecosystem resilience changes by 12 percent
+habitat suitability changes by 18 percent
+vegetation cover changes by 30 percent
+soil moisture changes by 14 percent
+water availability changes by 50 percent
+species richness changes by 11 percent
+forest cover changes by 28 percent
+river flow changes by 17 percent
+ecosystem productivity changes by 9 percent
+carbon storage changes by 6 percent
+urbanization changes by 13 percent
+temperature shifts from low to high
+rainfall shifts from scarce to abundant
+biodiversity shifts from stable to declining
+ecosystem stability shifts from balanced to unstable
+habitat quality shifts from poor to excellent
+species richness shifts from minimal to extensive
+pollution shifts from moderate to severe
+urbanization shifts from rural to urban
+climate conditions shift from temperate to arid
+water availability shifts from abundant to limited
+temperature rises by 1 degree
+temperature rises by 3 degrees
+rainfall rises by 15 percent
+precipitation rises by 60 mm
+humidity rises by 20 percent
+biodiversity rises by 5 percent
+species abundance rises by 12 percent
+ecosystem resilience rises by 17 percent
+habitat suitability rises by 25 percent
+vegetation cover rises by 40 percent
+temperature falls by 2 degrees
+temperature falls by 5 degrees
+rainfall falls by 20 percent
+precipitation falls by 70 mm
+humidity falls by 18 percent
+biodiversity falls by 8 percent
+species abundance falls by 22 percent
+ecosystem resilience falls by 14 percent
+habitat suitability falls by 30 percent
+vegetation cover falls by 33 percent
+temperature moves from 15 to 25 degrees
+rainfall moves from 500 to 1000 mm
+humidity moves from 40 to 70 percent
+biodiversity moves from low to high
+ecosystem health moves from weak to strong
+habitat quality moves from degraded to restored
+species abundance moves from declining to increasing
+pollution moves from low to extreme
+water availability moves from scarce to abundant
+urbanization moves from minimal to widespread
+species richness increases from 10 to 20
+species richness decreases from 20 to 5
+temperature increases from 15 to 30 degrees
+temperature decreases from 30 to 10 degrees
+rainfall increases from 200 to 800 mm
+rainfall decreases from 800 to 300 mm
+humidity increases from 30 to 90 percent
+humidity decreases from 90 to 40 percent
+vegetation cover increases from sparse to dense
+vegetation cover decreases from dense to sparse
+habitat suitability increases from low to high
+habitat suitability decreases from high to low
+ecosystem resilience increases from weak to strong
+ecosystem resilience decreases from strong to weak
+species abundance increases from rare to common
+species abundance decreases from common to rare
+urbanization increases from rural to urban
+urbanization decreases from urban to rural
+pollution increases from minor to severe
+pollution decreases from severe to moderate
+climate shifts from wet to dry
+climate shifts from cold to warm
+ecosystem conditions shift from healthy to degraded
+habitat conditions shift from fragmented to connected
+species populations shift from abundant to endangered
+river flow shifts from strong to weak
+forest cover shifts from dense to sparse
+soil moisture shifts from saturated to dry
+biodiversity shifts from diverse to simplified
+water quality shifts from clean to polluted
+temperature fluctuates from 10 to 30 degrees
+rainfall fluctuates from low to high
+humidity fluctuates from 20 to 80 percent
+ecosystem resilience fluctuates from stable to unstable
+species abundance fluctuates from high to low
+habitat quality fluctuates from healthy to degraded
+pollution fluctuates from mild to severe
+water availability fluctuates from scarce to abundant
+vegetation cover fluctuates from sparse to dense
+urbanization fluctuates from limited to extensive
+what if species richness increases from 10 to 20
+what if biodiversity decreases from high to low
+what if temperature rises from 15 to 25 degrees
+what if rainfall drops from 1000 to 400 mm
+what if humidity increases from 40 to 90 percent
+what if habitat suitability improves from poor to excellent
+what if ecosystem resilience weakens from strong to fragile
+what if vegetation cover expands from sparse to dense
+what if pollution rises from moderate to extreme
+what if water availability falls from abundant to scarce
+what happens if temperature changes from cold to warm
+what happens if rainfall changes from dry to wet
+what happens if biodiversity changes from rich to poor
+what happens if habitat quality changes from degraded to restored
+what happens if ecosystem resilience changes from stable to unstable
+what happens if species abundance changes from high to low
+what happens if urbanization changes from rural to urban
+what happens if pollution changes from low to severe
+what happens if climate changes from humid to arid
+what happens if water availability changes from abundant to limited
+increase biodiversity by 5 percent
+increase temperature by 2 degrees
+increase rainfall by 15 percent
+increase humidity by 10 percent
+increase habitat suitability by 25 percent
+increase ecosystem resilience by 12 percent
+increase species abundance by 30 percent
+increase vegetation cover by 20 percent
+increase water availability by 40 percent
+increase forest cover by 18 percent
+decrease biodiversity by 10 percent
+decrease temperature by 3 degrees
+decrease rainfall by 25 percent
+decrease humidity by 15 percent
+decrease habitat suitability by 20 percent
+decrease ecosystem resilience by 18 percent
+decrease species abundance by 22 percent
+decrease vegetation cover by 35 percent
+decrease water availability by 45 percent
+decrease forest cover by 28 percent
+biodiversity grows by 10 percent
+species richness grows by 15 percent
+habitat suitability grows by 20 percent
+ecosystem resilience grows by 12 percent
+vegetation cover grows by 30 percent
+forest cover grows by 25 percent
+water availability grows by 18 percent
+ecosystem productivity grows by 11 percent
+carbon storage grows by 7 percent
+species abundance grows by 16 percent
+biodiversity shrinks by 8 percent
+species richness shrinks by 14 percent
+habitat suitability shrinks by 22 percent
+ecosystem resilience shrinks by 17 percent
+vegetation cover shrinks by 31 percent
+forest cover shrinks by 27 percent
+water availability shrinks by 20 percent
+ecosystem productivity shrinks by 10 percent
+carbon storage shrinks by 6 percent
+species abundance shrinks by 19 percent
+temperature transitions from cold to hot
+rainfall transitions from low to high
+ecosystem stability transitions from balanced to unstable
+habitat quality transitions from degraded to healthy
+species abundance transitions from low to high
+pollution transitions from limited to widespread
+urbanization transitions from rural to metropolitan
+vegetation cover transitions from bare to dense
+water availability transitions from scarce to abundant
+biodiversity transitions from simplified to diverse
+ecosystem resilience improves by 25 percent
+habitat quality improves by 18 percent
+species abundance improves by 30 percent
+forest cover improves by 22 percent
+soil moisture improves by 15 percent
+water quality improves by 10 percent
+ecosystem productivity improves by 14 percent
+climate resilience improves by 9 percent
+vegetation density improves by 17 percent
+habitat connectivity improves by 20 percent
+ecosystem resilience worsens by 15 percent
+habitat quality worsens by 25 percent
+species abundance worsens by 18 percent
+forest cover worsens by 30 percent
+soil moisture worsens by 12 percent
+water quality worsens by 20 percent
+ecosystem productivity worsens by 16 percent
+climate vulnerability worsens by 10 percent
+vegetation density worsens by 22 percent
+habitat connectivity worsens by 19 percent
+biodiversity moves from moderate to high
+ecosystem risk moves from low to severe
+habitat quality moves from fragmented to connected
+species richness moves from poor to rich
+water quality moves from polluted to clean
+climate conditions move from stable to unstable
+vegetation cover moves from low to dense
+forest health moves from degraded to healthy
+soil fertility moves from poor to rich
+ecosystem productivity moves from weak to strong
+temperature changes from 5 to 15 degrees
+temperature changes from 20 to 35 degrees
+rainfall changes from 100 to 900 mm
+humidity changes from 25 to 75 percent
+biodiversity changes from low to medium
+ecosystem resilience changes from weak to moderate
+habitat quality changes from damaged to restored
+species abundance changes from rare to abundant
+water availability changes from low to high
+pollution changes from high to low

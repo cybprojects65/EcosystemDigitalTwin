@@ -1,0 +1,1 @@
+docker run -d --name chromadb -p 8000:8000 -v %cd%:/data chromadb/chroma:1.5.3
