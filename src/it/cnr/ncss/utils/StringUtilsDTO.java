@@ -1,7 +1,15 @@
 package it.cnr.ncss.utils;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.nio.file.Files;
+import java.util.List;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 
 public class StringUtilsDTO {
 
@@ -45,8 +53,25 @@ public class StringUtilsDTO {
 	                .toArray(String[]::new);
 	}
 	
+	public static String readFirstLine(String filePath) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line =  reader.readLine(); // Returns null if the file is empty
+            reader.close();
+            return line;
+        }
+    }
+	
 	public static String getText(File input) throws Exception{
 		 String text = Files.readString(input.toPath());
 		 return text;
+	}
+	
+	public static String [] getCSVElements(String row) throws Exception{
+		
+		CSVParser parser = CSVParser.parse(row,CSVFormat.DEFAULT);
+		CSVRecord record = parser.iterator().next();
+		List<String> r = record.toList();
+		String [] elements = r.toArray(new String[r.size()]);
+		return elements;
 	}
 }

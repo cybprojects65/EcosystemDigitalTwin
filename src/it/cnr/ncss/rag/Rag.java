@@ -23,19 +23,18 @@ import it.cnr.ncss.llm.Ollama;
 public class Rag {
 
 	private static final String CHROMA_URL = "http://localhost:8000";
-	private static final String COLLECTION_NAME = "pdf_documents";
+	//private String COLLECTION_NAME = "pdf_documents";
+	//private File localrepository = null;
 	private static final String CHROMA_BASE = CHROMA_URL + "/api/v2/tenants/default_tenant/databases/default_database";
-
 	private static final String COLLECTIONS_URL = CHROMA_BASE + "/collections";
-	private static final int TOP_K = 8;
-	private static final double SIMILARITY_THRESHOLD = 0.5;
-
 	private final HttpClient http = HttpClient.newHttpClient();
 	private final ObjectMapper mapper = new ObjectMapper();
 	private Ollama llm;
 
 	public Rag(Ollama llm) {
 		this.llm = llm;
+		//this.COLLECTION_NAME = COLLECTION_NAME;
+		//this.localrepository = localrepo;
 	}
 
 	private boolean collectionExists(String name) throws Exception {
@@ -82,7 +81,7 @@ public class Rag {
 		return root.get("id").asText();
 	}
 
-	public void ingestFolder(String folderPath) throws Exception {
+	public void ingestFolder(String COLLECTION_NAME, File folder) throws Exception {
 
 		if (collectionExists(COLLECTION_NAME)) {
 			System.out.println("Collection already exists: " + COLLECTION_NAME);
@@ -91,8 +90,6 @@ public class Rag {
 		}
 
 		String collectionId = createCollection(COLLECTION_NAME);
-
-		File folder = new File(folderPath);
 
 		File[] pdfFiles = folder.listFiles(file -> file.isFile() && file.getName().toLowerCase().endsWith(".pdf"));
 
@@ -201,13 +198,13 @@ public class Rag {
 		return Integer.parseInt(response.body());
 	}
 
-	public List<String> retrieveDocuments(String query) throws Exception {
+	public List<String> retrieveDocuments(String query, String COLLECTION_NAME, File localrepository, int TOP_K, double SIMILARITY_THRESHOLD) throws Exception {
 
 		String collectionId = getCollectionId(COLLECTION_NAME);
 
-		if (collectionId == null) {
+		if (collectionId == null && localrepository!=null) {
 			System.out.println("[RAG] Importing documents to Chroma DB");
-			ingestFolder("./pdfs/");
+			ingestFolder(COLLECTION_NAME, localrepository);
 			collectionId = getCollectionId(COLLECTION_NAME);
 			// return List.of();
 		} else {
@@ -274,7 +271,7 @@ public class Rag {
 	public static void main(String[] args) throws Exception {
 		Ollama llm = new Ollama();
 		Rag ingestor = new Rag(llm);
-		ingestor.ingestFolder("./pdfs/");
+		ingestor.ingestFolder("pdf_documents",new File("./pdfs/"));
 	}
 
 }

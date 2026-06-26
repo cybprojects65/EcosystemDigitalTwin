@@ -20,9 +20,10 @@ public class DriversDetector extends AbstractDetector{
 
 	@Override
 	public double getSimilarityThreshold() {
-		return 0.8;
+		return 0.6;
 	}
     
+	/*
 	
 	public boolean matchesRules(String q) {
     	
@@ -58,7 +59,7 @@ public class DriversDetector extends AbstractDetector{
         
     	return false;
     }
-
+*/
 	public DriversDetector(Ollama llm) throws Exception {
 		super(llm);
 	}

@@ -1,4 +1,5 @@
 package it.cnr.ncss.llm;
+import java.io.File;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.cnr.ncss.embeddings.Embedding;
 import it.cnr.ncss.rag.Rag;
+import it.cnr.ncss.utils.Config;
 import it.cnr.ncss.utils.JSONParser;
 import it.cnr.ncss.utils.StringUtilsDTO;
 
@@ -16,9 +18,19 @@ import it.cnr.ncss.utils.StringUtilsDTO;
 public class Ollama {
 
 	OllamaModel modelInUse=null;
-	Embedding embedder = new Embedding();
+	Embedding embedder = null;
+	Config config = new Config();
+	
 	Rag rag = null;
 	
+	public Ollama() throws Exception{
+		embedder = new Embedding();
+		config = new Config();
+	}
+	
+	public String getProperty(String property) {
+		return  config.getProperty(property);
+	}
 	public OllamaTagResponse listModels() throws Exception {
 
 		HttpClient client = HttpClient.newHttpClient();
@@ -47,9 +59,17 @@ public class Ollama {
 	    return tags;
 	}
 	
+	
+	
+	public void cacheEmbedding() throws Exception{
+		embedder.cache();
+	}
+	
 	public double[] embed(String text) throws Exception {
 		return embed(text,true);
 	}
+	
+	
 	public double[] embed(String text, boolean memorycache) throws Exception {
 		if (embedder == null)
 			embedder = new Embedding();
@@ -118,7 +138,7 @@ public class Ollama {
 			 
 			 modelInUse=firstmodel;
 		 }
-		 System.out.println("model: "+modelInUse.name);
+		 System.out.println("[OLLAMA] model: "+modelInUse.name);
 		 
 		 ObjectMapper mapper = new ObjectMapper();
 
@@ -138,9 +158,15 @@ public class Ollama {
 	                .POST(HttpRequest.BodyPublishers.ofString(json))
 	                .build();
 
+	     System.out.println("[OLLAMA] sending query");
+	     long t0 = System.currentTimeMillis();
+	     
 	        HttpResponse<String> response =
 	                client.send(request, HttpResponse.BodyHandlers.ofString());
 
+	     long t1 = System.currentTimeMillis();
+	     System.out.println("[OLLAMA] answer generated in "+(t1-t0)+"ms");
+	        
 	        String jsonResponse = response.body();
 	        OllamaResponse responseObj = JSONParser.parseOllamaResponse(jsonResponse);
 	        
@@ -153,11 +179,11 @@ public class Ollama {
 	        return responseObj.response;
 	 }
 	 
-	 public List<String> retrieveDocuments(String query) throws Exception{
+	 public List<String> retrieveDocuments(String query, String collection, File localrepo, int top_k, double similarity) throws Exception{
 		 if (rag ==null)
 			 rag = new Rag(this);
 		 
-		 return rag.retrieveDocuments(query);
+		 return rag.retrieveDocuments(query,collection, localrepo, top_k, similarity);
 	 }
 	 
 	 public static void main(String[] args) throws Exception {

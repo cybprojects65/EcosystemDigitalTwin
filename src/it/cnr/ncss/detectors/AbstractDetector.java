@@ -30,11 +30,12 @@ public abstract class AbstractDetector {
         if (q.isBlank()) {
             return 0;
         }
-
+        
         if (matchesRules(q)) {
+        	System.out.println("[AbstractDetector] exact match");
             return 1;
         }
-
+        System.out.println("[[AbstractDetector]] checking semantics");
         return matchesSemantics(q);
     }
 
@@ -54,7 +55,9 @@ public abstract class AbstractDetector {
             double bestScore = -1.0;
             
             for (String example : referenceStrings) {
-                double[] exampleEmbedding = llm.embed(example);
+            	//System.out.println("[AbstractDetector] getting embedding");
+            	double[] exampleEmbedding = llm.embed(example,true);
+            	//System.out.println("[AbstractDetector] got embedding");
                 double score = StringUtilsDTO.cosineSimilarity(queryEmbedding, exampleEmbedding);
                 //System.out.println("vs "+example+" = "+score);
                 if (score > bestScore) {
@@ -65,7 +68,10 @@ public abstract class AbstractDetector {
                 	break;
                 }
             }
-            System.out.println("Max score: "+bestScore);
+            
+            llm.cacheEmbedding();
+            
+            System.out.println("[AbstractDetector] matchesSemantics - Max score: "+bestScore);
             return bestScore;
 
         } catch (Exception e) {

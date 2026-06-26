@@ -10,5 +10,8 @@ public enum QueryIntent {
 	    IMPORTANCE,
 	    DRIVERS,
 	    DEPENDENCY,
-	    UNKNOWN
+	    UNKNOWN,
+	    ASSESSMENT,
+	    DATA,
+	    IMPORTANCE_COMPARE
 }

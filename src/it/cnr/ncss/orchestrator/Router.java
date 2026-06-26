@@ -1,58 +1,77 @@
 package it.cnr.ncss.orchestrator;
 
 import it.cnr.ncss.detectors.ComparisonDetector;
+import it.cnr.ncss.detectors.DataDetector;
 import it.cnr.ncss.detectors.DeltaDetector;
 import it.cnr.ncss.detectors.DependencyDetector;
 import it.cnr.ncss.detectors.DriversDetector;
 import it.cnr.ncss.detectors.GreetingsDetector;
 import it.cnr.ncss.detectors.ImportanceDetector;
+import it.cnr.ncss.detectors.tasks.AbstractTask;
+import it.cnr.ncss.detectors.tasks.DataTask;
+import it.cnr.ncss.detectors.tasks.DriversTask;
+import it.cnr.ncss.detectors.tasks.GreetingsTask;
 import it.cnr.ncss.llm.Ollama;
 
 public class Router {
 
 	Ollama llm = null;
+	AbstractTask currentTask;
 	
 	public Router(Ollama llm) {
 		this.llm = llm;
+	}
+	
+	public AbstractTask getTask() {
+		return currentTask;
 	}
 	
 	public QueryIntent route(String q) throws Exception{
 		
 		
 	    //String q = StringUtilsDTO.normalizeQuery(query);
-	    System.out.println("Debug: routing request: "+q);
+	    System.out.println("[ROUTER] routing request: "+q);
 	    
+	    int intents = QueryIntent.values().length;
+	    QueryIntent [] qi = new QueryIntent[intents];
+	    double [] qs = new double[intents];
+	    AbstractTask [] tasks = new AbstractTask[intents];
 	    
-	    QueryIntent [] qi = new QueryIntent[7];
-	    double [] qs = new double[7];
-	    
-	    System.out.println("Debug: checking Greetings");
+	    System.out.println("[ROUTER] checking Greetings");
 	    qs[0] = new GreetingsDetector(llm).matches(q);
 	    qi[0] = QueryIntent.GREETING;
+	    tasks[0] = new GreetingsTask(llm);
 	    
-	    System.out.println("Debug: checking Delta");
+	    System.out.println("[ROUTER] checking Data");
+	    qs[6] = new DataDetector(llm).matches(q);
+	    qi[6] = QueryIntent.DATA;
+	    tasks[6] = new DataTask(llm);
+	    
+	    System.out.println("[ROUTER] checking Drivers");
+	    qs[4] = new DriversDetector(llm).matches(q);
+	    qi[4] = QueryIntent.DRIVERS;
+	    tasks[4] = new DriversTask(llm);
+	    
+	    System.out.println("[ROUTER] checking Delta");
 	    qs[1] = new DeltaDetector(llm).matches(q);
 	    qi[1] = QueryIntent.DELTA;
 	    
-	    System.out.println("Debug: checking Comparison");
+	    System.out.println("[ROUTER] checking Comparison");
 	    qs[2] = new ComparisonDetector(llm).matches(q);
 	    qi[2] = QueryIntent.COMPARISON;
 	    
-	    System.out.println("Debug: checking Importance");
+	    System.out.println("[ROUTER] checking Importance");
 	    qs[3] = new ImportanceDetector(llm).matches(q);
 	    qi[3] = QueryIntent.IMPORTANCE;
 	    
-	    System.out.println("Debug: checking Drivers");
-	    qs[4] = new DriversDetector(llm).matches(q);
-	    qi[4] = QueryIntent.DRIVERS;
-	    
-	    System.out.println("Debug: checking Dependency");
+	    System.out.println("[ROUTER] checking Dependency");
 	    qs[5] = new DependencyDetector(llm).matches(q);
 	    qi[5] = QueryIntent.DEPENDENCY;
 	    
-	    qs[6] = 0.7;
-	    qi[6] = QueryIntent.UNKNOWN;
-	    		
+	    qs[qs.length-1] = 0.7;
+	    qi[qs.length-1] = QueryIntent.UNKNOWN;
+	    
+	    System.out.println("[ROUTER] checking optimal routing");
 	    int optimal = -1;
 	    double optimalScore = 0;
 	    for (int i = 0; i<qs.length;i++) {
@@ -62,8 +81,9 @@ public class Router {
 	    	}
 	    } 
 	    
-	    System.out.println("Optimal routing: "+qi[optimal]);
-	    	
+	    System.out.println("[ROUTER] Optimal routing: "+qi[optimal]+ " with score "+optimalScore);
+	    currentTask = tasks[optimal];
+	    
 	    return qi[optimal];
 	}
 	
@@ -71,7 +91,8 @@ public class Router {
 	public static void main(String[] args) throws Exception{
 		
 		//String query = "what impacts biodiversity most?";
-		String query = "which environmental variables induce biodiversity loss?";
+		String query = "show me the latest data";
+		
 		long t0 = System.currentTimeMillis();
 		
 		Ollama llm = new Ollama();
