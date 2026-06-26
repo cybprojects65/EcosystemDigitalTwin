@@ -368,3 +368,167 @@ what processes drive ecological imbalance
 what processes drive ecosystem instability
 what processes drive habitat loss
 what processes drive biodiversity shifts
+which factor increases temperature
+which factors increase temperature
+what increases temperature
+what variable increases temperature
+which driver increases temperature
+which environmental factor increases temperature
+which factor decreases temperature
+which factors decrease temperature
+what decreases temperature
+which driver decreases temperature
+which environmental factor decreases temperature
+which factor has no effect on temperature
+which factors have no effect on temperature
+what has no effect on temperature
+which variable is neutral for temperature
+which driver is neutral for temperature
+which factor is unrelated to temperature
+which factor increases precipitation
+which factors increase precipitation
+what increases precipitation
+what variable increases precipitation
+which driver increases precipitation
+which environmental factor increases precipitation
+which factor decreases precipitation
+which factors decrease precipitation
+what decreases precipitation
+which driver decreases precipitation
+which environmental factor decreases precipitation
+which factor has no effect on precipitation
+which factors have no effect on precipitation
+what has no effect on precipitation
+which variable is neutral for precipitation
+which driver is neutral for precipitation
+which factor is unrelated to precipitation
+which driver affects precipitation positively
+which driver affects precipitation negatively
+which factor increases evapotranspiration
+which factors increase evapotranspiration
+what increases evapotranspiration
+what variable increases evapotranspiration
+which driver increases evapotranspiration
+which environmental factor increases evapotranspiration
+which factor decreases evapotranspiration
+which factors decrease evapotranspiration
+what decreases evapotranspiration
+which driver decreases evapotranspiration
+which environmental factor decreases evapotranspiration
+which factor has no effect on evapotranspiration
+which factors have no effect on evapotranspiration
+what has no effect on evapotranspiration
+which variable is neutral for evapotranspiration
+which driver is neutral for evapotranspiration
+which factor is unrelated to evapotranspiration
+which factor increases tree cover
+which factors increase tree cover
+what increases tree cover
+what variable increases tree cover
+which driver increases tree cover
+which environmental factor increases tree cover
+which factor decreases tree cover
+which factors decrease tree cover
+what decreases tree cover
+which driver decreases tree cover
+which environmental factor decreases tree cover
+which factor has no effect on tree cover
+which factors have no effect on tree cover
+what has no effect on tree cover
+which variable is neutral for tree cover
+which driver is neutral for tree cover
+which factor is unrelated to tree cover
+which environmental variable increases tree cover
+which environmental variable decreases tree cover
+which factor increases biodiversity
+which factors increase biodiversity
+what increases biodiversity
+what variable increases biodiversity
+which driver increases biodiversity
+which environmental factor increases biodiversity
+which factor decreases biodiversity
+which factors decrease biodiversity
+what decreases biodiversity
+which driver decreases biodiversity
+which environmental factor decreases biodiversity
+which factor has no effect on biodiversity
+which factors have no effect on biodiversity
+what has no effect on biodiversity
+which variable is neutral for biodiversity
+which driver is neutral for biodiversity
+which factor is unrelated to biodiversity
+which driver promotes biodiversity
+which driver reduces biodiversity
+which factor increases productivity
+which factors increase productivity
+what increases productivity
+what variable increases productivity
+which driver increases productivity
+which environmental factor increases productivity
+which factor decreases productivity
+which factors decrease productivity
+what decreases productivity
+which driver decreases productivity
+which environmental factor decreases productivity
+which factor has no effect on productivity
+which factors have no effect on productivity
+what has no effect on productivity
+which variable is neutral for productivity
+which driver is neutral for productivity
+which factor is unrelated to productivity
+which environmental factor promotes productivity
+which driver has no influence on productivity
+which factor increases land use change
+which factors increase land use change
+what increases land use change
+what variable increases land use change
+which driver increases land use change
+which environmental factor increases land use change
+which factor decreases land use change
+which factors decrease land use change
+what decreases land use change
+which driver decreases land use change
+which environmental factor decreases land use change
+which factor has no effect on land use
+which factors have no effect on land use
+what has no effect on land use
+which variable is neutral for land use
+which driver is neutral for land use
+which factor is unrelated to land use
+which driver influences land use
+which factor increases imperviousness
+which factors increase imperviousness
+what increases imperviousness
+what variable increases imperviousness
+which driver increases imperviousness
+which environmental factor increases imperviousness
+which factor decreases imperviousness
+which factors decrease imperviousness
+what decreases imperviousness
+which driver decreases imperviousness
+which environmental factor decreases imperviousness
+which factor has no effect on imperviousness
+which factors have no effect on imperviousness
+what has no effect on imperviousness
+which variable is neutral for imperviousness
+which driver is neutral for imperviousness
+which factor is unrelated to imperviousness
+which environmental factor affects imperviousness
+what promotes temperature
+what inhibits temperature
+what positively affects temperature
+what negatively affects temperature
+what has zero influence on temperature
+what does not influence temperature
+which variables positively influence biodiversity
+which variables negatively influence biodiversity
+which variables do not influence biodiversity
+which environmental variables promote tree cover
+which environmental variables reduce tree cover
+which environmental variables leave tree cover unchanged
+which drivers have a positive impact on precipitation
+which drivers have a negative impact on precipitation
+which drivers have no impact on precipitation
+which ecosystem variables contribute to productivity
+which ecosystem variables suppress productivity
+which ecosystem variables are irrelevant to productivity

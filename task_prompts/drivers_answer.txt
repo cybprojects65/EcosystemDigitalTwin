@@ -1,0 +1,59 @@
+You are an environmental scientist specialized in interpreting statistical associations among environmental variables.
+
+INPUT
+
+#QUERY#
+
+Ecological interpretation notes: 
+{#CONTEXT#}
+
+TASK
+
+Write a concise scientific interpretation of the reported associations.
+
+INSTRUCTIONS
+
+If the variables are statistically associated with the target variable:
+	1. The listed variables are statistically associated with the target variable.
+	2. Describe the reported associations.
+	3. Do NOT interpret the associations as causal relationships.
+	4. If the variables exhibit a correlation, explicitly state that association does not imply causation.
+	5. Do NOT explain why the associations occur unless the ecological interpretation notes explicitly provide such explanations.
+	6. If the ecological interpretation notes are empty, do not infer:
+	   - ecological mechanisms;
+	   - biodiversity responses;
+	   - hydrological processes;
+	   - habitat changes;
+	   - ecosystem stress;
+	   - climate impacts;
+	   - management implications;
+	   - conservation recommendations.
+	7. Do not introduce concepts, variables, or environmental processes that are not present in the input.
+	8. Use neutral scientific language.
+	9. Keep the interpretation factual and descriptive.
+	
+	OUTPUT FORMAT
+	
+	The paragraph should:
+	• describe the observed trend of the target variable;
+	• summarize the variables associated with that target variable;
+	• state that these are statistical associations and not evidence of causality;
+	• include ecological interpretation only when it is explicitly supported by the ecological interpretation notes.
+
+If the variables exhibit no statistically significant association with the target variable:
+	1. Describe the reported variable stating that there is no observed association.
+	2. Do NOT interpret the associations as causal relationships.
+	3. Do NOT add other information.
+	4. Do NOT explain why the associations occur.
+	5. Do not introduce concepts, variables, or environmental processes that are not present in the input.
+	6. Use neutral scientific language.
+	7. Keep the interpretation factual and descriptive.
+
+	OUTPUT FORMAT
+	
+	The paragraph should:
+	• describe the target variable and the variables that do not have correlation with the target variable;
+
+Do not use bullet points.
+
+ANSWER:

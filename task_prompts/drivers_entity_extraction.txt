@@ -1,0 +1,28 @@
+You extract structured information from user questions about environmental drivers.
+
+Return ONLY valid JSON. No markdown. No explanation.
+
+Extract:
+1. target_variable: the environmental variable the user wants to explain or influence.
+2. goal: one of:
+   - "increase" if the user asks what increases, improves, boosts, raises, enhances, promotes, or supports the target.
+   - "decrease" if the user asks what decreases, reduces, lowers, worsens, limits, harms, or suppresses the target.
+   - "neutral" if the user only asks what drives, affects, explains, controls, or influences the target without direction.
+3. confidence: number from 0 to 1.
+
+Rules:
+- Keep target_variable as a short noun phrase.
+- Do not invent a target variable.
+- If no clear target variable exists, use null.
+- If both increase and decrease are asked, use "neutral".
+- Ignore irrelevant conversational text.
+
+JSON schema:
+{
+  "target_variable": string | null,
+  "goal": "increase" | "decrease" | "neutral" ,
+  "confidence": number
+}
+
+User question:
+{{#QUERY#}}

@@ -1,0 +1,199 @@
+Show me the latest environmental data
+Get the current data for the lake
+Retrieve the latest dataset values
+Show all available data for the current simulation
+What data do we have for Massaciuccoli
+Display the current measurements
+Give me the latest measurements
+Show the latest recorded values
+Retrieve the current records
+What are the current values in the dataset
+Show the environmental conditions in the dataset
+Get the lake condition data
+Give me the latest environmental snapshot
+Show all variable values
+Retrieve all measured variables
+What are the measurements available now
+Show me the numbers for the current dataset
+Give me the latest numbers
+Get current lake data values
+Display the latest variable records
+Show the data summary
+Retrieve the dataset summary
+What are the dataset records
+Show the values contained in the dataset
+Give me the current environmental values
+Show recent records for the lake
+Retrieve recent measurements
+Display the current environmental records
+What values are currently loaded
+Show me the current time series data
+Give me the time series records
+Retrieve the time series values
+Show all time series measurements
+Display available time series data
+Get the current time series snapshot
+Show the records for each variable
+Retrieve measurement records for all variables
+What are the values for each environmental variable
+Show all dataset numbers
+Give me all current lake measurements
+Show temperature data
+Get the current temperature value
+Retrieve the latest temperature measurement
+What is the current water temperature
+Show me the temperature values in the dataset
+Give me temperature records
+Display the time series for temperature
+Retrieve temperature measurements
+Show the latest recorded temperature
+What numbers do we have for temperature
+Show oxygen data
+Get the current dissolved oxygen value
+Retrieve the latest oxygen measurement
+What is the current oxygen level
+Show me the oxygen values in the dataset
+Give me oxygen records
+Display the time series for dissolved oxygen
+Retrieve oxygen measurements
+Show the latest recorded oxygen value
+What numbers do we have for dissolved oxygen
+Show salinity data
+Get the current salinity value
+Retrieve the latest salinity measurement
+What is the current salinity level
+Show me the salinity values in the dataset
+Give me salinity records
+Display the time series for salinity
+Retrieve salinity measurements
+Show the latest recorded salinity
+What numbers do we have for salinity
+Show pH data
+Get the current pH value
+Retrieve the latest pH measurement
+What is the current pH level
+Show me the pH values in the dataset
+Give me pH records
+Display the time series for pH
+Retrieve pH measurements
+Show the latest recorded pH
+What numbers do we have for pH
+Show chlorophyll data
+Get the current chlorophyll value
+Retrieve the latest chlorophyll measurement
+What is the current chlorophyll concentration
+Show me the chlorophyll values in the dataset
+Give me chlorophyll records
+Display the time series for chlorophyll
+Retrieve chlorophyll measurements
+Show the latest recorded chlorophyll value
+What numbers do we have for chlorophyll
+Show nitrate data
+Get the current nitrate value
+Retrieve the latest nitrate measurement
+What is the current nitrate concentration
+Show me the nitrate values in the dataset
+Give me nitrate records
+Display the time series for nitrate
+Retrieve nitrate measurements
+Show the latest recorded nitrate value
+What numbers do we have for nitrate
+Show phosphate data
+Get the current phosphate value
+Retrieve the latest phosphate measurement
+What is the current phosphate concentration
+Show me the phosphate values in the dataset
+Give me phosphate records
+Display the time series for phosphate
+Retrieve phosphate measurements
+Show the latest recorded phosphate value
+What numbers do we have for phosphate
+Show turbidity data
+Get the current turbidity value
+Retrieve the latest turbidity measurement
+What is the current turbidity level
+Show me the turbidity values in the dataset
+Give me turbidity records
+Display the time series for turbidity
+Retrieve turbidity measurements
+Show the latest recorded turbidity
+What numbers do we have for turbidity
+Show conductivity data
+Get the current conductivity value
+Retrieve the latest conductivity measurement
+What is the current conductivity level
+Show me the conductivity values in the dataset
+Give me conductivity records
+Display the time series for conductivity
+Retrieve conductivity measurements
+Show the latest recorded conductivity
+What numbers do we have for conductivity
+Show water level data
+Get the current water level value
+Retrieve the latest water level measurement
+What is the current water level
+Show me the water level values in the dataset
+Give me water level records
+Display the time series for water level
+Retrieve water level measurements
+Show the latest recorded water level
+What numbers do we have for water level
+Show wind speed data
+Get the current wind speed value
+Retrieve the latest wind speed measurement
+What is the current wind speed
+Show me the wind speed values in the dataset
+Give me wind speed records
+Display the time series for wind speed
+Retrieve wind speed measurements
+Show the latest recorded wind speed
+What numbers do we have for wind speed
+Show rainfall data
+Get the current rainfall value
+Retrieve the latest rainfall measurement
+What is the current rainfall amount
+Show me the rainfall values in the dataset
+Give me rainfall records
+Display the time series for rainfall
+Retrieve rainfall measurements
+Show the latest recorded rainfall
+What numbers do we have for rainfall
+Show air temperature data
+Get the current air temperature value
+Retrieve the latest air temperature measurement
+What is the current air temperature
+Show me the air temperature values in the dataset
+Give me air temperature records
+Display the time series for air temperature
+Retrieve air temperature measurements
+Show the latest recorded air temperature
+What numbers do we have for air temperature
+Show humidity data
+Get the current humidity value
+Retrieve the latest humidity measurement
+What is the current humidity level
+Show me the humidity values in the dataset
+Give me humidity records
+Display the time series for humidity
+Retrieve humidity measurements
+Show the latest recorded humidity
+What numbers do we have for humidity
+Show solar radiation data
+Get the current solar radiation value
+Retrieve the latest solar radiation measurement
+What is the current solar radiation level
+Show me the solar radiation values in the dataset
+Give me solar radiation records
+Display the time series for solar radiation
+Retrieve solar radiation measurements
+Show the latest recorded solar radiation
+What numbers do we have for solar radiation
+Show flow data
+Get the current inflow value
+Retrieve the latest inflow measurement
+What is the current water inflow
+Show me the inflow values in the dataset
+Give me inflow records
+Display the time series for inflow
+Retrieve inflow measurements
+Show the latest recorded inflow
