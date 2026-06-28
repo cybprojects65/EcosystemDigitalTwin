@@ -18,7 +18,7 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import it.cnr.ncss.llm.Ollama;
+import it.cnr.ncss.llm.Llm;
 
 public class Rag {
 
@@ -29,9 +29,9 @@ public class Rag {
 	private static final String COLLECTIONS_URL = CHROMA_BASE + "/collections";
 	private final HttpClient http = HttpClient.newHttpClient();
 	private final ObjectMapper mapper = new ObjectMapper();
-	private Ollama llm;
+	private Llm llm;
 
-	public Rag(Ollama llm) {
+	public Rag(Llm llm) {
 		this.llm = llm;
 		//this.COLLECTION_NAME = COLLECTION_NAME;
 		//this.localrepository = localrepo;
@@ -269,7 +269,7 @@ public class Rag {
 	}
 
 	public static void main(String[] args) throws Exception {
-		Ollama llm = new Ollama();
+		Llm llm = new Llm();
 		Rag ingestor = new Rag(llm);
 		ingestor.ingestFolder("pdf_documents",new File("./pdfs/"));
 	}

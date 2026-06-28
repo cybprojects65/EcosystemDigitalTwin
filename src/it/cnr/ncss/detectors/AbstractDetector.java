@@ -2,7 +2,7 @@ package it.cnr.ncss.detectors;
 
 import java.io.File;
 
-import it.cnr.ncss.llm.Ollama;
+import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.StringUtilsDTO;
 
 public abstract class AbstractDetector {
@@ -10,10 +10,10 @@ public abstract class AbstractDetector {
 	public File referenceFile = null;
 	public double similarityThreshold;
 	String [] referenceStrings = null;
-	public Ollama llm;
+	public Llm llm;
 	
 	
-	public AbstractDetector(Ollama llm) throws Exception {
+	public AbstractDetector(Llm llm) throws Exception {
 		this.llm = llm;
 		referenceStrings = StringUtilsDTO.getLines(getReference());
 		this.similarityThreshold = getSimilarityThreshold();

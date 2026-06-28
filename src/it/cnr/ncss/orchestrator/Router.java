@@ -11,14 +11,14 @@ import it.cnr.ncss.detectors.tasks.AbstractTask;
 import it.cnr.ncss.detectors.tasks.DataTask;
 import it.cnr.ncss.detectors.tasks.DriversTask;
 import it.cnr.ncss.detectors.tasks.GreetingsTask;
-import it.cnr.ncss.llm.Ollama;
+import it.cnr.ncss.llm.Llm;
 
 public class Router {
 
-	Ollama llm = null;
+	Llm llm = null;
 	AbstractTask currentTask;
 	
-	public Router(Ollama llm) {
+	public Router(Llm llm) {
 		this.llm = llm;
 	}
 	
@@ -95,7 +95,7 @@ public class Router {
 		
 		long t0 = System.currentTimeMillis();
 		
-		Ollama llm = new Ollama();
+		Llm llm = new Llm();
 		Router rout = new Router(llm);
 		QueryIntent route = rout.route(query);
 		long t1 = System.currentTimeMillis();

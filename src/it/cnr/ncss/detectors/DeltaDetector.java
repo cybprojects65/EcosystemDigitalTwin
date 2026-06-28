@@ -4,7 +4,7 @@ package it.cnr.ncss.detectors;
 import java.io.File;
 import java.util.regex.Pattern;
 
-import it.cnr.ncss.llm.Ollama;
+import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.StringUtilsDTO;
 
 
@@ -66,7 +66,7 @@ public class DeltaDetector extends AbstractDetector{
     	return false;
     }
 
-	public DeltaDetector(Ollama llm) throws Exception {
+	public DeltaDetector(Llm llm) throws Exception {
 		super(llm);
 	}
 
@@ -77,7 +77,7 @@ public class DeltaDetector extends AbstractDetector{
 	    	
 	    	query = StringUtilsDTO.normalizeQuery(query);
 	    	
-	    	Ollama llm = new Ollama();
+	    	Llm llm = new Llm();
 	    	
 	    	DeltaDetector gdt = new DeltaDetector(llm);
 	    	

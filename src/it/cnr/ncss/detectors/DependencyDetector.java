@@ -3,7 +3,7 @@ package it.cnr.ncss.detectors;
 
 import java.io.File;
 
-import it.cnr.ncss.llm.Ollama;
+import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.StringUtilsDTO;
 
 
@@ -46,7 +46,7 @@ public class DependencyDetector extends AbstractDetector{
     	return false;
     }
 
-	public DependencyDetector(Ollama llm) throws Exception {
+	public DependencyDetector(Llm llm) throws Exception {
 		super(llm);
 	}
 
@@ -57,7 +57,7 @@ public class DependencyDetector extends AbstractDetector{
 	    	
 	    	query = StringUtilsDTO.normalizeQuery(query);
 	    	
-	    	Ollama llm = new Ollama();
+	    	Llm llm = new Llm();
 	    	
 	    	DependencyDetector gdt = new DependencyDetector(llm);
 	    	

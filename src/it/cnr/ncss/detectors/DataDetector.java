@@ -3,7 +3,7 @@ package it.cnr.ncss.detectors;
 
 import java.io.File;
 
-import it.cnr.ncss.llm.Ollama;
+import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.StringUtilsDTO;
 
 
@@ -23,7 +23,7 @@ public class DataDetector extends AbstractDetector{
 		return 0.6;
 	}
     
-	public DataDetector(Ollama llm) throws Exception {
+	public DataDetector(Llm llm) throws Exception {
 		super(llm);
 	}
 
@@ -33,7 +33,7 @@ public class DataDetector extends AbstractDetector{
 	    	
 	    	query = StringUtilsDTO.normalizeQuery(query);
 	    	
-	    	Ollama llm = new Ollama();
+	    	Llm llm = new Llm();
 	    	
 	    	DataDetector gdt = new DataDetector(llm);
 	    	

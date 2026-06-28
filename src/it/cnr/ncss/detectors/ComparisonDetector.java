@@ -4,7 +4,7 @@ package it.cnr.ncss.detectors;
 import java.io.File;
 import java.util.regex.Pattern;
 
-import it.cnr.ncss.llm.Ollama;
+import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.StringUtilsDTO;
 
 
@@ -70,7 +70,7 @@ public class ComparisonDetector extends AbstractDetector{
     	return false;
     }
 
-	public ComparisonDetector(Ollama llm) throws Exception {
+	public ComparisonDetector(Llm llm) throws Exception {
 		super(llm);
 	}
 
@@ -81,7 +81,7 @@ public class ComparisonDetector extends AbstractDetector{
 	    	
 	    	query = StringUtilsDTO.normalizeQuery(query);
 	    	
-	    	Ollama llm = new Ollama();
+	    	Llm llm = new Llm();
 	    	
 	    	ComparisonDetector gdt = new ComparisonDetector(llm);
 	    	

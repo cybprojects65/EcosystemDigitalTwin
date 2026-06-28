@@ -3,14 +3,14 @@ package it.cnr.ncss.detectors.tasks
 import java.io.File;
 import java.util.List;
 
-import it.cnr.ncss.llm.Ollama;
+import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.StringUtilsDTO;
 
 
 
 public class GreetingsTask extends AbstractTask {
 	
-	    public GreetingsTask(Ollama ollama) throws Exception {
+	    public GreetingsTask(Llm ollama) throws Exception {
 		super(ollama);
 
 	}
@@ -22,7 +22,7 @@ public class GreetingsTask extends AbstractTask {
 			
 			long t0 = System.currentTimeMillis();
 			
-			Ollama llm = new Ollama();
+			Llm llm = new Llm();
 			
 			GreetingsTask chat = new GreetingsTask(llm);
 			String answer = chat.handle(query);

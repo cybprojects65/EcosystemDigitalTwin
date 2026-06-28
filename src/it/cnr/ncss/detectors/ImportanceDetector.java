@@ -3,7 +3,7 @@ package it.cnr.ncss.detectors;
 
 import java.io.File;
 
-import it.cnr.ncss.llm.Ollama;
+import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.StringUtilsDTO;
 
 
@@ -55,7 +55,7 @@ public class ImportanceDetector extends AbstractDetector{
     	return false;
     }
 
-	public ImportanceDetector(Ollama llm) throws Exception {
+	public ImportanceDetector(Llm llm) throws Exception {
 		super(llm);
 	}
 
@@ -66,7 +66,7 @@ public class ImportanceDetector extends AbstractDetector{
 	    	
 	    	query = StringUtilsDTO.normalizeQuery(query);
 	    	
-	    	Ollama llm = new Ollama();
+	    	Llm llm = new Llm();
 	    	
 	    	ImportanceDetector gdt = new ImportanceDetector(llm);
 	    	

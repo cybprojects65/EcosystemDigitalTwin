@@ -2,15 +2,9 @@ package it.cnr.ncss.detectors.tasks;
 
 import java.io.File;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-import it.cnr.ncss.llm.Ollama;
+import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.LiveUpdateFile;
 import it.cnr.ncss.utils.StringUtilsDTO;
 import it.cnr.ncss.utils.UtilsDTO;
@@ -21,7 +15,7 @@ public class DataTask extends AbstractTask {
 	public static double threshold = 0.6;
 	public String legacyFile = "./task_prompts/data_answer.txt"; 
 	
-	public DataTask(Ollama ollama) throws Exception {
+	public DataTask(Llm ollama) throws Exception {
 		super(ollama);
 		super.legacyFile = this.legacyFile;
 	}
@@ -41,7 +35,7 @@ public class DataTask extends AbstractTask {
 		String header = lines.get(0);
 		String headers [] = header.split(",");
 		
-		double[] queryEmbedding = ollama.embed(question,false);
+		double[] queryEmbedding = llm.embed(question,false);
 		StringBuffer requestedFeatures = new StringBuffer();
 		StringBuffer otherFeatures = new StringBuffer();
 		
@@ -50,7 +44,7 @@ public class DataTask extends AbstractTask {
 		for (String head:headers) {
 			
 			//similarity
-			double[] exampleEmbedding = ollama.embed(head,true);
+			double[] exampleEmbedding = llm.embed(head,true);
             double score = StringUtilsDTO.cosineSimilarity(queryEmbedding, exampleEmbedding);
           //get the feautres values
             System.out.println("[DATA] feature "+head+" vs "+question+": "+score);
@@ -66,7 +60,7 @@ public class DataTask extends AbstractTask {
             i++;
 		}
 		
-		ollama.cacheEmbedding();
+		llm.cacheEmbedding();
 		
 		String query = "The user has asked for the following live data and values."+
 		"These are the values requested: \n"+requestedFeatures+"\n"+
@@ -104,8 +98,8 @@ public class DataTask extends AbstractTask {
 
         try {
 
-            String prompt = buildPrompt(query, null);
-            String raw = ollama.send(prompt);
+            String prompt = llm.buildPrompt(query, null,this.legacyFile);
+            String raw = llm.send(prompt);
 
             if (raw == null || raw.isBlank() || raw.contains("Interpretation not available")) {
                 return "The system could not generate a reliable answer from the available data.";
@@ -131,7 +125,7 @@ public class DataTask extends AbstractTask {
 		
 		long t0 = System.currentTimeMillis();
 		
-		Ollama llm = new Ollama();
+		Llm llm = new Llm();
 		
 		DataTask chat = new DataTask(llm);
 		String answer = chat.handle(query);

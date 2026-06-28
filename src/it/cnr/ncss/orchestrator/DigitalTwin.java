@@ -1,7 +1,7 @@
 package it.cnr.ncss.orchestrator;
 
 import it.cnr.ncss.detectors.tasks.AbstractTask;
-import it.cnr.ncss.llm.Ollama;
+import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.StringUtilsDTO;
 
 public class DigitalTwin {
@@ -18,7 +18,7 @@ public class DigitalTwin {
 
 		String queryNorm = StringUtilsDTO.normalizeQuery(query);
 		
-		Ollama llm = new Ollama();
+		Llm llm = new Llm();
 		Router rout = new Router(llm);
 		QueryIntent route = rout.route(queryNorm);
 		

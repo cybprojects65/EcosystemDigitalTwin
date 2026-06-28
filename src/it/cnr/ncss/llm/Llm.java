@@ -15,7 +15,7 @@ import it.cnr.ncss.utils.JSONParser;
 import it.cnr.ncss.utils.StringUtilsDTO;
 
 
-public class Ollama {
+public class Llm {
 
 	OllamaModel modelInUse=null;
 	Embedding embedder = null;
@@ -23,7 +23,7 @@ public class Ollama {
 	
 	Rag rag = null;
 	
-	public Ollama() throws Exception{
+	public Llm() throws Exception{
 		embedder = new Embedding();
 		config = new Config();
 	}
@@ -186,9 +186,69 @@ public class Ollama {
 		 return rag.retrieveDocuments(query,collection, localrepo, top_k, similarity);
 	 }
 	 
+
+	 public Object sendRequestWithJsonOutput(String question, String promptFile, Class<?> outputClass) throws Exception{
+	 	String prompt = buildPrompt(question, null, promptFile);
+		String json_entities = send(prompt);
+		System.out.println("[LLM] json received: " + json_entities);
+		ObjectMapper mapper = new ObjectMapper();
+		Object entity = mapper.readValue(json_entities, outputClass);
+		return entity;
+	 }
+	 
+	 
+	 public String buildPrompt(String query, List<String> documents, String promptFile) throws Exception {
+
+			String context = "";
+			if (documents != null) {
+				context = String.join("\n\n", documents.stream().toList());
+			}
+			String legacyText = StringUtilsDTO.getText(new File(promptFile));
+			legacyText = legacyText.replace("#QUERY#", query);
+			legacyText = legacyText.replace("#CONTEXT#", context);
+
+			String prompt = """
+					%s
+					""".formatted(legacyText);
+
+			return prompt;
+		}
+	 
+		public String normalizeFeatureName(String question) throws Exception {
+
+			// get the header
+			String header = StringUtilsDTO.readFirstLine(config.getProperty("knowledge_base_data").replace("\"", ""));
+			String headers[] = header.split(",");
+			double threshold_for_feature_name_similarity=Double.parseDouble(config.getProperty("threshold_for_feature_name_similarity"));
+			double[] queryEmbedding = embed(question, false);
+
+			// get the most similar features
+			String normalized = null;
+			double maxscore = 0;
+			for (String head : headers) {
+
+				// similarity
+				double[] exampleEmbedding = embed(head, true);
+				double score = StringUtilsDTO.cosineSimilarity(queryEmbedding, exampleEmbedding);
+				// get the feautres values
+				System.out.println("[F-NORMALIZATION] feature " + head + " vs " + question + ": " + score);
+
+				if (score > threshold_for_feature_name_similarity) {
+					if (score > maxscore) {
+						maxscore = score;
+						normalized = head;
+					}
+				}
+			}
+
+			cacheEmbedding();
+
+			return normalized;
+		}
+		
 	 public static void main(String[] args) throws Exception {
 		 String query = "translate from english to italian: sky appears blue because of a phenomenon called Rayleigh scattering, named after the British physicist Lord Rayleigh";
-		 Ollama ollama = new Ollama();
+		 Llm ollama = new Llm();
 		 
 		 String answer = ollama.send(query);
 		 
