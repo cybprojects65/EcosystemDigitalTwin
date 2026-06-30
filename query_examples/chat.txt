@@ -1,0 +1,210 @@
+hello
+hi
+hey
+hey there
+hello there
+hi there
+good morning
+good afternoon
+good evening
+good day
+greetings
+greetings friend
+nice to meet you
+pleasure to meet you
+howdy
+hiya
+yo
+what's up
+sup
+good to see you
+happy to see you
+welcome
+welcome back
+hello again
+hi again
+hey again
+morning
+afternoon
+evening
+ciao
+salve
+buongiorno
+buonasera
+ehi
+ciao a tutti
+hello everybody
+hi everybody
+hey everybody
+hello assistant
+hi assistant
+hey assistant
+hello system
+hello bot
+hi bot
+hey bot
+hello ai
+hi ai
+hey ai
+good morning assistant
+good evening assistant
+good afternoon assistant
+good morning bot
+good evening bot
+good afternoon bot
+how are you
+how are you doing
+how is it going
+how's it going
+how have you been
+how do you do
+nice meeting you
+great to meet you
+great seeing you
+nice seeing you
+long time no see
+it's good to see you
+hope you're well
+hope you are doing well
+hope you're having a good day
+have a nice day
+have a great day
+wishing you a good day
+hello my friend
+hi my friend
+hey my friend
+dear assistant
+dear bot
+good morning my friend
+good evening my friend
+good afternoon my friend
+warm greetings
+kind greetings
+friendly greetings
+sending greetings
+best greetings
+many greetings
+cheers
+cheers mate
+hello team
+hi team
+hey team
+hello everyone
+hi everyone
+hey everyone
+hello all
+hi all
+hey all
+good morning everyone
+good afternoon everyone
+good evening everyone
+greetings everyone
+hello chatgpt
+hi chatgpt
+hey chatgpt
+hello computer
+hi computer
+hey computer
+hello machine
+hi machine
+hey machine
+good morning machine
+good evening machine
+good afternoon machine
+hello dear
+hi dear
+hey dear
+hello buddy
+hi buddy
+hey buddy
+hello pal
+hi pal
+hey pal
+hello mate
+hi mate
+hey mate
+hello world
+hi world
+hey world
+good morning world
+good evening world
+good afternoon world
+hello folks
+hi folks
+hey folks
+greetings folks
+hello people
+hi people
+hey people
+hello professor
+hi professor
+hey professor
+hello teacher
+hi teacher
+hey teacher
+hello doctor
+hi doctor
+hey doctor
+hello sir
+hi sir
+hey sir
+hello madam
+hi madam
+hey madam
+good morning sir
+good evening sir
+good afternoon sir
+good morning madam
+good evening madam
+good afternoon madam
+hello user
+hi user
+hey user
+good morning user
+good afternoon user
+good evening user
+hello friend
+hi friend
+hey friend
+hello sunshine
+hi sunshine
+hey sunshine
+good morning sunshine
+good evening sunshine
+good afternoon sunshine
+hi again friend
+hello once again
+hey once again
+hello nice people
+hi nice people
+hey nice people
+good to be here
+happy to be here
+glad to see you
+glad to meet you
+it's a pleasure meeting you
+pleased to meet you
+lovely to meet you
+wonderful to meet you
+hello and welcome
+hi and welcome
+hey and welcome
+welcome everyone
+welcome friends
+greetings and salutations
+salutations
+warm hello
+friendly hello
+friendly hi
+warm hi
+kind hello
+kind hi
+peace be with you
+hello from italy
+hi from italy
+greetings from italy
+hello from bologna
+hi from bologna
+good morning from italy
+good evening from italy
+good afternoon from italy
