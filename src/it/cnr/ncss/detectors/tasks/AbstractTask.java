@@ -7,11 +7,11 @@ import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.Config;
 import it.cnr.ncss.utils.StringUtilsDTO;
 
-public class AbstractTask {
+public abstract class AbstractTask {
 
 	public Llm llm;
 	public String fallbackFile = "./task_prompts/abstract_answer_fallback.txt";
-	public String legacyFile = "./task_prompts/abstract_answer.txt";
+	public String answerFile = "./task_prompts/abstract_answer.txt";
 	public String referenceCollection = "pdf_documents";
 	public String referenceFolder = "./pdfs/";
 	public Config conf = new Config();
@@ -27,6 +27,9 @@ public class AbstractTask {
 		this.llm = ollama;
 	}
 
+	public abstract String handle(String question) throws Exception;
+	
+	/*
 	public String handle(String question) throws Exception {
 
 		System.out.println("\n========== HANDLING GENERAL QUESTION ==========");
@@ -51,7 +54,7 @@ public class AbstractTask {
 		return response;
 
 	}
-
+*/
 	public String generateFallback(String question) throws Exception {
 		String fallbackText = StringUtilsDTO.getText(new File(fallbackFile));
 		fallbackText = fallbackText.replace("#QUERY#", question);
@@ -75,6 +78,13 @@ public class AbstractTask {
 				+ "I can help you explore ecosystem risk, biodiversity, and environmental changes.";
 	}
 
+	
+	public String buildPrompt(String query, List<String> docs, String promptFile) throws Exception{
+		
+		return llm.buildPrompt(query, docs,answerFile);
+		
+	}
+	
 	public String generateAnswer(String query) {
 
 		System.out.println("\n[RAG-GENERAL] START");
@@ -89,7 +99,7 @@ public class AbstractTask {
 				docs = null;
 			}
 
-			String prompt = llm.buildPrompt(query, docs,legacyFile);
+			String prompt = buildPrompt(query, docs, answerFile);
 			String raw = llm.send(prompt);
 
 			if (raw == null || raw.isBlank() || raw.contains("Interpretation not available")) {

@@ -15,8 +15,6 @@ public abstract class AbstractDetector {
 	
 	public AbstractDetector(Llm llm) throws Exception {
 		this.llm = llm;
-		referenceStrings = StringUtilsDTO.getLines(getReference());
-		this.similarityThreshold = getSimilarityThreshold();
 	}
 	
 	public abstract File getReference();
@@ -41,6 +39,14 @@ public abstract class AbstractDetector {
 
     public boolean matchesRules(String q) {
     	
+    	if (referenceStrings ==null) {
+			try {
+				referenceStrings = StringUtilsDTO.getLines(getReference());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}
+    	
     	for (String s:referenceStrings) {
     		if (s.equals(q))
     			return true;
@@ -53,6 +59,16 @@ public abstract class AbstractDetector {
         try {
             double[] queryEmbedding = llm.embed(q,false);
             double bestScore = -1.0;
+            
+            if (referenceStrings ==null) {
+    			try {
+    				referenceStrings = StringUtilsDTO.getLines(getReference());
+    			} catch (Exception e) {
+    				e.printStackTrace();
+    			}
+        	}
+            
+            this.similarityThreshold = getSimilarityThreshold();
             
             for (String example : referenceStrings) {
             	//System.out.println("[AbstractDetector] getting embedding");

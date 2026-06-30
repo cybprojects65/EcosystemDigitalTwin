@@ -30,7 +30,7 @@ public class DriversTask extends AbstractTask {
 
 	public DriversTask(Llm ollama) throws Exception {
 		super(ollama);
-		super.legacyFile = this.legacyFile;
+		super.answerFile = this.legacyFile;
 	}
 
 	
@@ -65,14 +65,13 @@ public class DriversTask extends AbstractTask {
 		List<String> drivers = new ArrayList<String>();
 		// for each feature not in Longitude, Latitude and target
 		for (String head : features) {
-			if (head.toLowerCase().contains("longitude") || head.toLowerCase().contains("latitude")
-					|| head.toLowerCase().equals(target.toLowerCase())) {
-				
-				continue;
-			}
+			
 			// take all data for that feature
 			//System.out.println("[DRIVERS] getting " + head + " var elements");
 			double headerValues[] = kb.getColumnNumericValues(head);
+			if (headerValues==null)
+				continue;
+			
 			// calculate Pearson correlation
 			Double corr = null;
 			try {
@@ -114,7 +113,7 @@ public class DriversTask extends AbstractTask {
 				statement+":\n{" + 
 				String.join(",\n", drivers) + "}\n";
 		
-		super.legacyFile = this.legacyFile;
+		super.answerFile = this.legacyFile;
 
 		System.out.println("[DRIVER TASK] query: \n"+query);
 		List<String> docs = llm.retrieveDocuments(query, referenceCollection, new File(referenceFolder), top_k,

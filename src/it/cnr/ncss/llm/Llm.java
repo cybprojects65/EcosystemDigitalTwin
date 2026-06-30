@@ -186,7 +186,13 @@ public class Llm {
 		 return rag.retrieveDocuments(query,collection, localrepo, top_k, similarity);
 	 }
 	 
-
+	 public String sendRequestWithJsonOutputString(String question, String promptFile) throws Exception{
+		 	String prompt = buildPrompt(question, null, promptFile);
+			String json_entities = send(prompt);
+			System.out.println("[LLM] json received: " + json_entities);
+			return json_entities;
+		 }
+	 
 	 public Object sendRequestWithJsonOutput(String question, String promptFile, Class<?> outputClass) throws Exception{
 	 	String prompt = buildPrompt(question, null, promptFile);
 		String json_entities = send(prompt);
@@ -204,8 +210,8 @@ public class Llm {
 				context = String.join("\n\n", documents.stream().toList());
 			}
 			String legacyText = StringUtilsDTO.getText(new File(promptFile));
-			legacyText = legacyText.replace("#QUERY#", query);
-			legacyText = legacyText.replace("#CONTEXT#", context);
+			legacyText = legacyText.replace("{{QUERY}}", query);
+			legacyText = legacyText.replace("{{CONTEXT}}", context);
 
 			String prompt = """
 					%s
@@ -217,8 +223,9 @@ public class Llm {
 		public String normalizeFeatureName(String question) throws Exception {
 
 			// get the header
-			String header = StringUtilsDTO.readFirstLine(config.getProperty("knowledge_base_data").replace("\"", ""));
-			String headers[] = header.split(",");
+			KbManager kb = new KbManager();
+			String headers[] = kb.getAllFeatures();
+			
 			double threshold_for_feature_name_similarity=Double.parseDouble(config.getProperty("threshold_for_feature_name_similarity"));
 			double[] queryEmbedding = embed(question, false);
 
@@ -231,7 +238,7 @@ public class Llm {
 				double[] exampleEmbedding = embed(head, true);
 				double score = StringUtilsDTO.cosineSimilarity(queryEmbedding, exampleEmbedding);
 				// get the feautres values
-				System.out.println("[F-NORMALIZATION] feature " + head + " vs " + question + ": " + score);
+				//System.out.println("[F-NORMALIZATION] feature " + head + " vs " + question + ": " + score);
 
 				if (score > threshold_for_feature_name_similarity) {
 					if (score > maxscore) {

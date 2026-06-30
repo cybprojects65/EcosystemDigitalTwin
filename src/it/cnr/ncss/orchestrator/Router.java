@@ -1,16 +1,10 @@
 package it.cnr.ncss.orchestrator;
 
-import it.cnr.ncss.detectors.ComparisonDetector;
-import it.cnr.ncss.detectors.DataDetector;
-import it.cnr.ncss.detectors.DeltaDetector;
-import it.cnr.ncss.detectors.DependencyDetector;
-import it.cnr.ncss.detectors.DriversDetector;
-import it.cnr.ncss.detectors.GreetingsDetector;
-import it.cnr.ncss.detectors.ImportanceDetector;
+import it.cnr.ncss.detectors.GeneralDetector;
 import it.cnr.ncss.detectors.tasks.AbstractTask;
+import it.cnr.ncss.detectors.tasks.ChatTask;
+import it.cnr.ncss.detectors.tasks.CorrelationTask;
 import it.cnr.ncss.detectors.tasks.DataTask;
-import it.cnr.ncss.detectors.tasks.DriversTask;
-import it.cnr.ncss.detectors.tasks.GreetingsTask;
 import it.cnr.ncss.llm.Llm;
 
 public class Router {
@@ -26,50 +20,30 @@ public class Router {
 		return currentTask;
 	}
 	
-	public QueryIntent route(String q) throws Exception{
+	public Intents lightroute(String q) throws Exception{
 		
 		
 	    //String q = StringUtilsDTO.normalizeQuery(query);
 	    System.out.println("[ROUTER] routing request: "+q);
 	    
-	    int intents = QueryIntent.values().length;
-	    QueryIntent [] qi = new QueryIntent[intents];
+	    int intents = Intents.values().length;
+	    Intents [] qi = new Intents[intents];
 	    double [] qs = new double[intents];
 	    AbstractTask [] tasks = new AbstractTask[intents];
 	    
-	    System.out.println("[ROUTER] checking Greetings");
-	    qs[0] = new GreetingsDetector(llm).matches(q);
-	    qi[0] = QueryIntent.GREETING;
-	    tasks[0] = new GreetingsTask(llm);
+	    System.out.println("[ROUTER] checking correlation");
 	    
-	    System.out.println("[ROUTER] checking Data");
-	    qs[6] = new DataDetector(llm).matches(q);
-	    qi[6] = QueryIntent.DATA;
-	    tasks[6] = new DataTask(llm);
+	    qs[0] = new GeneralDetector(llm, "chat_query_example", "chat_query_similarity_threshold").matches(q);
+	    qi[0] = Intents.CHAT;
+	    tasks[0] = new ChatTask(llm);
 	    
-	    System.out.println("[ROUTER] checking Drivers");
-	    qs[4] = new DriversDetector(llm).matches(q);
-	    qi[4] = QueryIntent.DRIVERS;
-	    tasks[4] = new DriversTask(llm);
+	    qs[1] = new GeneralDetector(llm, "data_query_example", "data_query_similarity_threshold").matches(q);
+	    qi[1] = Intents.DATA;
+	    tasks[1] = new DataTask(llm);
 	    
-	    System.out.println("[ROUTER] checking Delta");
-	    qs[1] = new DeltaDetector(llm).matches(q);
-	    qi[1] = QueryIntent.DELTA;
-	    
-	    System.out.println("[ROUTER] checking Comparison");
-	    qs[2] = new ComparisonDetector(llm).matches(q);
-	    qi[2] = QueryIntent.COMPARISON;
-	    
-	    System.out.println("[ROUTER] checking Importance");
-	    qs[3] = new ImportanceDetector(llm).matches(q);
-	    qi[3] = QueryIntent.IMPORTANCE;
-	    
-	    System.out.println("[ROUTER] checking Dependency");
-	    qs[5] = new DependencyDetector(llm).matches(q);
-	    qi[5] = QueryIntent.DEPENDENCY;
-	    
-	    qs[qs.length-1] = 0.7;
-	    qi[qs.length-1] = QueryIntent.UNKNOWN;
+	    qs[2] = new GeneralDetector(llm, "correlation_query_example", "correlation_query_similarity_threshold").matches(q);
+	    qi[2] = Intents.CORRELATION;
+	    tasks[2] = new CorrelationTask(llm);
 	    
 	    System.out.println("[ROUTER] checking optimal routing");
 	    int optimal = -1;
@@ -91,21 +65,31 @@ public class Router {
 	public static void main(String[] args) throws Exception{
 		
 		//String query = "what impacts biodiversity most?";
+		//String query = "show me the latest data";
+		//String query = "hello there";
 		String query = "show me the latest data";
-		
 		long t0 = System.currentTimeMillis();
 		
 		Llm llm = new Llm();
 		Router rout = new Router(llm);
+		/*
 		QueryIntent route = rout.route(query);
-		long t1 = System.currentTimeMillis();
-		System.out.println("Routed 1: "+QueryIntent.valueOf(route.name()) + " in "+(t1-t0)+"ms");
 		
+		System.out.println("Routed 1: "+QueryIntent.valueOf(route.name()) + " in "+(t1-t0)+"ms");
+		*/
+		Intents route = rout.lightroute(query);
+		long t1 = System.currentTimeMillis();
+		System.out.println("Routed 1: "+Intents.valueOf(route.name()) + " in "+(t1-t0)+"ms");
 		
 		query = "what impacts biodiversity most?";
-		
+		/*
 		route = rout.route(query);
 		long t11 = System.currentTimeMillis();
 		System.out.println("Routed 2: "+QueryIntent.valueOf(route.name())  + " in "+(t11-t1)+"ms");
+		*/
+		route = rout.lightroute(query);
+		long t11 = System.currentTimeMillis();
+		System.out.println("Routed 2: "+Intents.valueOf(route.name()) + " in "+(t11-t1)+"ms");
+		
 	}
 }
