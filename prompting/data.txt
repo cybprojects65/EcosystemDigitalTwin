@@ -197,3 +197,23 @@ Give me inflow records
 Display the time series for inflow
 Retrieve inflow measurements
 Show the latest recorded inflow
+Which environmental indicators are included in the dataset?
+What ecological variables are available for analysing the Massaciuccoli Lake Basin?
+Which climate-related variables are represented in the dataset?
+Which land-cover variables are available in the dataset?
+Which biodiversity indicators are included in the dataset?
+Which ecosystem health indicators can be analysed using the dataset?
+What environmental factors are measured for ecosystem assessment?
+Which variables describe habitat conditions in the dataset?
+Which ecological processes are represented by the available variables?
+What information does the dataset provide about ecosystem functioning?
+Which variables can be used to evaluate climate change impacts on the ecosystem?
+Which variables are available for assessing ecosystem resilience?
+Which variables can be used to estimate ecosystem risk?
+Which environmental drivers are explicitly represented in the Knowledge Base?
+Which ecological indicators can be used to monitor changes in the basin?
+Which variables describe vegetation and land cover in the dataset?
+Which hydrological variables are available in the dataset?
+Which environmental variables can be used to analyse biodiversity patterns?
+Which variables support the evaluation of ecosystem condition in the Massaciuccoli Lake Basin?
+Which ecosystem components are explicitly represented by the variables in the dataset
