@@ -12,6 +12,21 @@ import java.util.stream.Collectors;
 
 public class UtilsDTO {
 
+	public static int findMax(double []vector) {
+		
+		double best = vector[0];
+		int bestidx = 0;
+		for (int i=0;i<vector.length;i++) {
+			if (vector[i]>best) {
+				best = vector[i];
+				bestidx = i;
+			}
+			
+		}
+		
+		return bestidx;
+	}
+	
 	
 	public static double averageColumn(List<String> csvlines, int column) throws Exception{
 		
@@ -98,6 +113,26 @@ public class UtilsDTO {
 		return columnE;
 	}
 	
+	public static String [] getColumn(List<List<Object>> matrix, int columnIdx) throws Exception{
+		
+		List<String> values = new ArrayList<String>();
+		
+		int m = matrix.size();
+		for (int i = 0;i<m;i++) { //skip headers and explanations
+			List<Object> elementS = matrix.get(i);
+			values.add(""+elementS.get(columnIdx));
+		}
+		
+		String columnE [] = new String[values.size()];
+		int k = 0;
+		for(String v:values) {
+			columnE[k]=v;
+			k++;
+		}
+		
+		return columnE;
+	}
+
 	public static String [] getColumn(List<String> csvlines, String columnName) throws Exception{
 		
 		String header = csvlines.get(0);
@@ -329,10 +364,14 @@ public class UtilsDTO {
 	        throw new IllegalArgumentException("Input array cannot be null.");
 	    }
 
+	    
 	    if (percentage < 0 || percentage > 100) {
-	        throw new IllegalArgumentException("Percentage must be between 0 and 100.");
+	    	System.out.println("[replaceMissingValues] Warning: variation over 1: "+percentage);
+	    	percentage = 1;
+	        //throw new IllegalArgumentException("Percentage must be between 0 and 100.");
 	    }
-
+	     
+	    
 	    List<Integer> missingIndices = new ArrayList<>();
 
 	    for (int i = 0; i < values.length; i++) {
@@ -342,7 +381,9 @@ public class UtilsDTO {
 	    }
 
 	    int nToReplace = (int) Math.round(missingIndices.size() * percentage);
-
+	    if (nToReplace>=missingIndices.size())
+	    	nToReplace = missingIndices.size();
+	    
 	    Collections.shuffle(missingIndices, new Random(42));
 
 	    for (int i = 0; i < nToReplace; i++) {

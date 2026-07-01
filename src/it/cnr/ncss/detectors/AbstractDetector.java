@@ -28,12 +28,13 @@ public abstract class AbstractDetector {
         if (q.isBlank()) {
             return 0;
         }
-        
+        /*
         if (matchesRules(q)) {
-        	System.out.println("[AbstractDetector] exact match");
+        	System.out.println("[QUERY TYPE DETECTOR] exact match");
             return 1;
         }
-        System.out.println("[[AbstractDetector]] checking semantics");
+        */
+        System.out.println("[QUERY TYPE DETECTOR] checking semantics");
         return matchesSemantics(q);
     }
 
@@ -69,7 +70,7 @@ public abstract class AbstractDetector {
         	}
             
             this.similarityThreshold = getSimilarityThreshold();
-            
+            String mostSimilarSentence = "";
             for (String example : referenceStrings) {
             	//System.out.println("[AbstractDetector] getting embedding");
             	double[] exampleEmbedding = llm.embed(example,true);
@@ -78,16 +79,18 @@ public abstract class AbstractDetector {
                 //System.out.println("vs "+example+" = "+score);
                 if (score > bestScore) {
                     bestScore = score;
+                    mostSimilarSentence = example;
                 }
+                /*
                 if (bestScore >= similarityThreshold) {
-                	System.out.println("similarity found for: "+example);
                 	break;
-                }
+                }*/
             }
             
             llm.cacheEmbedding();
             
             System.out.println("[AbstractDetector] matchesSemantics - Max score: "+bestScore);
+            System.out.println("[AbstractDetector] matchesSemantics - optimal sentence: "+mostSimilarSentence);
             return bestScore;
 
         } catch (Exception e) {

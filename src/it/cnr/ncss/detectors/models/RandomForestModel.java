@@ -1,5 +1,6 @@
 package it.cnr.ncss.detectors.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
@@ -16,8 +17,13 @@ import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
 
-public class RandomForestModel {
+public class RandomForestModel implements Serializable{
 
+	
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 		public static int seed=42;
 		public static int niterations=200;
 		public Instances trainingset; 
@@ -175,13 +181,17 @@ public class RandomForestModel {
 	    public double outputRelativeVariation(List<double[]> proj1, List<double[]> proj2, int classToCompare) throws Exception {
 	    	
 	    	double sum1 = 0;
-	    	for(double[] p1:proj1)    		
-	    		sum1=sum1+p1[classToCompare];
-	    	
+	    	for(double[] p1:proj1) {
+	    		int bestIdx = UtilsDTO.findMax(p1);
+	    		if (bestIdx==classToCompare)
+	    			sum1=sum1+p1[classToCompare];
+	    	}
 	    	double sum2 = 0;
-	    	for(double[] p2:proj2)    		
-	    		sum2=sum2+p2[classToCompare];
-	    	
+	    	for(double[] p2:proj2) {    		
+	    		int bestIdx = UtilsDTO.findMax(p2);
+	    		if (bestIdx==classToCompare)
+	    			sum2=sum2+p2[classToCompare];
+	    	}
 	    	double var = (sum2-sum1)/sum1;
 	    	return var;
 	    }

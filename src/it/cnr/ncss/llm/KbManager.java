@@ -55,7 +55,7 @@ public class KbManager {
 				//if not, standardize it
 				double columnOfNumbers [] = null;
 				if (!isCat)
-					columnOfNumbers = getColumnNumericValues(f, true);
+					columnOfNumbers = getColumnNumericValues(f, false);
 				//for each row
 				for (int kk=0;kk<column.length;kk++) {
 					//add a new row if needed
@@ -75,6 +75,20 @@ public class KbManager {
 			
 		}
 	}
+	
+	
+	public String explainFeature(String f) {
+		int i=0;
+		for (String fn:featureNames) {
+			
+			if (f.equals(fn))
+				return featureExplanations[i];
+			
+			i++;
+		}
+		return "";
+	}
+	
 	
 	public List<List<Object>> getFeatureMatrix(){
 		return knowledgebaserows;
@@ -99,6 +113,11 @@ public class KbManager {
 		return UtilsDTO.getColumn(knowledgebase, column);
 	}
 	
+	public String[] getColumn(List<List<Object>> matrix, int columnIdx) throws Exception{
+		
+		return UtilsDTO.getColumn(matrix, columnIdx);
+	}
+
 	public int featureIndex(String feature)  throws Exception {
 		return UtilsDTO.getColumnIndex(featureNamesNoCoords, feature);
 	}
@@ -107,6 +126,42 @@ public class KbManager {
 		return UtilsDTO.getColumnIndex(featureNamesNoCoords, config.getProperty("risk_column"));
 	}
 	
+	public List<List<Object>> reanalysis(List<List<Object>> mixed_matrix, String feature, double variation, boolean isfraction_or_relative) throws Exception {
+		
+		int colIdx = featureIndex(feature);
+		String [] column = getColumn(mixed_matrix,colIdx);
+		
+		//check if it is categorial
+		boolean isCat = UtilsDTO.isCategorical(column);
+		int nRowsInKB = mixed_matrix.size();
+		List<List<Object>> simulatedKB = UtilsDTO.deepCopy(mixed_matrix);
+		if (!isCat) {
+			
+			for (int i=0;i<nRowsInKB;i++) {
+				double c = Double.parseDouble(column[i]);
+				double newvalue = c;
+				if (isfraction_or_relative) 
+					newvalue =  c + (Math.abs(c)*variation);
+				else 
+					newvalue =  c + (variation);	
+				
+				simulatedKB.get(i).set(colIdx, newvalue);
+			}
+ 
+		}else {
+			
+			String frequentCat = UtilsDTO.mostFrequentCategory(column);
+			String updatedColumn [] = UtilsDTO.replaceMissingValues(column, frequentCat, variation);
+			
+			for (int i=0;i<nRowsInKB;i++) {
+				
+				simulatedKB.get(i).set(colIdx, updatedColumn[i]);
+			}
+		}
+		
+		return simulatedKB;
+	}
+
 	public List<List<Object>> simulate(String feature, double fractionVariation) throws Exception {
 		
 		String [] column = getColumn(feature);
@@ -117,7 +172,7 @@ public class KbManager {
 		int nRowsInKB = knowledgebaserows.size();
 		List<List<Object>> simulatedKB = UtilsDTO.deepCopy(knowledgebaserows);
 		if (!isCat) {
-			double [] columnNum = getColumnNumericValues(feature, true);
+			double [] columnNum = getColumnNumericValues(feature, false);
 			for (int i=0;i<nRowsInKB;i++) {
 				double c = columnNum[i];
 				double augval =  c+ (c*fractionVariation);

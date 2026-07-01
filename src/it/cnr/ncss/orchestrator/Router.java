@@ -5,6 +5,8 @@ import it.cnr.ncss.detectors.tasks.AbstractTask;
 import it.cnr.ncss.detectors.tasks.ChatTask;
 import it.cnr.ncss.detectors.tasks.CorrelationTask;
 import it.cnr.ncss.detectors.tasks.DataTask;
+import it.cnr.ncss.detectors.tasks.RiskImportanceTask;
+import it.cnr.ncss.detectors.tasks.RiskVariationTask;
 import it.cnr.ncss.llm.Llm;
 
 public class Router {
@@ -33,17 +35,34 @@ public class Router {
 	    
 	    System.out.println("[ROUTER] checking correlation");
 	    
-	    qs[0] = new GeneralDetector(llm, "chat_query_example", "chat_query_similarity_threshold").matches(q);
-	    qi[0] = Intents.CHAT;
-	    tasks[0] = new ChatTask(llm);
-	    
+	    System.out.println("[ROUTER-DATA]");
 	    qs[1] = new GeneralDetector(llm, "data_query_example", "data_query_similarity_threshold").matches(q);
 	    qi[1] = Intents.DATA;
 	    tasks[1] = new DataTask(llm);
 	    
+	    System.out.println("[ROUTER-CHAT]");
+	    qs[0] = new GeneralDetector(llm, "chat_query_example", "chat_query_similarity_threshold").matches(q);
+	    qi[0] = Intents.CHAT;
+	    tasks[0] = new ChatTask(llm);
+
+	    
+	    
+	    System.out.println("[ROUTER-CORRELATION]");
 	    qs[2] = new GeneralDetector(llm, "correlation_query_example", "correlation_query_similarity_threshold").matches(q);
 	    qi[2] = Intents.CORRELATION;
 	    tasks[2] = new CorrelationTask(llm);
+	    
+	    System.out.println("[ROUTER-IMPORTANCE]");
+	    qs[3] = new GeneralDetector(llm, "risk_importance_query_example", "risk_importance_query_similarity_threshold").matches(q);
+	    qi[3] = Intents.RISK_IMPORTANCE;
+	    tasks[3] = new RiskImportanceTask(llm);
+	    
+	    
+	    System.out.println("[ROUTER-VARIATION]");
+	    qs[4] = new GeneralDetector(llm, "risk_variation_query_example", "risk_variation_query_similarity_threshold").matches(q);
+	    qi[4] = Intents.RISK_VARIATION;
+	    tasks[4] = new RiskVariationTask(llm);
+	    
 	    
 	    System.out.println("[ROUTER] checking optimal routing");
 	    int optimal = -1;

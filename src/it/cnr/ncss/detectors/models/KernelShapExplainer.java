@@ -58,7 +58,7 @@ public class KernelShapExplainer {
 		return UtilsDTO.sortByValueDescending(averageshap);
 	}
 
-	public Map<String, Double> interpretContributors(Map<String, Double> shap, boolean positive) {
+	public static Map<String, Double> interpretContributors(Map<String, Double> shap, boolean positive) {
 
 		double sum = 0;
 		for (String key : shap.keySet()) {
@@ -81,7 +81,7 @@ public class KernelShapExplainer {
 				if (val > 0 && positive) {
 					contributors.put(key, UtilsDTO.toPercentage(val / sum));
 				} else if (val < 0 && !positive) {
-					contributors.put(key, UtilsDTO.toPercentage(-1d*val / sum));
+					contributors.put(key, UtilsDTO.toPercentage(-1*val / sum));
 				}
 			}
 		}

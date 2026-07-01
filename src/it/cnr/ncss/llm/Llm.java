@@ -8,7 +8,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import it.cnr.ncss.embeddings.Embedding;
 import it.cnr.ncss.rag.Rag;
 import it.cnr.ncss.utils.Config;
 import it.cnr.ncss.utils.JSONParser;
@@ -18,7 +17,7 @@ import it.cnr.ncss.utils.StringUtilsDTO;
 public class Llm {
 
 	OllamaModel modelInUse=null;
-	Embedding embedder = null;
+	static Embedding embedder = null;
 	Config config = new Config();
 	
 	Rag rag = null;
@@ -71,15 +70,13 @@ public class Llm {
 	
 	
 	public double[] embed(String text, boolean memorycache) throws Exception {
-		if (embedder == null)
-			embedder = new Embedding();
-		
+			
 		double[] vectorcached = embedder.get(text);
 		if (vectorcached!=null)
 			return vectorcached;
 		else {
 	    ObjectMapper mapper = new ObjectMapper();
-	    text = StringUtilsDTO.normalizeQuery(text);
+	    //text = StringUtilsDTO.normalizeQuery(text);
 	    
 	    String json = mapper.writeValueAsString(
 	            java.util.Map.of(

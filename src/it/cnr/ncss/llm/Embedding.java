@@ -1,4 +1,4 @@
-package it.cnr.ncss.embeddings;
+package it.cnr.ncss.llm;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,8 +22,8 @@ public class Embedding {
 	}
 	
 	public void add(String query, double [] vector) {
-		if (embeds.get(query)==null)
-			embeds.put(query, vector);
+		embeds.put(query, vector);
+		
 	}
 	public double [] get(String query) {
 		return embeds.get(query);
@@ -37,8 +37,9 @@ public class Embedding {
 			oos.writeObject(embeds);
 			oos.close();
 			initialEmbedding = embeds.size();
-		}else
-			System.out.println("[DEBUG] CACHE ALREADY FULFILLED");
+		}
+		//else
+			//System.out.println("[DEBUG] CACHE ALREADY FULFILLED");
 	}
 	
 	public void decache() throws Exception{
