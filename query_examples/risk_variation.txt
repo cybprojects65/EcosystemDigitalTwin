@@ -1,0 +1,200 @@
+Assess ecosystem risk under a scenario with temperature increased by 1°C.
+Assess ecosystem risk under a scenario with temperature increased by 2°C.
+Assess ecosystem risk under a scenario with temperature increased by 3°C.
+Assess ecosystem risk under a scenario with precipitation reduced by 10%.
+Assess ecosystem risk under a scenario with precipitation reduced by 20%.
+Assess ecosystem risk under a scenario with precipitation reduced by 30%.
+Assess ecosystem risk under a scenario with precipitation increased by 10%.
+Assess ecosystem risk under a scenario with precipitation increased by 20%.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 10%.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 20%.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 30%.
+Assess ecosystem risk under a scenario with biodiversity reduced by 10%.
+Assess ecosystem risk under a scenario with biodiversity reduced by 20%.
+Assess ecosystem risk under a scenario with biodiversity reduced by 30%.
+Assess ecosystem risk under a scenario with biodiversity reduced by 50%.
+Assess ecosystem risk under a scenario with tree cover reduced by 10%.
+Assess ecosystem risk under a scenario with tree cover reduced by 20%.
+Assess ecosystem risk under a scenario with tree cover reduced by 40%.
+Assess ecosystem risk under a scenario with tree cover increased by 20%.
+Assess ecosystem risk under a scenario with tree cover increased by 40%.
+Assess ecosystem risk under a scenario with grassland cover reduced by 20%.
+Assess ecosystem risk under a scenario with grassland cover reduced by 50%.
+Assess ecosystem risk under a scenario with grassland cover increased by 20%.
+How does ecosystem risk change if average annual temperature rises by 1°C?
+How does ecosystem risk change if average annual temperature rises by 2°C?
+How does ecosystem risk change if average annual temperature rises by 4°C?
+How does ecosystem risk change if precipitation declines by 5%?
+How does ecosystem risk change if precipitation declines by 15%?
+How does ecosystem risk change if precipitation declines by 25%?
+How does ecosystem risk change if precipitation increases by 15%?
+What happens to ecosystem risk if evapotranspiration increases by 15%?
+What happens to ecosystem risk if evapotranspiration increases by 35%?
+What happens to ecosystem risk if biodiversity falls by 15%?
+What happens to ecosystem risk if biodiversity falls by 40%?
+What happens to ecosystem risk if tree cover decreases by 15%?
+What happens to ecosystem risk if tree cover decreases by 30%?
+What happens to ecosystem risk if tree cover increases by 15%?
+What happens to ecosystem risk if grassland cover decreases by 30%?
+What happens to ecosystem risk if grassland cover decreases by 60%?
+How would a warmer climate affect ecosystem risk in the Massaciuccoli basin?
+How would prolonged drought affect ecosystem risk?
+How would wetter conditions affect ecosystem risk?
+How would increasing evapotranspiration influence ecosystem stability?
+How would declining biodiversity affect ecological risk?
+How would widespread tree loss affect ecosystem resilience?
+How would reforestation influence ecosystem risk?
+How would declining vegetation cover affect ecosystem functioning?
+How would persistent warming affect ecosystem stability?
+How would sustained precipitation decline affect ecosystem health?
+How could simultaneous warming and drying alter ecosystem risk?
+Assess ecosystem risk under a scenario with temperature increased by 2°C and precipitation reduced by 10%.
+Assess ecosystem risk under a scenario with temperature increased by 2°C and precipitation reduced by 20%.
+Assess ecosystem risk under a scenario with temperature increased by 3°C and precipitation reduced by 30%.
+Assess ecosystem risk under a scenario with temperature increased by 1°C and biodiversity reduced by 20%.
+Assess ecosystem risk under a scenario with temperature increased by 2°C and biodiversity reduced by 30%.
+Assess ecosystem risk under a scenario with temperature increased by 3°C and biodiversity reduced by 50%.
+Assess ecosystem risk under a scenario with temperature increased by 2°C and tree cover reduced by 20%.
+Assess ecosystem risk under a scenario with temperature increased by 3°C and tree cover reduced by 40%.
+Assess ecosystem risk under a scenario with temperature increased by 2°C and tree cover increased by 20%.
+Assess ecosystem risk under a scenario with temperature increased by 3°C and tree cover increased by 40%.
+Assess ecosystem risk under a scenario with precipitation reduced by 20% and biodiversity reduced by 20%.
+Assess ecosystem risk under a scenario with precipitation reduced by 30% and biodiversity reduced by 40%.
+Assess ecosystem risk under a scenario with precipitation reduced by 20% and tree cover reduced by 20%.
+Assess ecosystem risk under a scenario with precipitation reduced by 30% and tree cover reduced by 40%.
+Assess ecosystem risk under a scenario with precipitation reduced by 20% and grassland cover reduced by 50%.
+Assess ecosystem risk under a scenario with precipitation increased by 20% and tree cover increased by 20%.
+Assess ecosystem risk under a scenario with precipitation increased by 10% and biodiversity increased by 10%.
+Assess ecosystem risk under a scenario with precipitation increased by 20% and biodiversity increased by 20%.
+Assess ecosystem risk under a scenario with precipitation reduced by 15% and evapotranspiration increased by 20%.
+Assess ecosystem risk under a scenario with precipitation reduced by 25% and evapotranspiration increased by 30%.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 20% and biodiversity reduced by 20%.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 30% and biodiversity reduced by 40%.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 25% and tree cover reduced by 20%.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 35% and tree cover reduced by 40%.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 25% and precipitation reduced by 20%.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 20% and temperature increased by 2°C.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 30% and temperature increased by 3°C.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 20% and grassland cover reduced by 50%.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 15% and biodiversity reduced by 10%.
+Assess ecosystem risk under a scenario with evapotranspiration increased by 40%.
+What is the ecosystem risk if temperature rises by 2°C while precipitation decreases by 15%?
+What is the ecosystem risk if temperature rises by 3°C while biodiversity declines by 30%?
+What is the ecosystem risk if precipitation decreases by 25% and tree cover declines by 20%?
+What is the ecosystem risk if tree cover decreases by 30% but biodiversity remains unchanged?
+What is the ecosystem risk if biodiversity decreases by 40% but tree cover increases by 20%?
+What is the ecosystem risk if precipitation decreases while evapotranspiration increases?
+What is the ecosystem risk if warming is accompanied by declining biodiversity?
+What is the ecosystem risk if warming is offset by increased tree cover?
+What is the ecosystem risk if biodiversity improves despite warmer temperatures?
+What is the ecosystem risk if precipitation increases while temperatures continue to rise?
+How does ecosystem risk change when temperature increases by 2°C and tree cover decreases by 20%?
+How does ecosystem risk change when biodiversity decreases by 30% and precipitation decreases by 20%?
+How does ecosystem risk change when evapotranspiration increases by 25% and precipitation decreases by 15%?
+How does ecosystem risk change when tree cover increases by 30% despite higher temperatures?
+How does ecosystem risk change when biodiversity improves by 20% under drier conditions?
+How does ecosystem risk respond to simultaneous warming and biodiversity loss?
+How does ecosystem risk respond to simultaneous drought and tree-cover decline?
+How does ecosystem risk respond to increasing evapotranspiration and reduced precipitation?
+How does ecosystem risk respond to reforestation under climate warming?
+How does ecosystem risk respond to biodiversity restoration under increasing temperatures?
+Assess ecosystem risk under a scenario with temperature increased by 2°C, precipitation reduced by 10%, and biodiversity reduced by 20%.
+Assess ecosystem risk under a scenario with temperature increased by 3°C, precipitation reduced by 20%, and biodiversity reduced by 30%.
+Assess ecosystem risk under a scenario with temperature increased by 2°C, precipitation reduced by 15%, and tree cover reduced by 20%.
+Assess ecosystem risk under a scenario with temperature increased by 3°C, precipitation reduced by 30%, and tree cover reduced by 40%.
+Assess ecosystem risk under a scenario with temperature increased by 2°C, evapotranspiration increased by 20%, and biodiversity reduced by 20%.
+Assess ecosystem risk under a scenario with temperature increased by 3°C, evapotranspiration increased by 30%, and biodiversity reduced by 40%.
+Assess ecosystem risk under a scenario with precipitation reduced by 20%, evapotranspiration increased by 25%, and tree cover reduced by 20%.
+Assess ecosystem risk under a scenario with precipitation reduced by 30%, evapotranspiration increased by 35%, and biodiversity reduced by 30%.
+Assess ecosystem risk under a scenario with biodiversity reduced by 30%, tree cover reduced by 20%, and grassland cover reduced by 50%.
+Assess ecosystem risk under a scenario with biodiversity reduced by 40%, tree cover reduced by 30%, and precipitation reduced by 20%.
+Assess ecosystem risk under a scenario with temperature increased by 2°C, biodiversity reduced by 20%, and tree cover increased by 20%.
+Assess ecosystem risk under a scenario with precipitation reduced by 20%, biodiversity improved by 10%, and tree cover increased by 20%.
+Assess ecosystem risk under a scenario with warming, reforestation, and stable biodiversity.
+Assess ecosystem risk under a scenario with drought, biodiversity restoration, and increased tree cover.
+Assess ecosystem risk under a scenario with higher evapotranspiration, increased vegetation cover, and stable precipitation.
+Assess ecosystem risk under a scenario with reduced precipitation, increased tree cover, and unchanged biodiversity.
+Assess ecosystem risk under a scenario with increased temperature, increased precipitation, and declining biodiversity.
+Assess ecosystem risk under a scenario with increased temperature, increased evapotranspiration, and expanded tree cover.
+Assess ecosystem risk under a scenario with lower biodiversity, higher tree cover, and reduced precipitation.
+Assess ecosystem risk under a scenario with severe drought, moderate warming, and partial reforestation.
+What is the ecosystem risk if temperature increases by 3°C, precipitation decreases by 20%, and biodiversity declines by 20%?
+What is the ecosystem risk if temperature increases by 2°C, tree cover decreases by 20%, and biodiversity declines by 30%?
+What is the ecosystem risk if precipitation decreases by 30%, evapotranspiration increases by 25%, and tree cover declines by 20%?
+What is the ecosystem risk if tree cover increases by 30% while biodiversity declines by 20%?
+What is the ecosystem risk if biodiversity increases but precipitation decreases by 20%?
+What is the ecosystem risk if warming is accompanied by reforestation?
+What is the ecosystem risk if drought is partially compensated by higher tree cover?
+What is the ecosystem risk if biodiversity declines but vegetation cover expands?
+What is the ecosystem risk if tree cover declines while biodiversity remains stable?
+What is the ecosystem risk if evapotranspiration rises under wetter climatic conditions?
+How does ecosystem risk change under simultaneous warming, drying, and biodiversity loss?
+How does ecosystem risk change under warming combined with reforestation?
+How does ecosystem risk change under drought combined with biodiversity restoration?
+How does ecosystem risk change when tree cover increases while precipitation declines?
+How does ecosystem risk change when biodiversity declines despite expanding forest cover?
+How does ecosystem risk change when evapotranspiration increases together with temperature?
+How does ecosystem risk change when precipitation decreases but biodiversity improves?
+How does ecosystem risk change when grassland cover decreases and tree cover increases?
+How does ecosystem risk change under moderate warming and severe drought?
+How does ecosystem risk change under severe warming but moderate biodiversity loss?
+Estimate ecosystem risk for a future climate scenario with higher temperatures and lower rainfall.
+Estimate ecosystem risk under a prolonged drought scenario.
+Estimate ecosystem risk under a future scenario of increasing evapotranspiration.
+Estimate ecosystem risk under simultaneous land-cover degradation and climate warming.
+Estimate ecosystem risk assuming widespread biodiversity decline.
+Estimate ecosystem risk assuming successful ecosystem restoration.
+Estimate ecosystem risk assuming extensive tree-cover recovery.
+Estimate ecosystem risk assuming declining vegetation productivity.
+Estimate ecosystem risk assuming warmer and drier environmental conditions.
+Estimate ecosystem risk under combined climate and land-use pressures.
+Assess ecosystem risk under an extreme warming scenario with reduced precipitation and declining biodiversity.
+Assess ecosystem risk under a severe drought scenario with reduced tree cover and lower biodiversity.
+Assess ecosystem risk under a climate-stress scenario with higher evapotranspiration and lower precipitation.
+Assess ecosystem risk under a restoration scenario with increased tree cover and improved biodiversity.
+Assess ecosystem risk under a conservation scenario with stable biodiversity and increased vegetation cover.
+What is the ecosystem risk under a worst-case scenario with warming, drought, and biodiversity decline?
+What is the ecosystem risk under a mitigation scenario with reforestation and biodiversity recovery?
+What is the ecosystem risk if climate stress increases but tree cover restoration is successful?
+What is the ecosystem risk if biodiversity restoration occurs under reduced precipitation?
+What is the ecosystem risk if tree cover expands but evapotranspiration also increases?
+How does ecosystem risk change under a combined climate-change and land-use degradation scenario?
+How does ecosystem risk change under a combined drought and biodiversity-loss scenario?
+How does ecosystem risk change under a combined warming and habitat-restoration scenario?
+How does ecosystem risk change under a scenario with declining grassland cover and increasing tree cover?
+How does ecosystem risk change under a scenario with increasing precipitation and increasing biodiversity?
+Assess ecosystem risk if temperature rises substantially but biodiversity remains stable.
+Assess ecosystem risk if precipitation decreases substantially but tree cover increases.
+Assess ecosystem risk if evapotranspiration increases substantially and biodiversity declines.
+Assess ecosystem risk if tree cover decreases substantially and precipitation also declines.
+Assess ecosystem risk if biodiversity declines substantially while precipitation remains stable.
+What happens to ecosystem risk if warming is combined with reduced tree cover?
+What happens to ecosystem risk if warming is combined with biodiversity restoration?
+What happens to ecosystem risk if drought is combined with reduced tree cover?
+What happens to ecosystem risk if drought is combined with increased tree cover?
+What happens to ecosystem risk if biodiversity loss is combined with grassland decline?
+What is the ecosystem risk if temperature increases by 4°C and precipitation decreases by 30%?
+What is the ecosystem risk if temperature increases by 3°C and biodiversity decreases by 40%?
+What is the ecosystem risk if precipitation decreases by 25% and tree cover decreases by 30%?
+What is the ecosystem risk if evapotranspiration increases by 40% and biodiversity decreases by 30%?
+What is the ecosystem risk if tree cover increases by 50% and biodiversity increases by 20%?
+How could climate warming affect ecological resilience in the Massaciuccoli basin?
+How could prolonged drought affect biodiversity and ecosystem risk?
+How could declining tree cover affect ecosystem stability?
+How could biodiversity restoration reduce ecosystem risk?
+How could reforestation influence ecosystem resilience under climate change?
+Estimate ecosystem risk under a future climate scenario with temperature +3°C and precipitation −20%.
+Estimate ecosystem risk under a land-use degradation scenario with tree cover −30% and grassland cover −50%.
+Estimate ecosystem risk under a biodiversity-loss scenario with species richness reduced by 30%.
+Estimate ecosystem risk under a restoration scenario with tree cover +40% and biodiversity +20%.
+Estimate ecosystem risk under a hydrological-stress scenario with precipitation −25% and evapotranspiration +30%.
+Assess whether ecosystem risk increases more under severe warming or severe drought.
+Assess whether ecosystem risk decreases under tree-cover restoration.
+Assess whether ecosystem risk remains high if biodiversity improves but precipitation declines.
+Assess whether ecosystem risk increases under combined biodiversity loss and vegetation decline.
+Assess whether ecosystem risk changes under wetter conditions with stable biodiversity.
+What future scenario would produce the highest ecosystem risk?
+What future scenario would produce the lowest ecosystem risk?
+What climate-change scenario is most dangerous for ecosystem stability?
+What restoration scenario is most effective for reducing ecosystem risk?
+What combination of environmental changes would most strongly increase ecosystem risk?
