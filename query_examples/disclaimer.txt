@@ -1,0 +1,12 @@
+I'm the Massaciuccoli Lake Digital Twin. You can ask information on the ecosystem, such as:
+• Which environmental variables are most influential in increasing ecosystem risk?
+• What factors drive biodiversity loss in the lake system?
+• How does temperature affect precipitation in the lake basin?
+• What is the ecosystem risk if temperature increases by 3°C and precipitation decreases by 20%?
+• What is the effect of evapotranspiration on water availability?
+• Compare ecosystem risk when temperature increases by 2°C versus when precipitation decreases by 10%
+• Which scenario is worse: temperature +3°C or precipitation −20%?
+• Compare two scenarios: one with increased tree cover (70%) and one with reduced biodiversity (−30%)
+• Retrieve the latest average temperature change data
+• What is the latest precipitation change?
+• Show the latest environmental conditions of the system

@@ -732,3 +732,33 @@ which drivers have no impact on precipitation
 which ecosystem variables contribute to productivity
 which ecosystem variables suppress productivity
 which ecosystem variables are irrelevant to productivity
+Which environmental variables are most strongly associated with biodiversity in the Massaciuccoli basin?
+How does land-use change affect biodiversity in the Massaciuccoli basin?
+How does temperature change affect biodiversity in the Massaciuccoli ecosystem?
+How does evapotranspiration change affect biodiversity in the Massaciuccoli basin?
+How does tree cover affect biodiversity in the Massaciuccoli basin?
+How does precipitation change affect ecosystem risk in the Massaciuccoli basin?
+Does temperature directly cause biodiversity loss in the basin?
+Does precipitation directly determine ecosystem risk?
+Does tree cover alone control biodiversity?
+Does biodiversity alone determine ecosystem risk?
+Does precipitation directly cause biodiversity loss?
+Does biodiversity directly determine ecosystem risk?
+Does temperature alone control ecosystem risk?
+How does biodiversity influence ecosystem risk in the Massaciuccoli basin?
+Which environmental variable contributes most to biodiversity change?
+How does tree cover influence ecosystem risk?
+What factors drive changes in vegetation productivity?
+Which environmental variables are most strongly associated with evapotranspiration change?
+Which environmental variables are most strongly associated with precipitation change in the basin?
+How does temperature affect ecosystem risk in the lake basin?
+How does evapotranspiration affect ecosystem risk?
+How does precipitation affect species richness?
+What factors drive tree cover dynamics in the basin?
+What factors drive biodiversity patterns in the lake ecosystem?
+How does tree cover affect species richness?
+How does precipitation affect ecosystem risk?
+How does evapotranspiration affect biodiversity?
+How does biodiversity affect ecosystem stability?
+How does tree cover affect ecosystem stability?
+How does biodiversity affect ecosystem resilience?

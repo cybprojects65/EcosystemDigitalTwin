@@ -24,7 +24,6 @@ Which climate variables most affect ecosystem condition?
 Which variables should be monitored to assess ecosystem health?
 Which ecological indicators best represent ecosystem functioning?
 Which environmental variables should be managed to reduce ecological risk?
-Which environmental conditions favour biodiversity conservation?
 Which variables are associated with sustainable ecosystem functioning?
 Which variables best describe ecosystem vulnerability?
 Which factors are most closely linked to ecological degradation?
@@ -67,7 +66,6 @@ Which environmental variables best explain ecosystem functioning?
 Which variables best predict ecological resilience?
 Which variables indicate improving ecosystem condition?
 Which ecological variables indicate declining ecosystem health?
-Which environmental variables are most closely linked to biodiversity conservation?
 Which environmental variables are most relevant for ecosystem management?
 Which ecological variables contribute most to environmental sustainability?
 Which environmental drivers determine ecosystem vulnerability?
@@ -89,7 +87,6 @@ Which environmental conditions favour ecological recovery?
 Which variables are most useful for ecological risk assessment?
 Which environmental variables are most informative for ecosystem monitoring?
 Which ecological variables are most important for environmental management?
-Which environmental variables best explain biodiversity conservation?
 Which variables contribute most to ecological functioning?
 Which variables most influence environmental resilience?
 Which ecological variables respond most strongly to climate change?
