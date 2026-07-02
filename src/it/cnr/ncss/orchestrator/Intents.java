@@ -5,5 +5,6 @@ public enum Intents {
 	    CORRELATION,
 	    DATA,
 	    RISK_IMPORTANCE,
-	    RISK_VARIATION
+	    RISK_VARIATION,
+	    RISK_COMPARISON
 }

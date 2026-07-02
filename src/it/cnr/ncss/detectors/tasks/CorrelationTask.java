@@ -220,10 +220,11 @@ public class CorrelationTask extends AbstractTask {
 		promptText = promptText.replace("{{USER_REQUEST}}", query);
 		promptText = promptText.replace("{{CONTEXTUAL_INFORMATION}}", context);
 		
+		System.out.println("[CORRELATION] prompt:\n"+promptText);
 		String prompt = """
 				%s
 				""".formatted(promptText);
-
+		
 		return prompt;
 	}
 

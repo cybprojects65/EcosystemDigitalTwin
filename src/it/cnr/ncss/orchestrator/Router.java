@@ -5,6 +5,7 @@ import it.cnr.ncss.detectors.tasks.AbstractTask;
 import it.cnr.ncss.detectors.tasks.ChatTask;
 import it.cnr.ncss.detectors.tasks.CorrelationTask;
 import it.cnr.ncss.detectors.tasks.DataTask;
+import it.cnr.ncss.detectors.tasks.RiskComparisonTask;
 import it.cnr.ncss.detectors.tasks.RiskImportanceTask;
 import it.cnr.ncss.detectors.tasks.RiskVariationTask;
 import it.cnr.ncss.llm.Llm;
@@ -63,6 +64,10 @@ public class Router {
 	    qi[4] = Intents.RISK_VARIATION;
 	    tasks[4] = new RiskVariationTask(llm);
 	    
+	    System.out.println("[ROUTER-COMPARISON]");
+	    qs[5] = new GeneralDetector(llm, "risk_comparison_query_example", "risk_comparison_query_similarity_threshold").matches(q);
+	    qi[5] = Intents.RISK_COMPARISON;
+	    tasks[5] = new RiskComparisonTask(llm);
 	    
 	    System.out.println("[ROUTER] checking optimal routing");
 	    int optimal = -1;

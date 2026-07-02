@@ -9,12 +9,16 @@ Do not include comments.
 Do not include text before or after the JSON.
 Do not add extra fields.
 Every field in the schema must appear exactly once.
+
 Extract only from the current user query.
+
 Never copy variables from examples.
 Never invent missing ecological variables.
 If a value cannot be inferred, use null.
 
+=========================================================
 OUTPUT SCHEMA
+=========================================================
 
 {
   "intent": "relation | driver_search | statement",
@@ -31,70 +35,153 @@ OUTPUT SCHEMA
   "confidence": 0.0
 }
 
+=========================================================
 ALLOWED VALUES
+=========================================================
 
 intent must be one of:
+
 - "relation"
 - "driver_search"
 - "statement"
 
 relation must be one of:
+
 - "influence"
 - "association"
 
 polarity must be one of:
+
 - "positive"
 - "negative"
 - "general"
 - "none"
 - "association"
 
+=========================================================
+VARIABLE NORMALIZATION
+=========================================================
+
+Normalize ecological variable names to the closest canonical form when the meaning is explicit.
+
+Use these canonical names:
+
+temperature:
+temperature, temperature change, warming, cooling, air temperature
+
+precipitation:
+precipitation, precipitation change, rainfall, rain, water from rain
+
+evapotranspiration:
+evapotranspiration, evapotranspiration change, evaporation, evaporation change, potential evapotranspiration, PET
+
+biodiversity:
+biodiversity, biodiversity change, species richness, number of species, species richness change, biodiversity loss
+
+tree_cover:
+tree cover, tree-cover dynamics, tree cover dynamics, tree-cover change, tree cover change, forest cover, tree density
+
+vegetation_productivity:
+vegetation productivity, plant productivity, productivity by plant phenology, vegetation growth, vegetation growth days
+
+land_use:
+land-use change, land use change, land cover change, land use and cover, land-use pressure
+
+ecosystem_risk:
+ecosystem risk, ecological risk
+
+ecosystem_stability:
+ecosystem stability, stability
+
+ecosystem_resilience:
+ecosystem resilience, resilience
+
+ecosystem_condition:
+ecosystem condition, ecosystem health
+
+If the query uses a generic phrase such as "environmental variables", "factors", "drivers", or "stressors", do NOT normalize it as a specific variable.
+For such phrases, use source.name = "driver" and source.generic = true.
+
+=========================================================
 INTENT RULES
+=========================================================
 
 Use intent = "relation" when the query explicitly contains both:
-1. a source variable X
-2. a target variable Y
 
-Example:
+1. a specific source variable X
+2. a specific target variable Y
+
+Examples:
+
 "How does temperature affect biodiversity?"
+"How does biodiversity influence ecosystem risk?"
+"Does precipitation directly determine ecosystem risk?"
 
-Meaning:
-temperature influences biodiversity
+Use intent = "driver_search" when the source variable is unknown and the user asks which factors, variables, drivers, stressors, mechanisms, processes, predictors, or causes are associated with or influence a target.
 
-Use intent = "driver_search" when the source variable is unknown and the user asks which factors, variables, drivers, mechanisms, processes, predictors, or causes influence a target.
+Examples:
+
+"Which environmental variables are most strongly associated with biodiversity?"
+"Which environmental variable contributes most to biodiversity change?"
+"What factors drive vegetation productivity?"
+"What factors drive biodiversity patterns?"
+"Which environmental variables are associated with precipitation change?"
+
+Use intent = "statement" only when the input is a declarative statement rather than a question.
 
 Example:
-"Which factors increase temperature?"
 
-Meaning:
-Find unknown drivers X such that X increases temperature.
-
-Use intent = "statement" when the input is a declarative statement rather than a question.
-
-Example:
 "Temperature drives biodiversity."
 
+=========================================================
 SOURCE AND TARGET RULES
+=========================================================
 
-The source is the influencing variable.
-The target is the influenced variable.
+The source is the influencing or associated variable.
+
+The target is the influenced or associated variable.
 
 For relation queries:
-- source.name = the explicit influencing variable
+
+- source.name = the explicit source variable
 - source.generic = false
 - source.type = "variable"
-- target.name = the influenced variable
+- target.name = the explicit target variable
 
 Example:
+
 "How does precipitation affect biodiversity?"
 
 Output meaning:
-source = precipitation
-target = biodiversity
 
+source.name = "precipitation"
+target.name = "biodiversity"
+
+For driver_search queries:
+
+- source.name = "driver"
+- source.generic = true
+- source.type = the exact generic source phrase used by the user, normalized only when necessary
+- target.name = the target variable after the relation phrase
+
+Example:
+
+"Which environmental variables are most strongly associated with biodiversity?"
+
+Output meaning:
+
+source.name = "driver"
+source.generic = true
+source.type = "environmental variables"
+target.name = "biodiversity"
+
+Never interpret the target variable as the source in driver_search queries.
+
+=========================================================
 CRITICAL DRIVER SEARCH RULE
+=========================================================
 
-If the query contains any of these patterns:
+If the query contains any of these patterns, the source is UNKNOWN:
 
 - which factor
 - which factors
@@ -116,6 +203,10 @@ If the query contains any of these patterns:
 - what environmental factors
 - what environmental variable
 - what environmental variables
+- which environmental stressor
+- which environmental stressors
+- what environmental stressor
+- what environmental stressors
 - which climatic factor
 - which climatic factors
 - which ecological factor
@@ -134,82 +225,237 @@ If the query contains any of these patterns:
 - what is unrelated to
 - what drives
 - what is driving
+- what factors drive
+- what variables drive
 - identify the drivers of
 - identify the main drivers of
 - identify the key drivers of
-
-then the source is UNKNOWN.
+- most strongly associated with
+- most strongly related to
+- most strongly correlated with
+- contributes most to
+- contribute most to
 
 For these queries, always use:
 
 source.name = "driver"
 source.generic = true
-source.type = the exact generic phrase used by the user
+source.type = the generic source phrase used by the user
 
 Examples:
-"which factors have no effect on temperature?"
-source.type = "factors"
 
-"which environmental variables increase biodiversity?"
+"Which environmental variables are most strongly associated with biodiversity?"
+
+source.name = "driver"
+source.generic = true
 source.type = "environmental variables"
+target.name = "biodiversity"
+relation = "association"
+polarity = "association"
 
-"what increases precipitation?"
-source.type = "driver"
+"What factors drive changes in vegetation productivity?"
 
-Never interpret the target variable as the source in driver_search queries.
+source.name = "driver"
+source.generic = true
+source.type = "factors"
+target.name = "vegetation_productivity"
+relation = "influence"
+polarity = "general"
 
-Example:
-"which factors have no effect on temperature?"
+"Which environmental variable contributes most to biodiversity change?"
 
-Correct meaning:
-unknown drivers have no effect on temperature
+source.name = "driver"
+source.generic = true
+source.type = "environmental variable"
+target.name = "biodiversity"
+relation = "influence"
+polarity = "general"
 
-Incorrect meaning:
-temperature influences something
+=========================================================
+ASSOCIATION SEARCH RULES
+=========================================================
 
-For driver_search queries:
-- source.name must always be "driver"
-- source.generic must always be true
-- target.name must be the variable after the relation phrase
+Use relation = "association" when the query asks about:
 
-RELATION NORMALIZATION
+- associated with
+- association with
+- association between
+- relationship with
+- relationship between
+- correlated with
+- correlation with
+- related to
+- linked to
+- most strongly associated with
+- most strongly correlated with
+- most strongly related to
+
+If relation = "association", polarity must be "association".
+
+Examples:
+
+"Which environmental variables are most strongly associated with biodiversity?"
+
+Output:
+
+{
+  "intent": "driver_search",
+  "source": {
+    "name": "driver",
+    "generic": true,
+    "type": "environmental variables"
+  },
+  "target": {
+    "name": "biodiversity"
+  },
+  "relation": "association",
+  "polarity": "association",
+  "confidence": 0.99
+}
+
+"Which environmental variables are most strongly associated with evapotranspiration change?"
+
+Output:
+
+{
+  "intent": "driver_search",
+  "source": {
+    "name": "driver",
+    "generic": true,
+    "type": "environmental variables"
+  },
+  "target": {
+    "name": "evapotranspiration"
+  },
+  "relation": "association",
+  "polarity": "association",
+  "confidence": 0.99
+}
+
+=========================================================
+INFLUENCE RELATION RULES
+=========================================================
 
 Use relation = "influence" for:
+
 - affect
+- affects
 - influence
+- influences
 - impact
+- impacts
 - drive
 - drives
 - driving
 - determine
+- determines
 - control
+- controls
 - shape
+- shapes
 - explain
+- explains
 - predict
+- predicts
 - contribute to
+- contributes to
 - play a role in
 - increase
+- increases
 - decrease
+- decreases
 - promote
+- promotes
 - reduce
+- reduces
 - suppress
+- suppresses
 - inhibit
+- inhibits
+- cause
+- causes
 - no effect
 - neutral
 - unrelated
 - irrelevant
 
-Use relation = "association" for:
-- relationship between
-- associated with
-- association between
-- correlated with
-- linked to
-- related to
+Use polarity = "general" when the query asks about influence but does not specify direction.
 
+Examples:
+
+"How does land-use change affect biodiversity?"
+relation = "influence"
+polarity = "general"
+
+"How does biodiversity influence ecosystem risk?"
+relation = "influence"
+polarity = "general"
+
+"What factors drive tree cover dynamics?"
+relation = "influence"
+polarity = "general"
+
+=========================================================
+CAUSAL WORDING RULES
+=========================================================
+
+Queries may use causal language such as:
+
+- cause
+- directly cause
+- determine
+- directly determine
+- control
+- alone control
+- alone determine
+
+Do NOT create a special causal relation.
+The schema has only "influence" and "association".
+
+For causal wording, use:
+
+relation = "influence"
+
+If no direction is specified, use:
+
+polarity = "general"
+
+Examples:
+
+"Does temperature directly cause biodiversity loss?"
+
+source.name = "temperature"
+target.name = "biodiversity"
+relation = "influence"
+polarity = "negative"
+
+"Does precipitation directly determine ecosystem risk?"
+
+source.name = "precipitation"
+target.name = "ecosystem_risk"
+relation = "influence"
+polarity = "general"
+
+"Does tree cover alone control biodiversity?"
+
+source.name = "tree_cover"
+target.name = "biodiversity"
+relation = "influence"
+polarity = "general"
+
+"Does biodiversity alone determine ecosystem risk?"
+
+source.name = "biodiversity"
+target.name = "ecosystem_risk"
+relation = "influence"
+polarity = "general"
+
+=========================================================
 POLARITY RULES
+=========================================================
 
 Use polarity = "positive" for:
+
 - increase
 - increases
 - promote
@@ -221,8 +467,10 @@ Use polarity = "positive" for:
 - positively affect
 - positive impact
 - contribute to
+- contributes to
 
 Use polarity = "negative" for:
+
 - decrease
 - decreases
 - reduce
@@ -234,6 +482,7 @@ Use polarity = "negative" for:
 - negatively affect
 - negative impact
 - biodiversity loss
+- species loss
 - degradation
 - decline
 - collapse
@@ -242,6 +491,7 @@ Use polarity = "negative" for:
 - stress
 
 Use polarity = "none" for:
+
 - no effect
 - has no effect
 - have no effect
@@ -256,7 +506,8 @@ Use polarity = "association" only when relation = "association".
 
 Use polarity = "general" when the query asks about influence but does not specify direction.
 
-Examples:
+Examples of general influence:
+
 - affect
 - influence
 - drive
@@ -266,38 +517,109 @@ Examples:
 - predict
 - shape
 
-DO NOT INVENT RULES
+=========================================================
+TARGET EXTRACTION RULES
+=========================================================
 
-Do not use "biodiversity" unless the word "biodiversity" appears in the user query.
-Do not use "temperature" unless the word "temperature" appears in the user query.
+For driver_search queries, the target is usually the variable after:
+
+- with
+- associated with
+- correlated with
+- related to
+- linked to
+- affect
+- influence
+- drive
+- drives
+- driving
+- changes in
+- change in
+- of
+- to
+
+Examples:
+
+"Which environmental variables are most strongly associated with biodiversity in the Massaciuccoli basin?"
+
+target.name = "biodiversity"
+
+"What factors drive changes in vegetation productivity?"
+
+target.name = "vegetation_productivity"
+
+"What factors drive tree cover dynamics in the basin?"
+
+target.name = "tree_cover"
+
+"What factors drive biodiversity patterns in the lake ecosystem?"
+
+target.name = "biodiversity"
+
+"Which environmental variable contributes most to biodiversity change?"
+
+target.name = "biodiversity"
+
+Ignore geographic context such as:
+
+- Massaciuccoli basin
+- Massaciuccoli ecosystem
+- lake basin
+- basin
+- lake ecosystem
+- area
+
+Do not use geographic context as source or target.
+
+=========================================================
+DO NOT INVENT RULES
+=========================================================
+
+Do not use a variable unless that variable or an allowed synonym appears in the user query.
+
+Do not use "biodiversity" unless the query contains biodiversity, species richness, number of species, biodiversity loss, biodiversity change, or biodiversity patterns.
+
+Do not use "temperature" unless the query contains temperature, temperature change, warming, cooling, or air temperature.
+
+Do not use "ecosystem_risk" unless the query contains ecosystem risk or ecological risk.
+
+Do not use "ecosystem_stability" unless the query contains ecosystem stability or stability.
+
+Do not use "ecosystem_resilience" unless the query contains ecosystem resilience or resilience.
+
 Do not infer a target from examples.
+
 Do not infer a source from examples.
+
 Do not leave fields empty if the query contains the information.
+
 Use null only when the information is truly absent.
 
+=========================================================
+CONFIDENCE RULES
+=========================================================
+
+Use confidence = 0.99 when:
+
+- both source and target are clearly identified; or
+- driver_search target is clearly identified.
+
+Use confidence = 0.85 when:
+
+- the target is identifiable through a synonym.
+
+Use confidence = 0.5 when:
+
+- some information is partially ambiguous.
+
+Use confidence = 0.0 only when the query cannot be parsed.
+
+=========================================================
 EXAMPLES
+=========================================================
 
 User query:
-How does temperature affect biodiversity?
-
-Output:
-{
-  "intent": "relation",
-  "source": {
-    "name": "temperature",
-    "generic": false,
-    "type": "variable"
-  },
-  "target": {
-    "name": "biodiversity"
-  },
-  "relation": "influence",
-  "polarity": "general",
-  "confidence": 0.99
-}
-
-User query:
-Which environmental variables increase biodiversity?
+Which environmental variables are most strongly associated with biodiversity in the Massaciuccoli basin?
 
 Output:
 {
@@ -310,74 +632,36 @@ Output:
   "target": {
     "name": "biodiversity"
   },
-  "relation": "influence",
-  "polarity": "positive",
-  "confidence": 0.99
-}
-
-User query:
-Which factors have no effect on temperature?
-
-Output:
-{
-  "intent": "driver_search",
-  "source": {
-    "name": "driver",
-    "generic": true,
-    "type": "factors"
-  },
-  "target": {
-    "name": "temperature"
-  },
-  "relation": "influence",
-  "polarity": "none",
-  "confidence": 0.99
-}
-
-User query:
-What decreases precipitation?
-
-Output:
-{
-  "intent": "driver_search",
-  "source": {
-    "name": "driver",
-    "generic": true,
-    "type": "driver"
-  },
-  "target": {
-    "name": "precipitation"
-  },
-  "relation": "influence",
-  "polarity": "negative",
-  "confidence": 0.99
-}
-
-User query:
-What is the relationship between precipitation and biodiversity?
-
-Output:
-{
-  "intent": "relation",
-  "source": {
-    "name": "precipitation",
-    "generic": false,
-    "type": "variable"
-  },
-  "target": {
-    "name": "biodiversity"
-  },
   "relation": "association",
   "polarity": "association",
   "confidence": 0.99
 }
 
 User query:
-Temperature is a driver of biodiversity.
+How does land-use change affect biodiversity in the Massaciuccoli basin?
 
 Output:
 {
-  "intent": "statement",
+  "intent": "relation",
+  "source": {
+    "name": "land_use",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "biodiversity"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does temperature change affect biodiversity in the Massaciuccoli ecosystem?
+
+Output:
+{
+  "intent": "relation",
   "source": {
     "name": "temperature",
     "generic": false,
@@ -391,6 +675,536 @@ Output:
   "confidence": 0.99
 }
 
+User query:
+How does evapotranspiration change affect biodiversity in the Massaciuccoli basin?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "evapotranspiration",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "biodiversity"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does tree cover affect biodiversity in the Massaciuccoli basin?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "tree_cover",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "biodiversity"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does precipitation change affect ecosystem risk in the Massaciuccoli basin?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "precipitation",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_risk"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+Does temperature directly cause biodiversity loss in the basin?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "temperature",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "biodiversity"
+  },
+  "relation": "influence",
+  "polarity": "negative",
+  "confidence": 0.99
+}
+
+User query:
+Does precipitation directly determine ecosystem risk?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "precipitation",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_risk"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+Does tree cover alone control biodiversity?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "tree_cover",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "biodiversity"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+Does biodiversity alone determine ecosystem risk?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "biodiversity",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_risk"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+Does precipitation directly cause biodiversity loss?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "precipitation",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "biodiversity"
+  },
+  "relation": "influence",
+  "polarity": "negative",
+  "confidence": 0.99
+}
+
+User query:
+Does biodiversity directly determine ecosystem risk?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "biodiversity",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_risk"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+Does temperature alone control ecosystem risk?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "temperature",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_risk"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does biodiversity influence ecosystem risk in the Massaciuccoli basin?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "biodiversity",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_risk"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+Which environmental variable contributes most to biodiversity change?
+
+Output:
+{
+  "intent": "driver_search",
+  "source": {
+    "name": "driver",
+    "generic": true,
+    "type": "environmental variable"
+  },
+  "target": {
+    "name": "biodiversity"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does tree cover influence ecosystem risk?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "tree_cover",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_risk"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+What factors drive changes in vegetation productivity?
+
+Output:
+{
+  "intent": "driver_search",
+  "source": {
+    "name": "driver",
+    "generic": true,
+    "type": "factors"
+  },
+  "target": {
+    "name": "vegetation_productivity"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+Which environmental variables are most strongly associated with evapotranspiration change?
+
+Output:
+{
+  "intent": "driver_search",
+  "source": {
+    "name": "driver",
+    "generic": true,
+    "type": "environmental variables"
+  },
+  "target": {
+    "name": "evapotranspiration"
+  },
+  "relation": "association",
+  "polarity": "association",
+  "confidence": 0.99
+}
+
+User query:
+Which environmental variables are most strongly associated with precipitation change in the basin?
+
+Output:
+{
+  "intent": "driver_search",
+  "source": {
+    "name": "driver",
+    "generic": true,
+    "type": "environmental variables"
+  },
+  "target": {
+    "name": "precipitation"
+  },
+  "relation": "association",
+  "polarity": "association",
+  "confidence": 0.99
+}
+
+User query:
+How does temperature affect ecosystem risk in the lake basin?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "temperature",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_risk"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does evapotranspiration affect ecosystem risk?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "evapotranspiration",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_risk"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does precipitation affect species richness?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "precipitation",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "biodiversity"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+What factors drive tree cover dynamics in the basin?
+
+Output:
+{
+  "intent": "driver_search",
+  "source": {
+    "name": "driver",
+    "generic": true,
+    "type": "factors"
+  },
+  "target": {
+    "name": "tree_cover"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+What factors drive biodiversity patterns in the lake ecosystem?
+
+Output:
+{
+  "intent": "driver_search",
+  "source": {
+    "name": "driver",
+    "generic": true,
+    "type": "factors"
+  },
+  "target": {
+    "name": "biodiversity"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does tree cover affect species richness?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "tree_cover",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "biodiversity"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does precipitation affect ecosystem risk?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "precipitation",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_risk"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does evapotranspiration affect biodiversity?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "evapotranspiration",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "biodiversity"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does biodiversity affect ecosystem stability?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "biodiversity",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_stability"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does tree cover affect ecosystem stability?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "tree_cover",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_stability"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+User query:
+How does biodiversity affect ecosystem resilience?
+
+Output:
+{
+  "intent": "relation",
+  "source": {
+    "name": "biodiversity",
+    "generic": false,
+    "type": "variable"
+  },
+  "target": {
+    "name": "ecosystem_resilience"
+  },
+  "relation": "influence",
+  "polarity": "general",
+  "confidence": 0.99
+}
+
+=========================================================
+MANDATORY SELF-CHECK BEFORE RETURNING JSON
+=========================================================
+
+Before returning the JSON, silently verify:
+
+1. The output contains exactly the schema fields and no extra fields.
+2. The output is valid JSON.
+3. If the query asks "which variables", "what factors", "what drives", or "most strongly associated with", intent is "driver_search".
+4. If intent is "driver_search", source.name is "driver" and source.generic is true.
+5. If the query asks about association, correlation, relationship, linked to, or related to, relation is "association" and polarity is "association".
+6. If the query asks about affect, influence, drive, determine, control, or cause, relation is "influence".
+7. Geographic context is ignored.
+8. No field is empty if the query contains the information.
+9. confidence is 0.0 only if the query cannot be parsed.
+
 Now convert the following user query into the JSON schema:
+
 {{QUERY}}
 

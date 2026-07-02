@@ -103,7 +103,7 @@ public abstract class AbstractTask {
 			String raw = llm.send(prompt);
 
 			if (raw == null || raw.isBlank() || raw.contains("Interpretation not available")) {
-				return "The system could not generate a reliable answer from the available data.";
+				return "Please, reformulate the question";
 			}
 
 			return raw.trim();
