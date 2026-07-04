@@ -198,3 +198,33 @@ What future scenario would produce the lowest ecosystem risk?
 What climate-change scenario is most dangerous for ecosystem stability?
 What restoration scenario is most effective for reducing ecosystem risk?
 What combination of environmental changes would most strongly increase ecosystem risk?
+Assess ecosystem risk under a scenario with increased temperature, reduced precipitation and lower biodiversity.
+Assess ecosystem risk under a scenario with reduced tree cover, lower biodiversity and decreased precipitation
+How could increasing temperature affect the Massaciuccoli lake ecosystem?
+How could reduced precipitation affect ecological conditions in the Massaciuccoli basin?
+How does ecosystem risk change when grassland cover decreases by 50%?
+What is the ecosystem risk if tree cover increases by 70% across the basin?
+What is the ecosystem risk if temperature increases by 3°C and precipitation decreases by 20%?
+What is the ecosystem risk if temperature decreases by 1°C but precipitation decreases by 15%?
+What is the ecosystem risk if evapotranspiration increases substantially?
+What is the ecosystem risk if evapotranspiration increases by 25%?
+What is the ecosystem risk if tree cover decreases substantially?
+What happens to ecosystem risk when temperature increases from 0°C to +3°C?
+What happens to ecosystem risk when precipitation changes from 0% to -20%?
+What happens to ecosystem risk when biodiversity decreases from 100% to 70%?
+What happens to ecosystem risk when tree cover increases from 30% to 70%?
+What happens to ecosystem risk when evapotranspiration increases by 25%?
+How does ecosystem risk change when temperature increases by 1°C?
+How does ecosystem risk change when temperature increases by 2°C?
+How does ecosystem risk change when precipitation decreases by 10%?
+How does ecosystem risk change when precipitation decreases by 30%?
+How does ecosystem risk change when biodiversity decreases by 10%?
+How does ecosystem risk change when biodiversity decreases by 50%?
+How does ecosystem risk change when tree cover decreases by 20%?
+How does ecosystem risk change when tree cover increases by 20%?
+What is the ecosystem risk if biodiversity declines by 30%?
+Which ecological variables are represented in the dataset?
+Assess ecosystem risk under a scenario with increased temperature and reduced tree cover
+What is the ecosystem risk if temperature increases by 3°C but tree cover also increases significantly?
+What is the ecosystem risk if temperature increases by 2°C, precipitation decreases by 10%, and tree cover declines by 20%?
+What is the ecosystem risk if biodiversity declines by 20% and grassland cover is reduced by half?

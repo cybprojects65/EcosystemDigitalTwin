@@ -10,7 +10,6 @@ import it.cnr.ncss.utils.StringUtilsDTO;
 public abstract class AbstractTask {
 
 	public Llm llm;
-	public String fallbackFile = "./task_prompts/abstract_answer_fallback.txt";
 	public String answerFile = "./task_prompts/abstract_answer.txt";
 	public String referenceCollection = "pdf_documents";
 	public String referenceFolder = "./pdfs/";
@@ -55,28 +54,7 @@ public abstract class AbstractTask {
 
 	}
 */
-	public String generateFallback(String question) throws Exception {
-		String fallbackText = StringUtilsDTO.getText(new File(fallbackFile));
-		fallbackText = fallbackText.replace("#QUERY#", question);
-
-		String prompt = """
-				%s
-				""".formatted(fallbackText);
-
-		try {
-			String response = llm.send(prompt);
-
-			if (response != null && !response.isBlank()) {
-				return response.trim();
-			}
-
-		} catch (Exception e) {
-			System.out.println("[LLM FALLBACK ERROR] " + e.getMessage());
-		}
-
-		return "Hello! I'm the Digital Twin assistant. "
-				+ "I can help you explore ecosystem risk, biodiversity, and environmental changes.";
-	}
+	
 
 	
 	public String buildPrompt(String query, List<String> docs, String promptFile) throws Exception{

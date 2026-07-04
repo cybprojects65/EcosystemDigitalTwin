@@ -32,7 +32,7 @@ public class RiskComparisonTask extends AbstractTask {
 
 	public String information_extraction_json;
 	SimulationResultReport report;
-	
+
 	public List<List<Object>> buildScenarioMatrix(List<ScenarioVariable> variables, List<List<Object>> baseline)
 			throws Exception {
 		if (variables == null) {
@@ -111,11 +111,15 @@ public class RiskComparisonTask extends AbstractTask {
 
 		// read the result
 		List<ScenarioVariable> variablesA = simulation.scenario_a;
+		String original_expression_A = "first simulation scenario";
+		try {		original_expression_A = variablesA.get(0).original_expression; }catch(Exception e) {}
 		System.out.println("[RISK COMPARISON] processing scenario A");
 		List<List<Object>> baseline = kb.getFeatureMatrix();
 		List<List<Object>> scenarioA_Matrix = buildScenarioMatrix(variablesA, baseline);
 		System.out.println("[RISK COMPARISON] processing scenario B");
 		List<ScenarioVariable> variablesB = simulation.scenario_b;
+		String original_expression_B = "second simulation scenario";
+		try {		original_expression_B = variablesB.get(0).original_expression; }catch(Exception e) {}
 		List<List<Object>> scenarioB_Matrix = buildScenarioMatrix(variablesB, baseline);
 
 		System.out.println("[RISK COMPARISON] training baseline RF");
@@ -139,7 +143,7 @@ public class RiskComparisonTask extends AbstractTask {
 			
 			rf = new RandomForestModel();
 			rf.trainRandomForest(matrix, kb.getFeatures(), risk_column);
-			System.out.println("[RISK VARIATION] caching the model");
+			System.out.println("[RISK COMPARISON] caching the model");
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(cached_model));
 			oos.writeObject(rf);
 			oos.close();
@@ -174,8 +178,8 @@ public class RiskComparisonTask extends AbstractTask {
 		report = new SimulationResultReport(
 		        question,
 		        "ecosystem risk",
-		        new SimulationResultReport.RiskChange("relative variation", relativeVarA, "%"),
-		        new SimulationResultReport.RiskChange("relative variation", relativeVarB, "%")
+		        new SimulationResultReport.RiskChange("relative variation", relativeVarA, "%", original_expression_A),
+		        new SimulationResultReport.RiskChange("relative variation", relativeVarB, "%", original_expression_B)
 		);
 		
 		for (String key:importanceForDeltaA.keySet()) {
@@ -258,7 +262,6 @@ public class RiskComparisonTask extends AbstractTask {
 		return answer;
 	}
 
-	
 	@Override
 	public String buildPrompt(String query, List<String> docs, String promptFile) throws Exception {
 
@@ -266,17 +269,15 @@ public class RiskComparisonTask extends AbstractTask {
 		if (docs != null) {
 			context = String.join("\n\n", docs.stream().toList());
 		}
-		
+
 		String promptText = StringUtilsDTO.getText(new File(answerFile));
 
 		String knowledgejson = report.toJson();
-		
-		
+
 		promptText = promptText.replace("{{KNOWLEDGE}}", knowledgejson);
 		promptText = promptText.replace("{{USER_REQUEST}}", query);
 		promptText = promptText.replace("{{CONTEXT}}", context);
-		
-		
+
 		String prompt = """
 				%s
 				""".formatted(promptText);
@@ -284,7 +285,7 @@ public class RiskComparisonTask extends AbstractTask {
 		System.out.println("[RISK VARIATION] prompt:\n" + prompt);
 		return prompt;
 	}
-	
+
 	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class ComparisonScenario {
 
@@ -356,95 +357,86 @@ public class RiskComparisonTask extends AbstractTask {
 			return sb.toString();
 		}
 	}
-	
-	
 
 	@JsonIgnoreProperties(ignoreUnknown = true)
 	public class SimulationResultReport {
 
-	    public String user_question;
-	    public String target;
-	    public RiskChange risk_change_in_scenario_A;
-	    public RiskChange risk_change_in_scenario_B;
-	    public List<Contributor> main_contributors_to_high_risk_increase_in_scenario_A = new ArrayList<>();
-	    public List<Contributor> main_contributors_to_high_risk_increase_in_scenario_B = new ArrayList<>();
-	    
-	    @JsonIgnoreProperties(ignoreUnknown = true)
-	    public static class RiskChange {
-	        public String type;
-	        public double value;
-	        public String unit;
+		public String user_question;
+		public String target;
+		public RiskChange risk_change_in_scenario_A;
+		public RiskChange risk_change_in_scenario_B;
+		public List<Contributor> main_contributors_to_high_risk_increase_in_scenario_A = new ArrayList<>();
+		public List<Contributor> main_contributors_to_high_risk_increase_in_scenario_B = new ArrayList<>();
 
-	        public RiskChange() {}
+		@JsonIgnoreProperties(ignoreUnknown = true)
+		public static class RiskChange {
+			public String type;
+			public double value;
+			public String unit;
+			public String scenario_summary;
 
-	        public RiskChange(String type, double value, String unit) {
-	            this.type = type;
-	            this.value = value;
-	            this.unit = unit;
-	        }
-	    }
+			public RiskChange() {
+			}
 
-	    @JsonIgnoreProperties(ignoreUnknown = true)
-	    public static class Contributor {
-	        public String variable;
-	        public String display_name;
-	        public String value;
-	        public String unit;
-	        public String interpretation;
+			public RiskChange(String type, double value, String unit, String scenario_summary) {
+				this.type = type;
+				this.value = value;
+				this.unit = unit;
+				this.scenario_summary = scenario_summary;
+			}
+		}
 
-	        public Contributor() {}
+		@JsonIgnoreProperties(ignoreUnknown = true)
+		public static class Contributor {
+			public String variable;
+			public String display_name;
+			public String value;
+			public String unit;
+			public String interpretation;
 
-	        public Contributor(
-	                String variable,
-	                String displayName,
-	                String value,
-	                String unit,
-	                String interpretation
-	        ) {
-	            this.variable = variable;
-	            this.display_name = displayName;
-	            this.value = value;
-	            this.unit = unit;
-	            this.interpretation = interpretation;
-	        }
-	    }
+			public Contributor() {
+			}
 
-	    public SimulationResultReport() {}
+			public Contributor(String variable, String displayName, String value, String unit, String interpretation) {
+				this.variable = variable;
+				this.display_name = displayName;
+				this.value = value;
+				this.unit = unit;
+				this.interpretation = interpretation;
+			}
+		}
 
-	    public SimulationResultReport(String userQuestion, String target, RiskChange riskChangeA, RiskChange riskChangeB) {
-	        this.user_question = userQuestion;
-	        this.target = target;
-	        this.risk_change_in_scenario_A = riskChangeA;
-	        this.risk_change_in_scenario_B = riskChangeB;
-	    }
+		public SimulationResultReport() {
+		}
 
-	    public void addContributor(
-	            String variable,
-	            String displayName,
-	            String value,
-	            String unit,
-	            String interpretation,
-	            String scenario
-	    ) {
-	    	if (scenario=="A")
-	    		main_contributors_to_high_risk_increase_in_scenario_A.add(
-	                new Contributor(variable, displayName, value, unit, interpretation));
-	    	else main_contributors_to_high_risk_increase_in_scenario_B.add(
-	                new Contributor(variable, displayName, value, unit, interpretation));
-	    }
+		public SimulationResultReport(String userQuestion, String target, RiskChange riskChangeA,
+				RiskChange riskChangeB) {
+			this.user_question = userQuestion;
+			this.target = target;
+			this.risk_change_in_scenario_A = riskChangeA;
+			this.risk_change_in_scenario_B = riskChangeB;
+		}
 
-	    public String toJson() throws Exception {
-	        ObjectMapper mapper = new ObjectMapper();
-	        mapper.enable(SerializationFeature.INDENT_OUTPUT);
-	        return mapper.writeValueAsString(this);
-	    }
+		public void addContributor(String variable, String displayName, String value, String unit,
+				String interpretation, String scenario) {
+			if (scenario == "A")
+				main_contributors_to_high_risk_increase_in_scenario_A
+						.add(new Contributor(variable, displayName, value, unit, interpretation));
+			else
+				main_contributors_to_high_risk_increase_in_scenario_B
+						.add(new Contributor(variable, displayName, value, unit, interpretation));
+		}
 
-	    public static SimulationResultReport fromJson(String json) throws Exception {
-	        ObjectMapper mapper = new ObjectMapper();
-	        return mapper.readValue(json, SimulationResultReport.class);
-	    }
+		public String toJson() throws Exception {
+			ObjectMapper mapper = new ObjectMapper();
+			mapper.enable(SerializationFeature.INDENT_OUTPUT);
+			return mapper.writeValueAsString(this);
+		}
+
+		public static SimulationResultReport fromJson(String json) throws Exception {
+			ObjectMapper mapper = new ObjectMapper();
+			return mapper.readValue(json, SimulationResultReport.class);
+		}
 	}
-
-	
 
 }
