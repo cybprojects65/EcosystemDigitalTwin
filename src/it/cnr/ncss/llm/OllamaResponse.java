@@ -10,7 +10,9 @@ public class OllamaResponse {
 	    public String response;
 	    public boolean done;
 	    public String done_reason;
-
+	    public Integer prompt_eval_count;
+	    public Integer eval_count;
+	    
 	    public String asString() {
 	    	String res = "model:"+model+"\n"+"creation date"+created_at+"\n"+"done:"+done+"\n"+"reason:"+done_reason+"\n"+"answer:"+response+"\n";
 	    	return res;

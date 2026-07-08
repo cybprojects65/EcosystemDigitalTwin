@@ -11,7 +11,7 @@ import it.cnr.ncss.utils.StringUtilsDTO;
 import it.cnr.ncss.utils.UtilsDTO;
 
 public class KbManager {
-	Config config;
+	public Config config;
 	static String featureNames[];
 	static String featureExplanations[];
 	static List<String> knowledgebase;

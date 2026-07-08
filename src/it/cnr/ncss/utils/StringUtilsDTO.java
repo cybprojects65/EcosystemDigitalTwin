@@ -74,4 +74,58 @@ public class StringUtilsDTO {
 		String [] elements = r.toArray(new String[r.size()]);
 		return elements;
 	}
+	
+	
+	public static double normalizedMinimumEditDistance(String a, String b) {
+	    if (a == null || b == null) {
+	        throw new IllegalArgumentException("Input strings must not be null.");
+	    }
+
+	    int lenA = a.length();
+	    int lenB = b.length();
+
+	    if (lenA == 0 && lenB == 0) {
+	        return 0.0;
+	    }
+
+	    int distance = minimumEditDistance(a, b);
+	    int normalizer = Math.max(lenA, lenB);
+
+	    return (double) distance / normalizer;
+	}
+
+	public static int minimumEditDistance(String a, String b) {
+	    int lenA = a.length();
+	    int lenB = b.length();
+
+	    int[] previous = new int[lenB + 1];
+	    int[] current = new int[lenB + 1];
+
+	    for (int j = 0; j <= lenB; j++) {
+	        previous[j] = j;
+	    }
+
+	    for (int i = 1; i <= lenA; i++) {
+	        current[0] = i;
+
+	        for (int j = 1; j <= lenB; j++) {
+	            int substitutionCost = a.charAt(i - 1) == b.charAt(j - 1) ? 0 : 1;
+
+	            current[j] = Math.min(
+	                    Math.min(
+	                            current[j - 1] + 1,      // insertion
+	                            previous[j] + 1          // deletion
+	                    ),
+	                    previous[j - 1] + substitutionCost // substitution
+	            );
+	        }
+
+	        int[] temp = previous;
+	        previous = current;
+	        current = temp;
+	    }
+
+	    return previous[lenB];
+	}
+	
 }

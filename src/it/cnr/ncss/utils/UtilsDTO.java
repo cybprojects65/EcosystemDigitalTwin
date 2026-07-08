@@ -73,6 +73,7 @@ public class UtilsDTO {
 	public static double [] getColumnNumericValues(List<String> csvlines, String columnName, boolean standardize) throws Exception{
 		
 		String header = csvlines.get(0);
+		header = header.replace("\uFEFF", "");
 		String headers [] = header.split(",");
 			
         int headerNumber = 0;
@@ -544,6 +545,42 @@ public class UtilsDTO {
 
 	    return Math.sqrt(phi2 / Math.min(r - 1, c - 1));
 	}
+	
+	
+	
+	public static double distance(double x1, double y1, double x2, double y2) {
+		
+		return Math.sqrt( ((x2-x1)*(x2-x1)) + ((y2-y1)*(y2-y1)));
+		
+		
+	}
+	
+	
+	/**
+	 * Calculates the average of an array of doubles.
+	 * Returns 0.0 if the array is null or empty to avoid division by zero.
+	 */
+	public static double average(double[] vector) {
+	    if (vector == null || vector.length == 0) {
+	        return 0.0;
+	    }
+
+	    double sum = 0.0;
+	    for (double value : vector) {
+	        sum += value;
+	    }
+
+	    return sum / (double) vector.length;
+	}
+	
+	
+	public static double roundToDigits(double value, int digits) {
+	    java.math.BigDecimal bd = java.math.BigDecimal.valueOf(value);
+	    bd = bd.setScale(digits, java.math.RoundingMode.HALF_UP);
+	    return bd.doubleValue();
+	}
+	
+	
 }
 
 

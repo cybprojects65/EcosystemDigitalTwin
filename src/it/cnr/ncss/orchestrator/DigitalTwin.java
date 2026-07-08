@@ -66,7 +66,10 @@ public class DigitalTwin {
 		// String query = "Compare increased temperature and reduced tree cover in terms
 		// of ecosystem risk";
 		//String query = "Which has a stronger effect on ecosystem risk: evapotranspiration increase or precipitation decrease?";
-		String query = "give me the latest data";
+		//String query = "give me the latest data";
+		
+		
+		String query = "Is suitable habitat for Cyprinus carpio fragmented or well connected?";
 		
 		// String query = "give me the latest data on precipitation";
 		// String query = "which factors increase temperature?";

@@ -7,5 +7,6 @@ public enum Intents {
 	    RISK_IMPORTANCE,
 	    RISK_VARIATION,
 	    RISK_COMPARISON,
+	    ENM,
 	    UNKNOWN
 }

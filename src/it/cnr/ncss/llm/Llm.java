@@ -5,13 +5,15 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.cnr.ncss.rag.Rag;
 import it.cnr.ncss.utils.Config;
-import it.cnr.ncss.utils.JSONParser;
 import it.cnr.ncss.utils.StringUtilsDTO;
 
 public class Llm {
@@ -110,6 +112,8 @@ public class Llm {
 		public String model;
 		public String prompt;
 		public boolean stream;
+		public Map<String, Object> options;
+		
 	}
 
 	public String send(String query) throws Exception {
@@ -123,13 +127,24 @@ public class Llm {
 		req.model = modelInUse.name;
 		req.prompt = query;
 		req.stream = false;
-
+		req.options = new HashMap<>();
+		//req.options.put("num_ctx", 32768);
+		req.options.put("num_ctx", Integer.parseInt(config.getProperty("num_ctx")));
+		//req.options.put("num_predict", 4096);
+		req.options.put("num_predict", Integer.parseInt(config.getProperty("num_predict")));
+		
 		String json = mapper.writeValueAsString(req);
 
 		HttpClient client = HttpClient.newHttpClient();
 		String llm_url = "http://" + modelInUse.address + "/api/generate";
-		if (modelInUse.token.length()>0)
+		if (modelInUse.token.length()>0) {
 			llm_url += "?token="+modelInUse.token;
+			llm_url = llm_url.replace("http://", "https://");
+		}
+		
+		System.out.println("[LLM] JSON request chars: " + json.length());
+		System.out.println("[LLM] JSON request bytes UTF-8: " + json.getBytes(StandardCharsets.UTF_8).length);
+		
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(llm_url))
 				.header("Content-Type", "application/json").POST(HttpRequest.BodyPublishers.ofString(json)).build();
 
@@ -142,16 +157,40 @@ public class Llm {
 		System.out.println("[LLM] answer generated in " + (t1 - t0) + "ms");
 
 		String jsonResponse = response.body();
-		OllamaResponse responseObj = JSONParser.parseOllamaResponse(jsonResponse);
+		OllamaResponse responseObj = parseOllamaResponse(jsonResponse);
 
+		if (response.statusCode() < 200 || response.statusCode() >= 300) {
+		    throw new RuntimeException(
+		        "LLM server returned HTTP " + response.statusCode() + ": " + response.body()
+		    );
+		}
+		
 		if (!responseObj.done) {
 
 			System.out.println("Issue with llm server: " + responseObj.done_reason);
 
 		}
 
+		System.out.println("[LLM] Java prompt chars: " + query.length());
+		System.out.println("[LLM] Java prompt bytes UTF-8: " + query.getBytes(StandardCharsets.UTF_8).length);
+		System.out.println("[LLM] prompt_eval_count: " + responseObj.prompt_eval_count);
+		System.out.println("[LLM] response chars: " + responseObj.response.length());
+		System.out.println("[LLM] eval_count: " + responseObj.eval_count);
+		
 		return responseObj.response;
 	}
+	
+	public static OllamaResponse parseOllamaResponse(String json) throws Exception {
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        OllamaResponse result =
+                mapper.readValue(json, OllamaResponse.class);
+
+        //System.out.println(result.response);
+        
+        return result;
+    }
 
 	public List<String> retrieveDocuments(String query, String collection, File localrepo, int top_k, double similarity)
 			throws Exception {
@@ -257,7 +296,7 @@ public class Llm {
 		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
 		String jsonResponse = response.body();
-		OllamaResponse responseObj = JSONParser.parseOllamaResponse(jsonResponse);
+		OllamaResponse responseObj = parseOllamaResponse(jsonResponse);
 		System.out.println("#####################");
 		System.out.println(responseObj.asString());
 		System.out.println("#####################");

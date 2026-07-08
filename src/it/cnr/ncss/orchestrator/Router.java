@@ -5,6 +5,7 @@ import it.cnr.ncss.detectors.tasks.AbstractTask;
 import it.cnr.ncss.detectors.tasks.ChatTask;
 import it.cnr.ncss.detectors.tasks.CorrelationTask;
 import it.cnr.ncss.detectors.tasks.DataTask;
+import it.cnr.ncss.detectors.tasks.ENMTask;
 import it.cnr.ncss.detectors.tasks.RiskComparisonTask;
 import it.cnr.ncss.detectors.tasks.RiskImportanceTask;
 import it.cnr.ncss.detectors.tasks.RiskVariationTask;
@@ -74,6 +75,11 @@ public class Router {
 	    qs[6] = Double.parseDouble(new Config().getProperty("unknown_similarity_score"));
 	    qi[6] = Intents.UNKNOWN;
 	    tasks[6] = new ChatTask(llm);
+	    
+	    System.out.println("[ROUTER-ENM]");
+	    qs[7] = new GeneralDetector(llm, "enm_query_example", "enm_query_similarity_threshold").matches(q);
+	    qi[7] = Intents.ENM;
+	    tasks[7] = new ENMTask(llm);
 	    
 	    System.out.println("[ROUTER] checking optimal routing");
 	    int optimal = -1;
