@@ -3,6 +3,7 @@ package it.cnr.ncss.detectors.tasks;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -214,13 +215,21 @@ public class CorrelationTask extends AbstractTask {
 			context = String.join("\n\n", docs.stream().toList());
 		}
 		
+
 		String promptText = StringUtilsDTO.getText(new File(answerFile));
+		//String uuid = ""+UUID.randomUUID();
+		//java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_template_"+uuid+".txt"),promptText);
+		
 		promptText = promptText.replace("{{EXTRACTED_JSON}}", information_extraction_json);
 		promptText = promptText.replace("{{CORRELATIVE_INTERPRETATIONS}}", associationSummary);	
 		promptText = promptText.replace("{{USER_REQUEST}}", query);
 		promptText = promptText.replace("{{CONTEXTUAL_INFORMATION}}", context);
 		
-		System.out.println("[CORRELATION] prompt:\n"+promptText);
+		//System.out.println("[CORRELATION] prompt:\n"+promptText);
+		//java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_"+uuid+".txt"),promptText);
+
+
+		
 		String prompt = """
 				%s
 				""".formatted(promptText);

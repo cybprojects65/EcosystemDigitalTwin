@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -272,17 +273,24 @@ public class RiskComparisonTask extends AbstractTask {
 
 		String promptText = StringUtilsDTO.getText(new File(answerFile));
 
+		String uuid = ""+UUID.randomUUID();
+		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_template_"+uuid+".txt"),promptText);
+
 		String knowledgejson = report.toJson();
 
 		promptText = promptText.replace("{{KNOWLEDGE}}", knowledgejson);
 		promptText = promptText.replace("{{USER_REQUEST}}", query);
 		promptText = promptText.replace("{{CONTEXT}}", context);
 
+		
+		//System.out.println("[CORRELATION] prompt:\n"+promptText);
+		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_"+uuid+".txt"),promptText);
+		
 		String prompt = """
 				%s
 				""".formatted(promptText);
 
-		System.out.println("[RISK VARIATION] prompt:\n" + prompt);
+		//System.out.println("[RISK VARIATION] prompt:\n" + prompt);
 		return prompt;
 	}
 

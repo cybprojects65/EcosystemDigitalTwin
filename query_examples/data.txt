@@ -217,3 +217,10 @@ Which hydrological variables are available in the dataset?
 Which environmental variables can be used to analyse biodiversity patterns?
 Which variables support the evaluation of ecosystem condition in the Massaciuccoli Lake Basin?
 Which ecosystem components are explicitly represented by the variables in the dataset
+Which environmental variables are available in the dataset?
+Which environmental variables are explicitly included in the dataset?
+Which environmental stressors are explicitly measured in the dataset?
+Which variables in the dataset capture the main ecological dynamics of the basin?
+Which aspects of ecosystem functioning are represented in the dataset?
+Which ecological variables are available in the dataset for ecosystem assessment?
+Which ecological variables are represented in the dataset?

@@ -69,7 +69,7 @@ public class DigitalTwin {
 		//String query = "give me the latest data";
 		
 		
-		String query = "Is suitable habitat for Cyprinus carpio fragmented or well connected?";
+		String query = "What factors reduce ecosystem risk?";
 		
 		// String query = "give me the latest data on precipitation";
 		// String query = "which factors increase temperature?";

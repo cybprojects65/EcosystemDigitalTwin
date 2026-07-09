@@ -1,203 +1,203 @@
-Compare a scenario with increased temperature against a scenario with temperature increases by 1°C in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with temperature increases by 2°C in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with temperature increases by 3°C in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with temperature decreases by 1°C in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with reduced precipitation in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with precipitation decreases by 10% in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with precipitation decreases by 20% in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with precipitation decreases by 30% in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with increased evapotranspiration in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with evapotranspiration increases by 25% in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with lower biodiversity in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with biodiversity decreases by 20% in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with biodiversity decreases by 30% in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with biodiversity decreases by 50% in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with increased tree cover in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with tree cover increases by 30% in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with tree cover increases by 70% in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with reduced tree cover in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with tree cover decreases by 20% in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with tree cover decreases by 30% in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with grassland decreases by 50% in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with land-use change reduction in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with tree-cover restoration in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with biodiversity conservation in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with climate stress in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with hydrological stress in terms of ecosystem risk.
-Compare a scenario with increased temperature against a scenario with biodiversity stress in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with increased temperature in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with temperature increases by 2°C in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with temperature increases by 3°C in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with temperature decreases by 1°C in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with reduced precipitation in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with precipitation decreases by 10% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with precipitation decreases by 20% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with precipitation decreases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with increased evapotranspiration in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with evapotranspiration increases by 25% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with lower biodiversity in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with biodiversity decreases by 20% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with biodiversity decreases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with biodiversity decreases by 50% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with increased tree cover in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with tree cover increases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with tree cover increases by 70% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with reduced tree cover in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with tree cover decreases by 20% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with tree cover decreases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with grassland decreases by 50% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with land-use change reduction in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with tree-cover restoration in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with biodiversity conservation in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with climate stress in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with hydrological stress in terms of ecosystem risk.
-Compare a scenario with temperature increases by 1°C against a scenario with biodiversity stress in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with increased temperature in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with temperature increases by 1°C in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with temperature increases by 3°C in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with temperature decreases by 1°C in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with reduced precipitation in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with precipitation decreases by 10% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with precipitation decreases by 20% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with precipitation decreases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with increased evapotranspiration in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with evapotranspiration increases by 25% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with lower biodiversity in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with biodiversity decreases by 20% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with biodiversity decreases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with biodiversity decreases by 50% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with increased tree cover in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with tree cover increases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with tree cover increases by 70% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with reduced tree cover in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with tree cover decreases by 20% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with tree cover decreases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with grassland decreases by 50% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with land-use change reduction in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with tree-cover restoration in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with biodiversity conservation in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with climate stress in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with hydrological stress in terms of ecosystem risk.
-Compare a scenario with temperature increases by 2°C against a scenario with biodiversity stress in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with increased temperature in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with temperature increases by 1°C in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with temperature increases by 2°C in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with temperature decreases by 1°C in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with reduced precipitation in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with precipitation decreases by 10% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with precipitation decreases by 20% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with precipitation decreases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with increased evapotranspiration in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with evapotranspiration increases by 25% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with lower biodiversity in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with biodiversity decreases by 20% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with biodiversity decreases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with biodiversity decreases by 50% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with increased tree cover in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with tree cover increases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with tree cover increases by 70% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with reduced tree cover in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with tree cover decreases by 20% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with tree cover decreases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with grassland decreases by 50% in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with land-use change reduction in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with tree-cover restoration in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with biodiversity conservation in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with climate stress in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with hydrological stress in terms of ecosystem risk.
-Compare a scenario with temperature increases by 3°C against a scenario with biodiversity stress in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with increased temperature in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with temperature increases by 1°C in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with temperature increases by 2°C in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with temperature increases by 3°C in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with reduced precipitation in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with precipitation decreases by 10% in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with precipitation decreases by 20% in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with precipitation decreases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with increased evapotranspiration in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with evapotranspiration increases by 25% in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with lower biodiversity in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with biodiversity decreases by 20% in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with biodiversity decreases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with biodiversity decreases by 50% in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with increased tree cover in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with tree cover increases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with tree cover increases by 70% in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with reduced tree cover in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with tree cover decreases by 20% in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with tree cover decreases by 30% in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with grassland decreases by 50% in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with land-use change reduction in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with tree-cover restoration in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with biodiversity conservation in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with climate stress in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with hydrological stress in terms of ecosystem risk.
-Compare a scenario with temperature decreases by 1°C against a scenario with biodiversity stress in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with increased temperature in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with temperature increases by 1°C in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with temperature increases by 2°C in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with temperature increases by 3°C in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with temperature decreases by 1°C in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with precipitation decreases by 10% in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with precipitation decreases by 20% in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with precipitation decreases by 30% in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with increased evapotranspiration in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with evapotranspiration increases by 25% in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with lower biodiversity in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with biodiversity decreases by 20% in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with biodiversity decreases by 30% in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with biodiversity decreases by 50% in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with increased tree cover in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with tree cover increases by 30% in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with tree cover increases by 70% in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with reduced tree cover in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with tree cover decreases by 20% in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with tree cover decreases by 30% in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with grassland decreases by 50% in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with land-use change reduction in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with tree-cover restoration in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with biodiversity conservation in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with climate stress in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with hydrological stress in terms of ecosystem risk.
-Compare a scenario with reduced precipitation against a scenario with biodiversity stress in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with increased temperature in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with temperature increases by 1°C in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with temperature increases by 2°C in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with temperature increases by 3°C in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with temperature decreases by 1°C in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with reduced precipitation in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with precipitation decreases by 20% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with precipitation decreases by 30% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with increased evapotranspiration in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with evapotranspiration increases by 25% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with lower biodiversity in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with biodiversity decreases by 20% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with biodiversity decreases by 30% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with biodiversity decreases by 50% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with increased tree cover in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with tree cover increases by 30% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with tree cover increases by 70% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with reduced tree cover in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with tree cover decreases by 20% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with tree cover decreases by 30% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with grassland decreases by 50% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with land-use change reduction in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with tree-cover restoration in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with biodiversity conservation in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with climate stress in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with hydrological stress in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 10% against a scenario with biodiversity stress in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 20% against a scenario with increased temperature in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 20% against a scenario with temperature increases by 1°C in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 20% against a scenario with temperature increases by 2°C in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 20% against a scenario with temperature increases by 3°C in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 20% against a scenario with temperature decreases by 1°C in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 20% against a scenario with reduced precipitation in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 20% against a scenario with precipitation decreases by 10% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 20% against a scenario with precipitation decreases by 30% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 20% against a scenario with increased evapotranspiration in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 20% against a scenario with evapotranspiration increases by 25% in terms of ecosystem risk.
-Compare a scenario with precipitation decreases by 20% against a scenario with lower biodiversity in terms of ecosystem risk.
+Compare a scenario with lower biodiversity against a scenario with increased temperature in terms of ecosystem risk.
+Compare increased temperature and reduced tree cover in terms of ecosystem risk.
+Compare ecosystem risk when temperature increases by 2°C versus when precipitation decreases by 10%.
+Which scenario produces higher ecosystem risk: biodiversity −30% or tree cover −30%?
+Which contributes more to ecosystem risk: biodiversity or tree cover?
+Which has a stronger effect on ecosystem risk: evapotranspiration increase or precipitation decrease?
+Which scenario is worse: temperature +3°C or precipitation −20%?
+Compare a scenario with increased tree cover (70%) and one with reduced biodiversity (−30%).
+Compare a scenario with temperature +2°C and a scenario with temperature +2°C but increased tree cover.
+Compare climate stress and biodiversity decline as drivers of ecosystem risk.
+Compare tree-cover restoration and biodiversity conservation as risk mitigation strategies.
+Which intervention would be more effective: increasing tree cover or reducing land-use change?
+Compare hydrological stress and biodiversity stress in terms of ecosystem resilience.
+Compare a scenario with reduced precipitation against one with increased evapotranspiration.
+Compare a scenario with lower tree cover against one with lower grassland cover.
+Compare ecosystem risk under biodiversity loss versus grassland loss.
+Which scenario is more critical: tree cover −40% or grassland cover −40%?
+Which scenario increases ecosystem risk more: temperature +2°C or evapotranspiration +25%?
+Compare ecosystem risk when precipitation decreases by 20% versus when biodiversity decreases by 20%.
+Compare ecosystem risk when tree cover decreases by 30% versus when land imperviousness increases by 30%.
+Which scenario is worse for ecosystem risk: reduced species richness or increased land imperviousness?
+Which scenario should be prioritized: precipitation decline or biodiversity decline?
+Compare biodiversity conservation and tree-cover restoration for reducing predicted ecosystem risk.
+Compare grassland restoration and tree-cover restoration as mitigation strategies.
+Which mitigation strategy is stronger: increasing grassland cover or increasing tree cover?
+Compare increased evapotranspiration and increased land imperviousness as ecosystem stressors.
+Compare temperature increase and grassland cover decrease in terms of ecosystem risk.
+Which has a stronger association with ecosystem risk: species richness decline or precipitation decline?
+Compare reduced vegetation productivity and reduced biodiversity in terms of ecosystem risk.
+Compare increased vegetation productivity and increased tree cover as potential lower-risk conditions.
+Which scenario has lower ecosystem risk: more tree cover or more grassland cover?
+Compare lower land-use pressure and higher tree-cover density in terms of ecosystem risk.
+Compare increased artificial land cover and reduced precipitation as stressors.
+Which is more relevant to ecosystem risk: land-use change or climate warming?
+Compare recent tree-cover loss and recent grassland loss in terms of ecosystem risk.
+Which recent change matters more for ecosystem risk: tree-cover change or grassland change?
+Compare current tree-cover density and recent tree-cover-density change.
+Compare current grassland presence and recent grassland-presence change.
+Which is more important for ecosystem assessment: current habitat condition or recent habitat change?
+Compare biodiversity loss and vegetation productivity decline as ecological pressures.
+Compare ecosystem risk under temperature +1°C versus precipitation −10%.
+Which scenario is more associated with higher ecosystem risk: temperature +1°C or precipitation −10%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: temperature +1°C or precipitation −10%?
+Compare ecosystem risk under temperature +2°C versus precipitation −20%.
+Which scenario is more associated with higher ecosystem risk: temperature +2°C or precipitation −20%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: temperature +2°C or precipitation −20%?
+Compare ecosystem risk under temperature +3°C versus precipitation −30%.
+Which scenario is more associated with higher ecosystem risk: temperature +3°C or precipitation −30%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: temperature +3°C or precipitation −30%?
+Compare ecosystem risk under temperature +4°C versus evapotranspiration +25%.
+Which scenario is more associated with higher ecosystem risk: temperature +4°C or evapotranspiration +25%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: temperature +4°C or evapotranspiration +25%?
+Compare ecosystem risk under evapotranspiration +10% versus precipitation −10%.
+Which scenario is more associated with higher ecosystem risk: evapotranspiration +10% or precipitation −10%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: evapotranspiration +10% or precipitation −10%?
+Compare ecosystem risk under evapotranspiration +25% versus precipitation −20%.
+Which scenario is more associated with higher ecosystem risk: evapotranspiration +25% or precipitation −20%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: evapotranspiration +25% or precipitation −20%?
+Compare ecosystem risk under evapotranspiration +50% versus temperature +3°C.
+Which scenario is more associated with higher ecosystem risk: evapotranspiration +50% or temperature +3°C?
+Which scenario would likely be more concerning for the Massaciuccoli basin: evapotranspiration +50% or temperature +3°C?
+Compare ecosystem risk under tree cover −10% versus biodiversity −10%.
+Which scenario is more associated with higher ecosystem risk: tree cover −10% or biodiversity −10%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: tree cover −10% or biodiversity −10%?
+Compare ecosystem risk under tree cover −20% versus biodiversity −20%.
+Which scenario is more associated with higher ecosystem risk: tree cover −20% or biodiversity −20%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: tree cover −20% or biodiversity −20%?
+Compare ecosystem risk under tree cover −30% versus biodiversity −30%.
+Which scenario is more associated with higher ecosystem risk: tree cover −30% or biodiversity −30%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: tree cover −30% or biodiversity −30%?
+Compare ecosystem risk under tree cover −50% versus biodiversity −50%.
+Which scenario is more associated with higher ecosystem risk: tree cover −50% or biodiversity −50%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: tree cover −50% or biodiversity −50%?
+Compare ecosystem risk under grassland cover −20% versus tree cover −20%.
+Which scenario is more associated with higher ecosystem risk: grassland cover −20% or tree cover −20%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: grassland cover −20% or tree cover −20%?
+Compare ecosystem risk under grassland cover −50% versus biodiversity −30%.
+Which scenario is more associated with higher ecosystem risk: grassland cover −50% or biodiversity −30%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: grassland cover −50% or biodiversity −30%?
+Compare ecosystem risk under grassland cover −50% versus tree cover −50%.
+Which scenario is more associated with higher ecosystem risk: grassland cover −50% or tree cover −50%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: grassland cover −50% or tree cover −50%?
+Compare ecosystem risk under land imperviousness +10% versus tree cover −10%.
+Which scenario is more associated with higher ecosystem risk: land imperviousness +10% or tree cover −10%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: land imperviousness +10% or tree cover −10%?
+Compare ecosystem risk under land imperviousness +25% versus biodiversity −25%.
+Which scenario is more associated with higher ecosystem risk: land imperviousness +25% or biodiversity −25%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: land imperviousness +25% or biodiversity −25%?
+Compare ecosystem risk under land imperviousness +35% versus precipitation −20%.
+Which scenario is more associated with higher ecosystem risk: land imperviousness +35% or precipitation −20%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: land imperviousness +35% or precipitation −20%?
+Compare ecosystem risk under vegetation productivity −20% versus species richness −20%.
+Which scenario is more associated with higher ecosystem risk: vegetation productivity −20% or species richness −20%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: vegetation productivity −20% or species richness −20%?
+Compare ecosystem risk under vegetation productivity −40% versus tree cover −40%.
+Which scenario is more associated with higher ecosystem risk: vegetation productivity −40% or tree cover −40%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: vegetation productivity −40% or tree cover −40%?
+Compare ecosystem risk under species richness −30% versus grassland cover −30%.
+Which scenario is more associated with higher ecosystem risk: species richness −30% or grassland cover −30%?
+Which scenario would likely be more concerning for the Massaciuccoli basin: species richness −30% or grassland cover −30%?
+Compare climate warming and precipitation decline as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: climate warming or precipitation decline?
+Which would be a stronger monitoring priority: climate warming or precipitation decline?
+Compare climate warming and biodiversity loss as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: climate warming or biodiversity loss?
+Which would be a stronger monitoring priority: climate warming or biodiversity loss?
+Compare climate warming and tree-cover decline as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: climate warming or tree-cover decline?
+Which would be a stronger monitoring priority: climate warming or tree-cover decline?
+Compare hydrological stress and habitat degradation as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: hydrological stress or habitat degradation?
+Which would be a stronger monitoring priority: hydrological stress or habitat degradation?
+Compare hydrological stress and biodiversity stress as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: hydrological stress or biodiversity stress?
+Which would be a stronger monitoring priority: hydrological stress or biodiversity stress?
+Compare hydrological stress and land-use pressure as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: hydrological stress or land-use pressure?
+Which would be a stronger monitoring priority: hydrological stress or land-use pressure?
+Compare biodiversity decline and tree-cover decline as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: biodiversity decline or tree-cover decline?
+Which would be a stronger monitoring priority: biodiversity decline or tree-cover decline?
+Compare biodiversity decline and grassland loss as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: biodiversity decline or grassland loss?
+Which would be a stronger monitoring priority: biodiversity decline or grassland loss?
+Compare biodiversity decline and vegetation-productivity decline as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: biodiversity decline or vegetation-productivity decline?
+Which would be a stronger monitoring priority: biodiversity decline or vegetation-productivity decline?
+Compare tree-cover restoration and grassland restoration as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: tree-cover restoration or grassland restoration?
+Which would be a stronger monitoring priority: tree-cover restoration or grassland restoration?
+Compare tree-cover restoration and biodiversity conservation as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: tree-cover restoration or biodiversity conservation?
+Which would be a stronger monitoring priority: tree-cover restoration or biodiversity conservation?
+Compare grassland restoration and biodiversity conservation as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: grassland restoration or biodiversity conservation?
+Which would be a stronger monitoring priority: grassland restoration or biodiversity conservation?
+Compare reduced land-use change and increased tree cover as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: reduced land-use change or increased tree cover?
+Which would be a stronger monitoring priority: reduced land-use change or increased tree cover?
+Compare reduced imperviousness and increased grassland cover as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: reduced imperviousness or increased grassland cover?
+Which would be a stronger monitoring priority: reduced imperviousness or increased grassland cover?
+Compare improved vegetation productivity and increased species richness as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: improved vegetation productivity or increased species richness?
+Which would be a stronger monitoring priority: improved vegetation productivity or increased species richness?
+Compare more natural land cover and higher tree-cover density as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: more natural land cover or higher tree-cover density?
+Which would be a stronger monitoring priority: more natural land cover or higher tree-cover density?
+Compare recent tree-cover loss and current low tree-cover density as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: recent tree-cover loss or current low tree-cover density?
+Which would be a stronger monitoring priority: recent tree-cover loss or current low tree-cover density?
+Compare recent grassland loss and current low grassland presence as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: recent grassland loss or current low grassland presence?
+Which would be a stronger monitoring priority: recent grassland loss or current low grassland presence?
+Compare increased evapotranspiration and reduced precipitation as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: increased evapotranspiration or reduced precipitation?
+Which would be a stronger monitoring priority: increased evapotranspiration or reduced precipitation?
+Compare increased land imperviousness and artificial land-cover expansion as drivers of ecosystem risk.
+Which is more relevant for ecosystem assessment: increased land imperviousness or artificial land-cover expansion?
+Which would be a stronger monitoring priority: increased land imperviousness or artificial land-cover expansion?
+Which intervention would be more effective for lowering predicted ecosystem risk: increasing tree cover or increasing grassland cover?
+Compare increasing tree cover and increasing grassland cover as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: increasing tree cover or reducing land-use change?
+Compare increasing tree cover and reducing land-use change as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: increasing tree cover or reducing land imperviousness?
+Compare increasing tree cover and reducing land imperviousness as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: conserving biodiversity or increasing tree cover?
+Compare conserving biodiversity and increasing tree cover as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: conserving biodiversity or increasing grassland cover?
+Compare conserving biodiversity and increasing grassland cover as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: conserving biodiversity or reducing evapotranspiration stress?
+Compare conserving biodiversity and reducing evapotranspiration stress as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: restoring grassland cover or reducing precipitation stress?
+Compare restoring grassland cover and reducing precipitation stress as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: restoring tree cover or reducing artificial land cover?
+Compare restoring tree cover and reducing artificial land cover as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: improving vegetation productivity or conserving species richness?
+Compare improving vegetation productivity and conserving species richness as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: reducing impervious surfaces or restoring natural land cover?
+Compare reducing impervious surfaces and restoring natural land cover as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: reducing land-use pressure or improving habitat connectivity?
+Compare reducing land-use pressure and improving habitat connectivity as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: restoring tree-cover density or limiting recent tree-cover loss?
+Compare restoring tree-cover density and limiting recent tree-cover loss as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: restoring grassland presence or limiting recent grassland loss?
+Compare restoring grassland presence and limiting recent grassland loss as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: reducing climate stress or conserving biodiversity?
+Compare reducing climate stress and conserving biodiversity as potential risk mitigation strategies.
+Which intervention would be more effective for lowering predicted ecosystem risk: reducing hydrological stress or restoring habitat cover?
+Compare reducing hydrological stress and restoring habitat cover as potential risk mitigation strategies.
+Compare a scenario with temperature +2°C with precipitation −10% against a scenario with temperature +2°C with tree cover +30%.
+Which scenario produces higher predicted ecosystem risk: temperature +2°C with precipitation −10% or temperature +2°C with tree cover +30%?
+Compare a scenario with temperature +3°C with precipitation −20% against a scenario with temperature +3°C with biodiversity +20%.
+Which scenario produces higher predicted ecosystem risk: temperature +3°C with precipitation −20% or temperature +3°C with biodiversity +20%?
+Compare a scenario with temperature +3°C with tree cover −20% against a scenario with temperature +3°C with grassland cover +30%.
+Which scenario produces higher predicted ecosystem risk: temperature +3°C with tree cover −20% or temperature +3°C with grassland cover +30%?
+Compare a scenario with precipitation −20% with evapotranspiration +25% against a scenario with precipitation −20% with tree cover +40%.
+Which scenario produces higher predicted ecosystem risk: precipitation −20% with evapotranspiration +25% or precipitation −20% with tree cover +40%?
+Compare a scenario with biodiversity −30% with tree cover −20% against a scenario with biodiversity −30% with grassland cover +30%.
+Which scenario produces higher predicted ecosystem risk: biodiversity −30% with tree cover −20% or biodiversity −30% with grassland cover +30%?
 Compare a scenario with lower biodiversity against a scenario with increased temperature in terms of ecosystem risk.
 Compare increased temperature and reduced tree cover in terms of ecosystem risk
 Compare ecosystem risk when temperature increases by 2°C versus when precipitation decreases by 10%.

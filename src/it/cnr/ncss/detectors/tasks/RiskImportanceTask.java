@@ -38,6 +38,7 @@ public class RiskImportanceTask extends AbstractTask {
 		int trainingClassIndex = Integer.parseInt(conf.getProperty("risk_index_to_predict"));
 		cached_model = new File(conf.getProperty("cache_folder"), "risk_importance_rf.bin").getAbsolutePath();
 		
+		
 		Map<String, Double> explanation = null;
 		try {
 			ObjectInputStream ooi = new ObjectInputStream(new FileInputStream(cached_model));
@@ -57,6 +58,13 @@ public class RiskImportanceTask extends AbstractTask {
 			rf.trainRandomForest(matrix, kb.getFeatures(), risk_column);
 			Instances dataset = rf.getTrainingSet();
 
+			System.out.println("[RISK IMPORTANCE] class attribute: " + dataset.classAttribute());
+			for (int i = 0; i < dataset.classAttribute().numValues(); i++) {
+			    System.out.println("[RISK IMPORTANCE] class index " + i + " = " + dataset.classAttribute().value(i));
+			}
+			System.out.println("[RISK IMPORTANCE] target class index = " + trainingClassIndex);
+			System.out.println("[RISK IMPORTANCE] target class label = " + dataset.classAttribute().value(trainingClassIndex));
+			
 			System.out.println("[RISK IMPORTANCE] explaining the relations");
 			// initialise explainer
 			KernelShapExplainer explainer = new KernelShapExplainer(rf.getModel(), dataset, 42);
@@ -82,6 +90,9 @@ public class RiskImportanceTask extends AbstractTask {
 		boolean positive = true;
 		Map<String, Double> positiveContributions = KernelShapExplainer.interpretContributors(explanation, positive);
 		
+		System.out.println("[RISK IMPORTANCE] positive contributions:");
+		System.out.println(positiveContributions.toString());
+		
 		for (String key:positiveContributions.keySet()) {
 			report.contributors.positive.add(
 			        new ContributionReport.Contribution(
@@ -93,6 +104,9 @@ public class RiskImportanceTask extends AbstractTask {
 		}
 		
 		Map<String, Double> negativeContributions = KernelShapExplainer.interpretContributors(explanation, !positive);
+		
+		System.out.println("[RISK IMPORTANCE] negative contributions:");
+		System.out.println(negativeContributions.toString());
 		
 		for (String key:negativeContributions.keySet()) {
 			
@@ -135,6 +149,8 @@ public class RiskImportanceTask extends AbstractTask {
 		);
 		
 		String promptText = StringUtilsDTO.getText(new File(answerFile));
+		//String uuid = ""+UUID.randomUUID();
+		//java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_template_"+uuid+".txt"),promptText);
 
 		String knowledgejson = report.toJson();
 		
@@ -142,11 +158,13 @@ public class RiskImportanceTask extends AbstractTask {
 		promptText = promptText.replace("{{KNOWLEDGE}}", knowledgejson);
 		promptText = promptText.replace("{{USER_REQUEST}}", query);
 		
+		//java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_"+uuid+".txt"),promptText);
+		
 		String prompt = """
 				%s
 				""".formatted(promptText);
 
-		System.out.println("[RISK IMPORTANCE] prompt:\n" + prompt);
+		//System.out.println("[RISK IMPORTANCE] prompt:\n" + prompt);
 		return prompt;
 	}
 	

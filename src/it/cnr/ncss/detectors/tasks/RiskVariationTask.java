@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -56,8 +57,13 @@ public class RiskVariationTask extends AbstractTask{
 			System.out.println("[RISK VARIATION] variation units: " + variable.change.unit);
 			String variableNameNorm = llm.normalizeFeatureName(variable.variable);
 			System.out.println("[RISK VARIATION] normalised variable: " + variableNameNorm);
-			boolean ispercentage = (variable.change.unit.contains("percent") || variable.change.unit.contains("fraction"));
-			Double variation = Double.parseDouble(variable.change.value.replace("+", "").replace("%", ""));
+			boolean ispercentage = false;
+			Double variation = 0d;
+			if (variable.change!=null) {
+				ispercentage = (variable.change.unit.contains("percent") || variable.change.unit.contains("fraction"));
+				variation = Double.parseDouble(variable.change.value.replace("+", "").replace("%", ""));
+			}
+			
 			String s = variable.original_expression.toLowerCase();
 
 	        boolean increase =
@@ -190,18 +196,21 @@ public class RiskVariationTask extends AbstractTask{
 		
 		String promptText = StringUtilsDTO.getText(new File(answerFile));
 
+		String uuid = ""+UUID.randomUUID();
+		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_template_"+uuid+".txt"),promptText);
+		
 		String knowledgejson = report.toJson();
 		
 		promptText = promptText.replace("{{KNOWLEDGE}}", knowledgejson);
 		promptText = promptText.replace("{{USER_REQUEST}}", query);
 		promptText = promptText.replace("{{CONTEXT}}", context);
 		
-		
+		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_"+uuid+".txt"),promptText);
 		String prompt = """
 				%s
 				""".formatted(promptText);
 
-		System.out.println("[RISK VARIATION] prompt:\n" + prompt);
+		//System.out.println("[RISK VARIATION] prompt:\n" + prompt);
 		return prompt;
 	}
 	

@@ -1,207 +1,225 @@
-Which environmental variable contributes most to ecosystem risk?
-Which environmental variables have the greatest influence on ecosystem risk?
-Which drivers are most responsible for ecosystem degradation?
-Which ecological factors increase ecosystem vulnerability?
-Which environmental conditions reduce ecosystem risk?
-Which variables are associated with ecosystem resilience?
-Which variables have the strongest positive effect on ecosystem health?
-Which environmental stressors have the greatest ecological impact?
-Which climate variables contribute most to ecosystem instability?
-Which environmental drivers are most important for ecosystem functioning?
-Which environmental factors are associated with healthy ecosystem conditions?
-Which environmental variables increase ecological resilience?
-Which environmental variables decrease ecological resilience?
-Which variables most strongly affect ecological stability?
-Which environmental conditions favour ecosystem recovery?
-Which variables indicate increasing ecosystem stress?
-Which environmental indicators best reflect ecosystem condition?
-Which variables are most informative for ecosystem assessment?
-Which variables best predict ecosystem degradation?
-Which variables best explain ecosystem risk?
-Which environmental factors contribute most to ecological stress?
-Which variables most strongly influence environmental quality?
-Which climate variables most affect ecosystem condition?
-Which variables should be monitored to assess ecosystem health?
-Which ecological indicators best represent ecosystem functioning?
-Which environmental variables should be managed to reduce ecological risk?
-Which variables are associated with sustainable ecosystem functioning?
-Which variables best describe ecosystem vulnerability?
-Which factors are most closely linked to ecological degradation?
-Which environmental drivers explain most variation in ecosystem risk?
-Which ecological variables contribute most to risk prediction?
-Which environmental variables are most sensitive to climate change?
-Which variables respond most strongly to environmental stress?
-Which environmental variables should be prioritised in conservation planning?
-Which environmental drivers contribute most to habitat degradation?
-Which environmental conditions are associated with resilient ecosystems?
-Which ecological variables improve ecosystem stability?
-Which environmental variables influence long-term ecosystem health?
-Which variables are most critical for maintaining ecosystem services?
-Which climate stressors most threaten ecosystem integrity?
-Which ecological indicators respond most rapidly to environmental change?
-Which variables best explain ecosystem dynamics?
-Which variables have the greatest effect on ecological resilience?
-Which environmental conditions support ecosystem sustainability?
-Which environmental variables are associated with ecosystem collapse?
-Which ecological drivers contribute to ecosystem instability?
-Which environmental variables most influence ecological condition?
-Which variables are strongest predictors of ecosystem health?
-Which environmental variables are associated with ecological recovery?
-Which climate variables increase ecological risk the most?
-Which environmental variables reduce ecosystem vulnerability?
-Which ecological variables are associated with environmental stress?
-Which environmental variables most influence ecosystem quality?
-Which variables contribute most to ecosystem deterioration?
-Which ecological factors protect ecosystem functioning?
-Which environmental variables have the greatest ecological importance?
-Which environmental variables best support ecosystem resilience?
-Which ecological variables best represent environmental quality?
-Which environmental variables influence ecological sustainability?
-Which ecosystem variables are most affected by climate change?
-Which variables best indicate ecosystem resilience?
-Which environmental variables contribute to ecosystem robustness?
-Which ecological drivers should be prioritised for restoration?
-Which environmental conditions minimise ecosystem degradation?
-Which environmental variables best explain ecosystem functioning?
-Which variables best predict ecological resilience?
-Which variables indicate improving ecosystem condition?
-Which ecological variables indicate declining ecosystem health?
-Which environmental variables are most relevant for ecosystem management?
-Which ecological variables contribute most to environmental sustainability?
-Which environmental drivers determine ecosystem vulnerability?
-Which variables influence ecological integrity the most?
-Which variables most strongly affect ecosystem resilience under climate change?
-Which ecological indicators best support conservation planning?
-Which environmental variables most influence ecological risk?
-Which environmental factors are most important for ecosystem conservation?
-Which variables are essential for ecosystem monitoring?
-Which environmental variables best represent ecosystem integrity?
-Which variables best capture ecosystem resilience?
-Which environmental drivers best explain ecological condition?
-Which variables best indicate environmental degradation?
-Which environmental conditions support ecological resilience?
-Which variables best predict environmental change?
-Which environmental variables most influence ecological stability?
-Which ecological variables reduce ecosystem risk?
-Which environmental conditions favour ecological recovery?
-Which variables are most useful for ecological risk assessment?
-Which environmental variables are most informative for ecosystem monitoring?
-Which ecological variables are most important for environmental management?
-Which variables contribute most to ecological functioning?
-Which variables most influence environmental resilience?
-Which ecological variables respond most strongly to climate change?
-Which environmental drivers most strongly influence ecological stability?
-Which variables determine ecosystem sustainability?
-Which environmental variables best support ecological resilience?
-Which ecological variables contribute most to conservation success?
-Which environmental variables most strongly influence ecosystem resilience?
-Which environmental variables should managers focus on to reduce ecosystem risk?
-Which environmental conditions are linked to ecosystem sustainability?
-Which ecological variables contribute most to healthy ecosystems?
-Which environmental variables best represent ecosystem stress?
-Which ecological indicators are most relevant for climate adaptation?
-Which environmental variables explain ecosystem resilience?
-Which variables contribute most to environmental degradation?
-Which ecological variables should be monitored continuously?
-Which variables indicate declining ecosystem resilience?
-Which environmental drivers contribute to ecosystem recovery?
-Which ecological variables most influence ecosystem resilience?
-Which environmental variables are associated with ecosystem persistence?
-Which environmental factors reduce ecosystem vulnerability?
-Which variables have the strongest influence on ecological resilience?
-Which variables best indicate ecological sustainability?
-Which environmental drivers support ecosystem recovery?
-Which ecological variables are associated with ecosystem robustness?
-Which environmental variables are linked to ecosystem degradation?
-Which environmental conditions increase ecosystem resilience?
-Which ecological variables indicate ecosystem stress?
-Which environmental variables most influence conservation outcomes?
-Which environmental drivers best support ecosystem restoration?
-Which ecological variables indicate successful ecosystem management?
-Which variables contribute most to ecosystem resilience under warming?
-Which variables contribute most to ecosystem resilience under drought?
-Which variables contribute most to ecosystem resilience under land-use change?
-Which environmental variables most affect ecosystem adaptation?
-Which ecological indicators are most relevant for ecosystem recovery?
-Which variables best explain ecological vulnerability?
-Which environmental drivers influence ecosystem adaptation?
-Which environmental variables are strongest indicators of ecosystem health?
-Which variables most influence ecological integrity?
-Which environmental drivers determine ecological resilience?
-Which variables best explain ecosystem sustainability?
-Which environmental conditions reduce ecological stress?
-Which variables best represent ecosystem vulnerability?
-Which ecological variables best predict ecosystem resilience?
-Which variables are associated with ecosystem adaptation?
-Which environmental drivers support ecosystem stability?
-Which variables best indicate ecosystem deterioration?
-Which environmental conditions improve ecosystem resilience?
-Which variables are associated with healthy ecological functioning?
-Which environmental variables reduce ecological degradation?
-Which variables best predict ecosystem collapse?
-Which environmental drivers most influence ecosystem sustainability?
-Which ecological variables contribute most to ecosystem integrity?
-Which environmental variables most affect ecological functioning?
-Which variables most strongly influence ecosystem conservation?
-Which ecological indicators best support environmental decision-making?
-Which environmental variables should be prioritised for restoration?
-Which environmental variables have the largest influence on ecological condition?
-Which variables are most strongly associated with ecosystem integrity?
-Which environmental variables contribute least to ecosystem risk?
-Which ecological variables have the weakest influence on ecosystem risk?
-Which environmental drivers should receive the highest management priority?
-Which environmental variables contribute most to long-term ecosystem stability?
-Which environmental conditions favour resilient ecosystems?
-Which ecological variables should guide ecosystem restoration?
-Which environmental drivers most strongly influence ecological resilience?
-Which variables best describe ecosystem health?
-Which environmental factors are most important for reducing ecosystem vulnerability?
-Which environmental variables most strongly affect ecosystem functioning?
-Which variables best explain ecosystem adaptation to climate change?
-Which environmental drivers influence ecological sustainability the most?
-Which environmental variables best support ecosystem resilience under future climates?
-Which ecological indicators best describe ecosystem quality?
-Which variables best explain ecosystem recovery potential?
-Which environmental variables most affect ecological persistence?
-Which environmental conditions support long-term ecosystem health?
-Which variables most strongly determine ecosystem condition?
-Which environmental variables best explain ecological resilience in the basin?
-Which ecological factors most influence ecosystem health?
-Which environmental drivers contribute most to ecosystem sustainability?
-Which variables best identify ecosystem vulnerability?
-Which environmental variables indicate ecosystem resilience?
-Which ecological variables best explain ecosystem stability?
-Which variables contribute most to ecological robustness?
-Which environmental conditions support ecosystem integrity?
-Which variables best indicate ecological recovery?
-Which environmental variables most strongly affect conservation priorities?
-Which environmental variables contribute most to maintaining ecosystem health?
-Which ecological variables should be prioritised for ecosystem monitoring?
-Which environmental drivers are most important under future climate scenarios?
-Which variables best explain environmental resilience?
-Which environmental conditions support ecosystem persistence?
-Which ecological variables are most closely associated with environmental quality?
-Which environmental drivers most strongly affect ecosystem functioning under climate change?
-Which variables best describe ecological sustainability?
-Which environmental variables contribute most to maintaining biodiversity and ecosystem stability?
-Which environmental variables most strongly influence ecosystem resilience to climate change?
-Which environmental variables should receive the highest conservation priority?
-Which ecological variables best explain environmental health?
-Which environmental drivers are most relevant for protecting ecosystem services?
-Which variables most strongly influence ecosystem recovery after disturbance?
-Which environmental conditions minimise ecological vulnerability?
-Which variables best support evidence-based ecosystem management?
-Which ecological indicators best capture ecosystem resilience?
-Which environmental variables are most effective for assessing ecosystem health?
-Which variables provide the strongest evidence of ecosystem degradation?
-Which environmental drivers should be targeted first to improve ecosystem health?
+
 Which environmental variables contribute most to ecosystem risk under changing climatic conditions?
+How does precipitation change affect ecosystem risk in the Massaciuccoli basin?
+Does precipitation directly determine ecosystem risk?
+Does biodiversity alone determine ecosystem risk?
+Does biodiversity directly determine ecosystem risk?
+Does temperature alone control ecosystem risk?
 Which environmental pressures are most relevant for ecosystem risk in the Massaciuccoli basin?
 Which environmental conditions are associated with lower ecosystem risk in the Massaciuccoli basin?
 Which environmental variables contribute most to ecosystem risk in the Massaciuccoli basin?
+How does biodiversity influence ecosystem risk in the Massaciuccoli basin?
 Which environmental conditions are associated with lower ecosystem risk in the Massaciuccoli basin?
 What factors drive ecosystem risk?
 What are the three environmental variables that most influence ecosystem risk?
 Which climate-related variable has the strongest impact on ecosystem risk?
+How does tree cover influence ecosystem risk?
+How does temperature affect ecosystem risk in the lake basin?
+How does evapotranspiration affect ecosystem risk?
+How does precipitation affect ecosystem risk?
 Which environmental variables should be prioritized to reduce ecosystem risk under climate change?
 Which variables are most important for ecosystem health?
+How does biodiversity affect ecosystem stability?
+How does tree cover affect ecosystem stability?
+How does biodiversity affect ecosystem resilience?
+Which environmental stressors represented in the dataset are most relevant for ecosystem assessment?
+Which environmental variables contribute most to ecosystem risk under changing climatic conditions?
+Which environmental variables contribute most to ecosystem risk in the Massaciuccoli basin?
+Which environmental pressures are most relevant for ecosystem risk in the Massaciuccoli basin?
+What factors drive ecosystem risk?
+What are the three environmental variables that most influence ecosystem risk?
+Which variables are most important for ecosystem risk?
+Which environmental variables contribute most to ecosystem health under changing climatic conditions?
+Which environmental variables contribute most to ecosystem health in the Massaciuccoli basin?
+Which environmental pressures are most relevant for ecosystem health in the Massaciuccoli basin?
+What factors drive ecosystem health?
+What are the three environmental variables that most influence ecosystem health?
+Which variables are most important for ecosystem health?
+Which environmental variables contribute most to ecosystem stability under changing climatic conditions?
+Which environmental variables contribute most to ecosystem stability in the Massaciuccoli basin?
+Which environmental pressures are most relevant for ecosystem stability in the Massaciuccoli basin?
+What factors drive ecosystem stability?
+What are the three environmental variables that most influence ecosystem stability?
+Which variables are most important for ecosystem stability?
+Which environmental variables contribute most to ecosystem resilience under changing climatic conditions?
+Which environmental variables contribute most to ecosystem resilience in the Massaciuccoli basin?
+Which environmental pressures are most relevant for ecosystem resilience in the Massaciuccoli basin?
+What factors drive ecosystem resilience?
+What are the three environmental variables that most influence ecosystem resilience?
+Which variables are most important for ecosystem resilience?
+Which environmental variables contribute most to ecosystem assessment under changing climatic conditions?
+Which environmental variables contribute most to ecosystem assessment in the Massaciuccoli basin?
+Which environmental pressures are most relevant for ecosystem assessment in the Massaciuccoli basin?
+What factors drive ecosystem assessment?
+What are the three environmental variables that most influence ecosystem assessment?
+Which variables are most important for ecosystem assessment?
+How does precipitation change affect ecosystem risk in the Massaciuccoli basin?
+How does precipitation change influence ecosystem risk in the lake basin?
+What is the relationship between precipitation change and ecosystem risk in the Massaciuccoli ecosystem?
+How does temperature change affect ecosystem risk in the lake basin?
+How does temperature change influence ecosystem risk in the Massaciuccoli ecosystem?
+What is the relationship between temperature change and ecosystem risk across the Massaciuccoli basin?
+How does evapotranspiration change affect ecosystem risk in the Massaciuccoli ecosystem?
+How does evapotranspiration change influence ecosystem risk across the Massaciuccoli basin?
+What is the relationship between evapotranspiration change and ecosystem risk within the wetland system?
+How does biodiversity affect ecosystem risk across the Massaciuccoli basin?
+How does biodiversity influence ecosystem risk within the wetland system?
+What is the relationship between biodiversity and ecosystem risk in the basin?
+How does species richness affect ecosystem risk within the wetland system?
+How does species richness influence ecosystem risk in the basin?
+What is the relationship between species richness and ecosystem risk in the Massaciuccoli basin?
+How does tree cover affect ecosystem risk in the basin?
+How does tree cover influence ecosystem risk in the Massaciuccoli basin?
+What is the relationship between tree cover and ecosystem risk in the lake basin?
+How does tree-cover density affect ecosystem risk in the Massaciuccoli basin?
+How does tree-cover density influence ecosystem risk in the lake basin?
+What is the relationship between tree-cover density and ecosystem risk in the Massaciuccoli ecosystem?
+How does grassland cover affect ecosystem risk in the lake basin?
+How does grassland cover influence ecosystem risk in the Massaciuccoli ecosystem?
+What is the relationship between grassland cover and ecosystem risk across the Massaciuccoli basin?
+How does land-use change affect ecosystem risk in the Massaciuccoli ecosystem?
+How does land-use change influence ecosystem risk across the Massaciuccoli basin?
+What is the relationship between land-use change and ecosystem risk within the wetland system?
+How does land imperviousness affect ecosystem risk across the Massaciuccoli basin?
+How does land imperviousness influence ecosystem risk within the wetland system?
+What is the relationship between land imperviousness and ecosystem risk in the basin?
+How does anthropisation affect ecosystem risk within the wetland system?
+How does anthropisation influence ecosystem risk in the basin?
+What is the relationship between anthropisation and ecosystem risk in the Massaciuccoli basin?
+How does vegetation productivity affect ecosystem risk in the basin?
+How does vegetation productivity influence ecosystem risk in the Massaciuccoli basin?
+What is the relationship between vegetation productivity and ecosystem risk in the lake basin?
+How does climatic conditions affect ecosystem risk in the Massaciuccoli basin?
+How does climatic conditions influence ecosystem risk in the lake basin?
+What is the relationship between climatic conditions and ecosystem risk in the Massaciuccoli ecosystem?
+How does climate-related variables affect ecosystem risk in the lake basin?
+How does climate-related variables influence ecosystem risk in the Massaciuccoli ecosystem?
+What is the relationship between climate-related variables and ecosystem risk across the Massaciuccoli basin?
+How does hydrological stress affect ecosystem risk in the Massaciuccoli ecosystem?
+How does hydrological stress influence ecosystem risk across the Massaciuccoli basin?
+What is the relationship between hydrological stress and ecosystem risk within the wetland system?
+How does biodiversity affect ecosystem stability in the Massaciuccoli basin?
+How does biodiversity affect ecosystem resilience in the lake basin?
+How does biodiversity affect ecosystem health in the Massaciuccoli ecosystem?
+How does tree cover affect ecosystem stability in the lake basin?
+How does tree cover affect ecosystem resilience in the Massaciuccoli ecosystem?
+How does tree cover affect ecosystem health across the Massaciuccoli basin?
+How does vegetation productivity affect ecosystem stability in the Massaciuccoli ecosystem?
+How does vegetation productivity affect ecosystem resilience across the Massaciuccoli basin?
+How does vegetation productivity affect ecosystem health within the wetland system?
+How does species richness affect ecosystem stability across the Massaciuccoli basin?
+How does species richness affect ecosystem resilience within the wetland system?
+How does species richness affect ecosystem health in the basin?
+How does precipitation change affect ecosystem stability within the wetland system?
+How does precipitation change affect ecosystem resilience in the basin?
+How does precipitation change affect ecosystem health in the Massaciuccoli basin?
+How does temperature change affect ecosystem stability in the basin?
+How does temperature change affect ecosystem resilience in the Massaciuccoli basin?
+How does temperature change affect ecosystem health in the lake basin?
+How does evapotranspiration change affect ecosystem stability in the Massaciuccoli basin?
+How does evapotranspiration change affect ecosystem resilience in the lake basin?
+How does evapotranspiration change affect ecosystem health in the Massaciuccoli ecosystem?
+How does land-use change affect ecosystem stability in the lake basin?
+How does land-use change affect ecosystem resilience in the Massaciuccoli ecosystem?
+How does land-use change affect ecosystem health across the Massaciuccoli basin?
+How does anthropisation affect ecosystem stability in the Massaciuccoli ecosystem?
+How does anthropisation affect ecosystem resilience across the Massaciuccoli basin?
+How does anthropisation affect ecosystem health within the wetland system?
+How does land imperviousness affect ecosystem stability across the Massaciuccoli basin?
+How does land imperviousness affect ecosystem resilience within the wetland system?
+How does land imperviousness affect ecosystem health in the basin?
+Does precipitation directly determine ecosystem risk?
+Does precipitation alone determine ecosystem risk?
+Does precipitation alone control ecosystem risk?
+Does precipitation directly cause changes in ecosystem risk?
+Does precipitation change directly determine ecosystem risk?
+Does precipitation change alone determine ecosystem risk?
+Does precipitation change alone control ecosystem risk?
+Does precipitation change directly cause changes in ecosystem risk?
+Does biodiversity directly determine ecosystem risk?
+Does biodiversity alone determine ecosystem risk?
+Does biodiversity alone control ecosystem risk?
+Does biodiversity directly cause changes in ecosystem risk?
+Does temperature directly determine ecosystem risk?
+Does temperature alone determine ecosystem risk?
+Does temperature alone control ecosystem risk?
+Does temperature directly cause changes in ecosystem risk?
+Does temperature change directly determine ecosystem risk?
+Does temperature change alone determine ecosystem risk?
+Does temperature change alone control ecosystem risk?
+Does temperature change directly cause changes in ecosystem risk?
+Does evapotranspiration directly determine ecosystem risk?
+Does evapotranspiration alone determine ecosystem risk?
+Does evapotranspiration alone control ecosystem risk?
+Does evapotranspiration directly cause changes in ecosystem risk?
+Does tree cover directly determine ecosystem risk?
+Does tree cover alone determine ecosystem risk?
+Does tree cover alone control ecosystem risk?
+Does tree cover directly cause changes in ecosystem risk?
+Does land-use change directly determine ecosystem risk?
+Does land-use change alone determine ecosystem risk?
+Does land-use change alone control ecosystem risk?
+Does land-use change directly cause changes in ecosystem risk?
+Does anthropisation directly determine ecosystem risk?
+Does anthropisation alone determine ecosystem risk?
+Does anthropisation alone control ecosystem risk?
+Does anthropisation directly cause changes in ecosystem risk?
+Does land imperviousness directly determine ecosystem risk?
+Does land imperviousness alone determine ecosystem risk?
+Does land imperviousness alone control ecosystem risk?
+Does land imperviousness directly cause changes in ecosystem risk?
+Does biodiversity directly determine ecosystem stability?
+Does biodiversity alone determine ecosystem stability?
+Does biodiversity alone control ecosystem stability?
+Does biodiversity directly cause changes in ecosystem stability?
+Does tree cover directly determine ecosystem stability?
+Does tree cover alone determine ecosystem stability?
+Does tree cover alone control ecosystem stability?
+Does tree cover directly cause changes in ecosystem stability?
+Does biodiversity directly determine ecosystem resilience?
+Does biodiversity alone determine ecosystem resilience?
+Does biodiversity alone control ecosystem resilience?
+Does biodiversity directly cause changes in ecosystem resilience?
+Does vegetation productivity directly determine ecosystem health?
+Does vegetation productivity alone determine ecosystem health?
+Does vegetation productivity alone control ecosystem health?
+Does vegetation productivity directly cause changes in ecosystem health?
+Does climate-related variables directly determine ecosystem risk?
+Does climate-related variables alone determine ecosystem risk?
+Does climate-related variables alone control ecosystem risk?
+Does climate-related variables directly cause changes in ecosystem risk?
+Which environmental conditions are associated with lower ecosystem risk in the Massaciuccoli basin?
+Which environmental conditions are associated with higher ecosystem risk in the Massaciuccoli basin?
+Which environmental conditions should be prioritized to reduce ecosystem risk under climate change?
+Which climate-related variables are associated with lower ecosystem risk in the Massaciuccoli basin?
+Which climate-related variables are associated with higher ecosystem risk in the Massaciuccoli basin?
+Which climate-related variables should be prioritized to reduce ecosystem risk under climate change?
+Which hydrological conditions are associated with lower ecosystem risk in the Massaciuccoli basin?
+Which hydrological conditions are associated with higher ecosystem risk in the Massaciuccoli basin?
+Which hydrological conditions should be prioritized to reduce ecosystem risk under climate change?
+Which biodiversity-related variables are associated with lower ecosystem risk in the Massaciuccoli basin?
+Which biodiversity-related variables are associated with higher ecosystem risk in the Massaciuccoli basin?
+Which biodiversity-related variables should be prioritized to reduce ecosystem risk under climate change?
+Which vegetation-related variables are associated with lower ecosystem risk in the Massaciuccoli basin?
+Which vegetation-related variables are associated with higher ecosystem risk in the Massaciuccoli basin?
+Which vegetation-related variables should be prioritized to reduce ecosystem risk under climate change?
+Which land-use variables are associated with lower ecosystem risk in the Massaciuccoli basin?
+Which land-use variables are associated with higher ecosystem risk in the Massaciuccoli basin?
+Which land-use variables should be prioritized to reduce ecosystem risk under climate change?
+Which environmental pressures are associated with lower ecosystem risk in the Massaciuccoli basin?
+Which environmental pressures are associated with higher ecosystem risk in the Massaciuccoli basin?
+Which environmental pressures should be prioritized to reduce ecosystem risk under climate change?
+Which environmental stressors are associated with lower ecosystem risk in the Massaciuccoli basin?
+Which environmental stressors are associated with higher ecosystem risk in the Massaciuccoli basin?
+Which environmental stressors should be prioritized to reduce ecosystem risk under climate change?
+Which climate-related variable has the strongest impact on ecosystem risk?
+Is precipitation change strongly associated with ecosystem risk in the Massaciuccoli basin?
+Does precipitation change appear to be a major factor for ecosystem risk in the lake basin?
+Is temperature change strongly associated with ecosystem risk in the Massaciuccoli basin?
+Does temperature change appear to be a major factor for ecosystem risk in the lake basin?
+Is evapotranspiration change strongly associated with ecosystem risk in the Massaciuccoli basin?
+Does evapotranspiration change appear to be a major factor for ecosystem risk in the lake basin?
+Is hydrological stress strongly associated with ecosystem risk in the Massaciuccoli basin?
+Does hydrological stress appear to be a major factor for ecosystem risk in the lake basin?
+Is climate stress strongly associated with ecosystem risk in the Massaciuccoli basin?
+Does climate stress appear to be a major factor for ecosystem risk in the lake basin?

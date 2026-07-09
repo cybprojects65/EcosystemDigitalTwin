@@ -2,6 +2,7 @@ package it.cnr.ncss.detectors.tasks;
 
 import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -84,7 +85,9 @@ public class ENMTask extends AbstractTask {
 		}
 
 		String promptText = StringUtilsDTO.getText(new File(answerFile));
-
+		String uuid = ""+UUID.randomUUID();
+		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_template_"+uuid+".txt"),promptText);
+		
 		String knowledgejson = report;
 
 		promptText = promptText.replace("{{KNOWLEDGE}}", knowledgejson);
@@ -94,7 +97,7 @@ public class ENMTask extends AbstractTask {
 		String prompt = """
 				%s
 				""".formatted(promptText);
-
+		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_"+uuid+".txt"),promptText);
 		//System.out.println("[ENM Task] prompt:\n" + prompt);
 		return prompt;
 	}

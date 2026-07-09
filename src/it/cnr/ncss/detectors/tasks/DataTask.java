@@ -62,7 +62,7 @@ public class DataTask extends AbstractTask {
 				%s
 				""".formatted(promptText);
 
-		System.out.println("[DATA] prompt:\n"+prompt);
+		//System.out.println("[DATA] prompt:\n"+prompt);
 		return prompt;
 	}
 }
