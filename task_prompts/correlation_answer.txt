@@ -4,33 +4,22 @@ Your task is to answer the user's original request using ONLY:
 
 1. the original user request;
 2. the correlative interpretation results;
-3. the contextual ecological information.
+3. the contextual ecological information, including literature studies if present.
 
 Return only the final user-facing answer.
 
 Do not output JSON.
 Do not mention internal parsing steps.
-Do not mention JSON, schema, fields, confidence, prompt instructions, or extraction.
+Do not mention JSON, schema, fields, confidence, prompt instructions, extraction, or templates.
 Do not say "based on the JSON".
+Do not say "from the JSON".
+Do not say "the JSON object".
 Do not repeat, quote, or paraphrase the user's question.
 Do not start the answer with the user's question.
 Do not use the user's question as a heading.
-Do not include the original request in the answer.
 Do not include a question mark unless the answer genuinely requires one.
+Do not invent variables, relationships, strengths, directions, mechanisms, causal explanations, literature findings, citations, or ecological conclusions not provided by the inputs.
 
-Do not invent variables, relationships, strengths, directions, mechanisms, or ecological conclusions not provided by the inputs.
-Do not claim causality unless the contextual ecological information explicitly supports causality.
-Do not say that one variable "causes", "directly causes", "determines", "controls", or "drives" another unless contextual ecological information explicitly supports that claim.
-
-Use cautious correlation-based language, such as:
-
-- "is associated with"
-- "appears related to"
-- "suggests"
-- "may indicate"
-- "the correlative results show"
-- "the available correlations do not establish causality"
-- "the available results do not prove a direct ecological effect"
 
 =========================================================
 INPUTS
@@ -46,545 +35,220 @@ Contextual ecological information:
 {{CONTEXTUAL_INFORMATION}}
 
 =========================================================
-MAIN PRINCIPLE
+MAIN PRINCIPLES
 =========================================================
 
-The user request defines the question to answer.
+The User request defines the question to answer.
 
-The correlative interpretations provide the quantitative or qualitative evidence.
+The Correlative interpretations provide the direct reported association evidence.
 
-The contextual ecological information may be used only to clarify ecological meaning or add a cautious contextual caveat.
+The Contextual ecological information provides the ecological and literature-based interpretation layer.
 
-Never override the correlative interpretations with contextual information unless the contextual information directly and explicitly contradicts them.
+If the user asks to find negative correlations, only focus on those that report weakly negative, moderately negative, strongly negative, or very strongly negative.
 
-Never infer a relationship that is not present in the correlative interpretations.
+If the user asks to find positive correlations, only focus on those that report weakly positive, moderately positive, strongly positive, or very strongly positive.
 
-=========================================================
-CORRELATIVE INTERPRETATION FORMAT
-=========================================================
+Interpret "neutral" as "indirect relation". 
 
-Each correlative interpretation may have one of these forms:
+If there is not correlation that satisfies the user's request, becase there are only "neutral" correlations, report that "are indirectly associated through the complex variable interplay within the ecosystem".
 
-SOURCE VARIABLE -> TARGET VARIABLE : STRENGTH
-
-or:
-
-SOURCE VARIABLE : STRENGTH
-
-The strength label describes the reported association.
-
-Examples of strength labels include:
-
-- very strongly positive
-- very strongly negative
-- strongly positive
-- strongly negative
-- strong
-- moderately positive
-- moderately negative
-- moderate
-- weakly positive
-- weakly negative
-- weak
-- neutral
-
-Use only the variables and strengths explicitly reported in the correlative interpretations.
-
-Do not invent missing source variables.
-Do not invent missing target variables.
-Do not invent directions such as positive or negative if the strength label does not provide them.
-Do not convert a neutral result into a weak effect.
-Do not convert a correlation into a causal explanation.
+If Contextual ecological information is available, also attach summary information extracted from it.
 
 =========================================================
-CRITICAL NON-REPETITION RULE
+Examples
 =========================================================
 
-The final answer must start directly with the answer.
+EXAMPLE 1:
 
-Never begin by repeating or paraphrasing the user request.
+User request:
+Which environmental variables are most strongly associated with biodiversity in the Massaciuccoli basin?
 
-Bad:
+Correlative interpretations:
+Land imperviousness increase -> biodiversity : neutral
+Tree cover density -> biodiversity : negative
+Tree cover loss -> biodiversity : neutral
+Grassland presence -> biodiversity : neutral
+Grassland loss -> biodiversity : neutral
+Current land use -> biodiversity : positive
+Plant productivity -> biodiversity : positive
+Temperature increase -> biodiversity : neutral
+Atmospheric aridity increase -> biodiversity : positive
+Precipitation loss -> biodiversity : positive
+Land use increase -> biodiversity : neutral
 
-"How does temperature change affect biodiversity in the Massaciuccoli ecosystem?
 
-The available correlations..."
+Contextual ecological information:
 
-Good:
 
-"The available correlative results report a neutral association between temperature change and biodiversity..."
+Optimal answer: 
+The strongest reported associations with biodiversity are tree-cover density, current human land use, vegetation productivity, increased atmospheric aridity, and precipitation loss. Tree-cover density shows a negative association with biodiversity, while current human land use, vegetation productivity, increased atmospheric aridity, and precipitation loss show positive associations. Instead, land imperviousness increase, tree-cover loss, grassland presence, grassland loss, temperature increase, and land-use increase are reported as indirectly related, so they should not be treated as main associated variables. These results describe correlations, not direct causal effects.
 
-Before returning the answer, remove any sentence that repeats, quotes, or restates the user request.
+EXAMPLE 2:
 
-The final answer must not contain the original user request as a standalone sentence.
+User request:
+How does evapotranspiration affect biodiversity?
 
-=========================================================
-QUESTION TYPE DETECTION
-=========================================================
+Correlative interpretations:
+evapotranspiration -> biodiversity : positive
 
-Classify the user request into one of these types:
 
-1. DRIVER-SEARCH QUESTION
+Contextual ecological information:
 
-The user asks which variables, factors, drivers, stressors, environmental variables, or pressures are associated with a target.
 
-Examples:
+Optimal answer: 
+Evapotranspiration shows a positive association with biodiversity. This suggests that higher evapotranspiration is related to higher biodiversity in this assessment, but it should be interpreted as a correlation, not evidence that evapotranspiration directly causes biodiversity change.
 
-- Which environmental variables are most strongly associated with biodiversity?
-- Which environmental variable contributes most to biodiversity change?
-- What factors drive changes in vegetation productivity?
-- What factors drive tree cover dynamics?
-- What are the main environmental factors related to species richness?
+EXAMPLE 3:
 
-2. SPECIFIC-RELATION QUESTION
+User request:
+How does tree cover affect species richness?
 
-The user asks how one source variable relates to one target variable.
+Correlative interpretations:
+tree_cover -> biodiversity : neutral
 
-Examples:
 
-- How does temperature affect biodiversity?
-- How does precipitation affect species richness?
-- How does evapotranspiration affect biodiversity?
-- How does tree cover affect species richness?
-- What is the relationship between land-use change and biodiversity?
+Contextual ecological information:
 
-3. CAUSAL OR EXCLUSIVITY QUESTION
 
-The user asks whether one variable directly causes, determines, controls, explains alone, or is solely responsible for another variable.
+Optimal answer: 
+Tree cover has an indirect relationship with species richness. In a complex ecosystem such as the one under analysis, species richness is unlikely to depend on tree cover alone. Instead, tree cover may interact with other ecological factors, such as habitat structure, vegetation productivity, microclimatic conditions, land use, grassland presence, and broader environmental pressures. Therefore, the neutral direct correlation should not be interpreted as evidence that tree cover is ecologically irrelevant. It only indicates that tree cover does not show a clear direct association with species richness in the reported correlative results. Its role may still emerge indirectly through interactions with other environmental variables and ecosystem processes.
 
-Examples:
+EXAMPLE 4:
 
-- Does temperature directly cause biodiversity loss?
-- Does tree cover alone control biodiversity?
-- Does precipitation directly cause biodiversity loss?
-- Is land-use change the only driver of biodiversity change?
+User request:
+What factors drive biodiversity patterns in the lake ecosystem?
 
-4. STATEMENT-EVALUATION QUESTION
+Correlative interpretations:
+Land imperviousness increase -> biodiversity : neutral
+Tree cover density -> biodiversity : negative
+Tree cover loss -> biodiversity : neutral
+Grassland presence -> biodiversity : neutral
+Grassland loss -> biodiversity : neutral
+Current land use -> biodiversity : positive
+Plant productivity -> biodiversity : positive
+Temperature increase -> biodiversity : neutral
+Atmospheric aridity increase -> biodiversity : positive
+Precipitation loss -> biodiversity : positive
+Land use increase -> biodiversity : neutral
 
-The user provides a statement and asks whether it is supported or implied.
 
-Examples:
+Contextual ecological information:
 
-- Temperature change is the main reason for biodiversity loss.
-- Tree cover alone controls biodiversity.
-- Biodiversity change is mainly associated with land-use change.
+Optimal answer: 
+Non-neutral correlations with biodiversity are tree-cover density, current human land use, vegetation productivity, increased atmospheric aridity, and precipitation loss. Tree-cover density shows a negative association with biodiversity, while current human land use, vegetation productivity, increased atmospheric aridity, and precipitation loss show positive associations. Land imperviousness increase, tree-cover loss, grassland presence, grassland loss, temperature increase, and land-use increase have indirect correlation through ecosystem complexity. These associations describe reported biodiversity patterns, not direct causal drivers.
 
-=========================================================
-DRIVER-SEARCH QUESTION RULES
-=========================================================
+EXAMPLE 5:
 
-Use this section when the user asks which variables, factors, drivers, stressors, environmental variables, or pressures are associated with a target.
+User request:
+What factors drive tree cover dynamics in the basin?
 
-Steps:
+Correlative interpretations:
+Land imperviousness increase -> tree_cover : neutral
+Tree cover density -> tree_cover : neutral
+Grassland presence -> tree_cover : neutral
+Grassland loss -> tree_cover : neutral
+Current land use -> tree_cover : neutral
+Plant productivity -> tree_cover : neutral
+Temperature increase -> tree_cover : neutral
+Atmospheric aridity increase -> tree_cover : neutral
+Precipitation loss -> tree_cover : neutral
+Biodiversity -> tree_cover : neutral
+Land use increase -> tree_cover : neutral
 
-1. Identify the target requested by the user.
-2. Find all correlative interpretations that refer to that target.
-3. Exclude neutral associations from the main driver list.
-4. Rank the remaining variables by strength.
-5. If the user asks for the strongest, main, key, or most important variables, report the top-ranked association or tied top-ranked associations.
-6. If several variables have the same strength, mention them together.
-7. Use association language, not causal language.
 
-Strength ranking:
+Contextual ecological information:
 
-1. very strong associations
-2. strong associations
-3. moderate associations
-4. weak associations
-5. neutral associations
+Optimal answer: 
+Variables such as land imperviousness increase, tree-cover density, grassland presence, grassland loss, current human land use, vegetation productivity, temperature increase, increased atmospheric aridity, precipitation loss, biodiversity, and land-use increase have all indirect correlations with tree cover. This observation should be interpreted in light of the complexity of the ecosystem. In a complex ecosystem, tree-cover dynamics may depend on indirect interactions among variables rather than on a single direct relationship captured by these correlations. Therefore, the indirect associations do not imply that these variables are ecologically irrelevant; they suggest that any relationship with tree cover may be indirect, nonlinear, context-dependent, or distributed across multiple interacting factors.
 
-Neutral associations should not be described as important drivers, main factors, or key variables.
+EXAMPLE 6:
 
-If the user asks for "contributes most", interpret this as "is most strongly associated with" unless contextual ecological information explicitly supports a causal or mechanistic contribution.
+User request:
+How does precipitation affect species richness?
 
-Preferred wording:
+Correlative interpretations:
+precipitation -> biodiversity : positive
 
-- "The variables most strongly associated with [target] are..."
-- "The strongest reported associations with [target] are..."
-- "The available correlative results point to..."
-- "This should be interpreted as association, not evidence of direct causality."
 
-Do not write:
+Contextual ecological information:
+patial-distribution measure (species richness) over the years in the basin, based on 180 resident species’ data. As species observation data, we use data from a public authoritative repository of big data (GBIF) improved with reliable records we accurately and directly observed in the field. Our results highlight that climate change will pose severe risks to birds’ biodiversity, even under a medium greenhouse gas emission scenario. Climate change will also alter the distribution of aquatic and terrestrial species, which will search for cooler and water-richer areas. On the contrary, it will favour habitat suitability for several insects. The results predict that the basin’s biodiversity will significantly change, which will likely have a negative impact on ecosystem services. This scenario would call for urgent actions today to mitigate the effects of the increasing temperature and aridity trends, e.g., through water-refuelling strategies. Our results enforce the conclusions of alternative ecological studies but also add the first assessment of the timing and intensity of the change, which is valuable for management planning. Our approach is general enough to be applied to other we
 
-- "The main causes are..."
-- "The drivers are proven to be..."
-- "The variables determine..."
-- "The variables control..."
+een the overall climatic conditions of 2016 and 2100- RCP8.5, with lower but still significant differences between 2016 and the other years. These differences indicate that species-richness changes should be expected independently of the species-richness modelling approach used. 4.2. Indications for policy-making authorities Our results indicate that climate change poses severe risks to the vulnerability of the species living in the Massaciuccoli basin, and consequently to the ecosystem services relying upon them. A significant species-composition change already in 2050 would negatively impact the entire ecosystem, with ecological and economic consequences (Colombaroli and Tinner, 2013; Pignalosa et al., 2022b). These findings call for policy-making authorities to take actions as soon as possible to mitigate the risks. The same conclusions about future biodiversity asset and ecosystem service degradation were drawn by other studies focus- sing on eutrophication and drought monitoring, which have proposed water drainage and refuelling mitigation strategies (Bertacchi et al., 2015; Pignalosa et al., 2022c; Rossetto et al., 2010b). These consider- ations enforce our result reliability
 
-If no matching variables are found, do not answer only "No relevant information".
+Optimal answer: 
+Precipitation shows a positive association with species richness. This suggests that wetter conditions, or greater water availability, are related to higher species richness in this assessment, but the result should be interpreted as a correlation rather than evidence that precipitation directly causes biodiversity change. The literature context supports the ecological relevance of this relationship: climate change is expected to alter aquatic and terrestrial species distributions, with species tending to seek cooler and water-richer areas. It also highlights increasing temperature and aridity as risks for biodiversity and points to water-refuelling strategies as possible mitigation measures. Therefore, precipitation appears ecologically important for species richness in the basin, although the correlative result alone does not establish direct causality.
 
-Use an articulated missing-information answer:
+EXAMPLE 7:
 
-"The available correlative results do not report any relevant variables associated with [target]. Therefore, the current results cannot identify the main environmental factors linked to [target]. This should not be interpreted as proof that no ecological relationships exist; it only means that the requested associations are not reported in the available correlation output."
+User request:
+Which environmental variables are most strongly associated with precipitation change in the basin?
 
-=========================================================
-SPECIFIC-RELATION QUESTION RULES
-=========================================================
+Correlative interpretations:
+Land imperviousness increase -> precipitation : neutral
+Tree cover density -> precipitation : neutral
+Tree cover loss -> precipitation : neutral
+Grassland presence -> precipitation : neutral
+Grassland loss -> precipitation : neutral
+Current land use -> precipitation : positive
+Plant productivity -> precipitation : positive
+Temperature increase -> precipitation : moderately negative
+Atmospheric aridity increase -> precipitation : very strongly positive
+Biodiversity -> precipitation : positive
+Land use increase -> precipitation : neutral
 
-Use this section when the user asks how one source variable relates to one target variable.
 
-Steps:
+Contextual ecological information:
 
-1. Identify the source variable requested by the user.
-2. Identify the target variable requested by the user.
-3. Find the correlative interpretation matching the requested source-target pair.
-4. Report the association strength in natural language.
-5. Answer directly and cautiously.
-6. Do not generalize beyond the requested pair.
+Optimal answer: 
+The strongest reported association with precipitation change is increased atmospheric aridity, which shows a very strong positive association. Temperature increase is also associated with precipitation change, but in a moderate negative direction. Current human land use, vegetation productivity, and biodiversity also show positive associations with precipitation change. Land imperviousness increase, tree-cover density, tree-cover loss, grassland presence, grassland loss, and land-use increase are reported as indirectly associated through the complex variable interplay within the ecosystem.
 
-If the requested source-target pair is present:
+EXAMPLE 7:
 
-- If the strength is very strongly positive, say the source shows a very strong positive association with the target.
-- If the strength is very strongly negative, say the source shows a very strong negative association with the target.
-- If the strength is strongly positive, say the source shows a strong positive association with the target.
-- If the strength is strongly negative, say the source shows a strong negative association with the target.
-- If the strength is strong, say the source is strongly associated with the target, without inventing a positive or negative direction.
-- If the strength is moderately positive, say the source shows a moderate positive association with the target.
-- If the strength is moderately negative, say the source shows a moderate negative association with the target.
-- If the strength is moderate, say the source is moderately associated with the target, without inventing a positive or negative direction.
-- If the strength is weakly positive, say the source shows a weak positive association with the target.
-- If the strength is weakly negative, say the source shows a weak negative association with the target.
-- If the strength is weak, say the source is weakly associated with the target, without inventing a positive or negative direction.
-- If the strength is neutral, say no meaningful association is evident in the reported correlative interpretation.
+User request:
+Which environmental variables are most strongly associated with evapotranspiration change?
 
-If the requested source-target pair is neutral:
+Correlative interpretations:
+Land imperviousness increase -> evapotranspiration : neutral
+Tree cover density -> evapotranspiration : positive
+Tree cover loss -> evapotranspiration : neutral
+Grassland presence -> evapotranspiration : neutral
+Grassland loss -> evapotranspiration : neutral
+Current land use -> evapotranspiration : positive
+Plant productivity -> evapotranspiration : neutral
+Temperature increase -> evapotranspiration : very strongly negative
+Precipitation loss -> evapotranspiration : very strongly positive
+Biodiversity -> evapotranspiration : positive
+Land use increase -> evapotranspiration : neutral
 
-Say that no meaningful association is reported between the source and target.
 
-Do not say the source has no ecological effect in reality.
+Contextual ecological information:
 
-Use this style:
+Optimal answer:
+The strongest reported associations with evapotranspiration change are precipitation loss, which shows a very strong positive association, and temperature increase, which shows a very strong negative association. Tree-cover density, current human land use, and biodiversity also show positive associations with evapotranspiration change. Land imperviousness increase, tree-cover loss, grassland presence, grassland loss, vegetation productivity, and land-use increase are reported are reported as indirectly associated through the complex variable interplay within the ecosystem.
 
-"The available correlative results report a neutral association between [source] and [target]. This means no meaningful association is evident in the reported correlation output. This does not prove that [source] has no ecological effect on [target]; it only means that no clear association is reported here."
+EXAMPLE 8:
 
-If the requested source-target pair is not present:
+User request:
+Which environmental variable contributes most to biodiversity change?
 
-Do not answer only "No relevant information".
+Correlative interpretations:
+Land imperviousness increase -> biodiversity : neutral
+Tree cover density -> biodiversity : negative
+Tree cover loss -> biodiversity : neutral
+Grassland presence -> biodiversity : neutral
+Grassland loss -> biodiversity : neutral
+Current land use -> biodiversity : positive
+Plant productivity -> biodiversity : positive
+Temperature increase -> biodiversity : neutral
+Atmospheric aridity increase -> biodiversity : positive
+Precipitation loss -> biodiversity : positive
+Land use increase -> biodiversity : neutral
 
-Use this style:
 
-"The available correlative results do not report a relationship between [source] and [target]. Therefore, the current results cannot assess this specific association. This should not be interpreted as proof that no ecological relationship exists; it only means that this relationship is not reported in the available correlation output."
+Contextual ecological information:
 
-=========================================================
-CAUSAL AND EXCLUSIVITY QUESTION RULES
-=========================================================
+Optimal answer:
+The reported associations with biodiversity do not identify a single strongest variable. Tree-cover density shows a negative association with biodiversity, while current human land use, vegetation productivity, increased atmospheric aridity, and precipitation loss show positive associations. Land imperviousness increase, tree-cover loss, grassland presence, grassland loss, temperature increase, and land-use increase are indirectly associated through the complex variable interplay within the ecosystem.
 
-Use this section when the user asks whether one variable:
-
-- directly causes another variable;
-- directly determines another variable;
-- controls another variable;
-- alone controls another variable;
-- is the only factor explaining another variable;
-- is solely responsible for another variable.
-
-For these questions:
-
-1. Never answer "yes" on the basis of correlation alone.
-2. Always state that correlation does not establish direct causality.
-3. If a matching correlative result exists, report the association strength.
-4. If the association is neutral, say no meaningful association is evident in the correlative output.
-5. If no matching result exists, say the requested relationship is not reported in the available correlative results.
-6. If contextual ecological information explicitly supports a causal interpretation, mention it cautiously and distinguish it from the correlative result.
-
-If the user asks whether X directly causes Y and a matching non-neutral association exists, use:
-
-"The available results do not establish that [source] directly causes [target]. They report a [strength] association between [source] and [target], which may indicate a relationship but is not sufficient to demonstrate causality."
-
-If the user asks whether X directly causes Y and the matching association is neutral, use:
-
-"The available results do not establish that [source] directly causes [target]. The correlative output reports a neutral association between [source] and [target], meaning no meaningful association is evident in these results. This does not prove that [source] has no ecological effect; it only means that direct causality is not supported by the available correlations."
-
-If the user asks whether X alone controls or alone determines Y and a matching result exists, use:
-
-"The available correlations do not support the conclusion that [source] alone controls or determines [target]. They report a [strength] association between [source] and [target], which is not enough to identify a sole controlling factor."
-
-If no matching result exists, use:
-
-"The available correlative results do not report the specific relationship between [source] and [target]. Therefore, the current results cannot assess whether [source] directly causes or controls [target]. This should not be interpreted as proof that the relationship is absent; it only means that it is not reported in the available correlation output."
-
-=========================================================
-STATEMENT-EVALUATION QUESTION RULES
-=========================================================
-
-Use this section when the user provides a declarative statement and asks whether it is supported.
-
-If a matching correlative result supports the statement:
-
-- Say the statement is consistent with the reported association.
-- Avoid causal confirmation unless contextual ecological information explicitly supports causality.
-
-If a matching correlative result contradicts the statement:
-
-- Say the available correlative results do not support the statement.
-- Explain the reported strength.
-
-If no matching relationship is present:
-
-- Say the available correlative results do not report the relationship needed to evaluate the statement.
-- Do not answer only "No relevant information".
-
-=========================================================
-STRENGTH INTERPRETATION RULES
-=========================================================
-
-Interpret association strengths as follows:
-
-- very strongly positive = very strong positive association
-- very strongly negative = very strong negative association
-- strongly positive = strong positive association
-- strongly negative = strong negative association
-- strong = strong association with no reported direction
-- moderately positive = moderate positive association
-- moderately negative = moderate negative association
-- moderate = moderate association with no reported direction
-- weakly positive = weak positive association
-- weakly negative = weak negative association
-- weak = weak association with no reported direction
-- neutral = no meaningful association reported
-
-When the strength label has no direction, do not invent one.
-
-When the strength label is neutral, do not describe the source as important, influential, controlling, causal, or meaningful for the target.
-
-When ranking variables:
-
-1. very strong associations rank above strong associations.
-2. strong associations rank above moderate associations.
-3. moderate associations rank above weak associations.
-4. weak associations rank above neutral associations.
-5. neutral associations should be excluded from the main driver list.
-6. If all associations are neutral, say that no meaningful associations are reported.
-
-=========================================================
-POLARITY AND DIRECTION RULES
-=========================================================
-
-If the correlative result contains a direction such as positive or negative, mention the direction.
-
-If the correlative result is neutral:
-
-- say no meaningful association is evident in the reported correlation output;
-- do not say the variable has no real-world ecological effect;
-- do not say there is no ecological relationship in reality;
-- do not say there is no effect.
-
-If the correlative result has only a strength label such as "strong":
-
-- report the strength;
-- do not invent a positive or negative direction;
-- do not say the source increases or decreases the target.
-
-Do not say that a variable increases or decreases another variable unless the correlative result explicitly gives a positive or negative direction and the wording is framed as an association, not causality.
-
-Better:
-
-"temperature shows a positive association with biodiversity"
-
-Avoid:
-
-"temperature increases biodiversity"
-
-=========================================================
-CONTEXTUAL ECOLOGICAL INFORMATION RULES
-=========================================================
-
-Use contextual ecological information only to refine or qualify the answer.
-
-Contextual ecological information may be used to:
-
-- explain why a relationship may be ecologically relevant;
-- add a cautious caveat;
-- distinguish correlation from ecological mechanism;
-- mention broader ecological context if it directly relates to the requested variables.
-
-Contextual ecological information must not be used to:
-
-- invent a missing correlation;
-- override a neutral correlative result;
-- convert correlation into causality;
-- claim a direct cause without explicit support;
-- introduce unrelated variables;
-- make management recommendations unless asked.
-
-If contextual ecological information supports a broader ecological concern but the correlative result is neutral, say both:
-
-1. the reported correlation is neutral for the requested pair;
-2. broader ecological context may still indicate concern, but that is separate from the reported correlation.
-
-Use this style:
-
-"The contextual information may indicate broader ecological concern, but the reported correlation for this specific pair remains neutral."
-
-If contextual ecological information is empty, do not invent a contextual caveat.
-
-=========================================================
-TARGET-SPECIFIC GUIDANCE
-=========================================================
-
-Target = biodiversity
-
-Use terms such as:
-
-- biodiversity
-- species richness
-
-Do not claim biodiversity loss unless the user asks about loss or the correlative result explicitly supports a negative association.
-
-Target = ecosystem_risk
-
-Use terms such as:
-
-- ecosystem risk
-- risk level
-- risk-related association
-
-Do not say risk will increase or decrease unless the correlative result explicitly gives direction.
-
-Target = vegetation_productivity
-
-Use terms such as:
-
-- vegetation productivity
-- plant productivity
-- vegetation growth
-
-Target = tree_cover
-
-Use terms such as:
-
-- tree cover
-- tree-cover dynamics
-
-Target = evapotranspiration
-
-Use terms such as:
-
-- evapotranspiration
-- potential evapotranspiration
-
-Target = precipitation
-
-Use terms such as:
-
-- precipitation
-- rainfall
-
-Target = species_richness
-
-Use terms such as:
-
-- species richness
-- biodiversity pattern
-
-Do not equate species richness with population abundance.
-
-=========================================================
-ANSWER FORMAT
-=========================================================
-
-Write concise prose in one or two short paragraphs.
-
-Use this structure:
-
-1. Direct answer to the user.
-2. Brief evidence from the correlative interpretations.
-3. Causal or contextual caveat, if relevant.
-4. Short conclusion.
-
-Use bullet points only when the user asks for several variables, factors, rankings, or comparisons.
-
-Do not include long lists unless the user asks for factors, drivers, variables, or strongest associations.
-
-Do not expose internal field names.
-Do not mention JSON.
-Do not mention confidence values.
-Do not repeat the user's question.
-Do not answer only "No relevant information".
-
-=========================================================
-ANSWER STYLE RULES
-=========================================================
-
-Prefer clear, direct answers.
-
-Avoid overly generic wording such as:
-
-- "No relevant information"
-- "insufficient data"
-- "cannot answer"
-
-unless accompanied by a short explanation.
-
-Use:
-
-- "The available correlative results do not report..."
-- "The current results cannot assess..."
-- "No meaningful association is evident..."
-- "This should not be interpreted as proof that no ecological relationship exists..."
-- "This does not establish direct causality..."
-
-Do not over-explain.
-
-A missing-information answer should normally be 2 to 4 sentences.
-
-A neutral-association answer should normally be 2 to 4 sentences.
-
-A standard relation answer should normally be 2 to 3 sentences.
-
-A driver-search answer may use bullets if multiple variables are reported.
-
-=========================================================
-SAFE ANSWER PATTERNS
-=========================================================
-
-Driver search with matching variables:
-
-"The variables most strongly associated with [target] are [variables]. The correlative results report [strength] associations for these variables. This should be interpreted as association, not evidence of direct causality."
-
-Driver search with no matching variables:
-
-"The available correlative results do not report any relevant variables associated with [target]. Therefore, the current results cannot identify the main environmental factors linked to [target]. This should not be interpreted as proof that no ecological relationships exist; it only means that the requested associations are not reported in the available correlation output."
-
-Specific relation with non-neutral result:
-
-"[Source] is reported as [strength] associated with [target]. This suggests that [source] may be related to [target] in the available data, but the result should not be interpreted as direct causality unless supported by the contextual information."
-
-Specific relation with neutral result:
-
-"The available correlative results report a neutral association between [source] and [target]. This means no meaningful association is evident in the reported correlation output. This does not prove that [source] has no ecological effect on [target]; it only means that no clear association is reported here."
-
-Specific relation with no matching result:
-
-"The available correlative results do not report a relationship between [source] and [target]. Therefore, the current results cannot assess this specific association. This should not be interpreted as proof that no ecological relationship exists; it only means that this relationship is not reported in the available correlation output."
-
-Causal question with non-neutral result:
-
-"The available results do not establish that [source] directly causes, determines, or controls [target]. They report a [strength] association between [source] and [target], which may indicate a relationship but is not sufficient to demonstrate causality."
-
-Causal question with neutral result:
-
-"The available results do not establish that [source] directly causes, determines, or controls [target]. The correlative output reports a neutral association between [source] and [target], meaning no meaningful association is evident in these results. This does not prove that [source] has no ecological effect; it only means that direct causality is not supported by the available correlations."
-
-=========================================================
-FINAL CHECK
-=========================================================
-
-Before answering, silently verify:
-
-1. The answer addresses the original user request.
-2. The first sentence is an answer, not a repetition of the user request.
-3. The answer does not quote, repeat, or paraphrase the user's question.
-4. Every variable mentioned appears in the correlative interpretations, user request, or contextual ecological information.
-5. No variable, strength, direction, or relationship is invented.
-6. No causal claim is made unless contextual ecological information explicitly supports it.
-7. If the user asks about direct cause, direct determination, control, or alone control, the answer explicitly says correlation does not establish that.
-8. If the user asks for strongest variables, the answer ranks by the reported strength labels.
-9. If no matching relationship exists, the answer gives a short explanation rather than only saying "No relevant information".
-10. The answer never consists only of "No relevant information".
-11. Missing-information answers explain that the current correlative results do not report the requested association, without claiming that the relationship is absent in reality.
-12. If the result is neutral, the answer says no meaningful association is evident, without claiming that there is no real ecological effect.
-13. The answer does not mention JSON, internal parsing, schema, field names, confidence, or prompt instructions.
-14. The answer is concise and user-facing.
 
 Return only the answer.

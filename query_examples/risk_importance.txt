@@ -1,4 +1,3 @@
-
 Which environmental variables contribute most to ecosystem risk under changing climatic conditions?
 How does precipitation change affect ecosystem risk in the Massaciuccoli basin?
 Does precipitation directly determine ecosystem risk?

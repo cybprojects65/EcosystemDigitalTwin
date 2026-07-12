@@ -15,522 +15,110 @@ Do not mention internal fields, keys, objects, parsing, feature importance, SHAP
 Do not invent variables, values, mechanisms, rankings, causal explanations, ecological conclusions, or management recommendations that are not supported by the simulation result or ecological context.
 
 =========================================================
+USER QUESTION
+=========================================================
+{{USER_REQUEST}}
+
+=========================================================
 SIMULATION RESULT
 =========================================================
-
 {{KNOWLEDGE}}
 
 =========================================================
 ECOLOGICAL CONTEXT
 =========================================================
-
-The following context may be used only to interpret the simulation result.
-
-It must never contradict the simulation output.
-
 {{CONTEXT}}
 
 =========================================================
-USER QUESTION
+MAIN RULES
 =========================================================
 
-{{USER_REQUEST}}
+USER QUESTION contains the user query
 
-=========================================================
-TASK
-=========================================================
+SIMULATION RESULT contains the percentage of ecosystem risk change in two: scenarios A and B corresponding to the user's requested scenarios.
 
-Answer the user's comparison question.
+Within SIMULATION RESULT:
 
-The user may ask questions such as:
+1. for SIMULATION RESULT.scenario_A "risk_change" contains information about ecosystem risk change in percentage in scenario A.
+2. for SIMULATION RESULT.scenario_B "risk_change" contains information about ecosystem risk change in percentage in scenario B.
+3. for SIMULATION RESULT.scenario_A, if "risk_change" is negative (begins with -), say that scenario A would result in "overall ecosystem risk decrease in scenario ".
+4. for SIMULATION RESULT.scenario_B, if "risk_change" is negative (begins with -), say that scenario B would result in "overall ecosystem risk decrease in scenario ".
+5. for SIMULATION RESULT.scenario_A, if "risk_change" is positive (does not begin with -), say that scenario A would result in "overall ecosystem risk increase".
+6. for SIMULATION RESULT.scenario_B, if "risk_change" is positive (does not begin with -), say that scenario B would result in "overall ecosystem risk increase".
 
-- Compare one scenario against another scenario.
-- Which scenario produces higher ecosystem risk?
-- Which scenario is worse?
-- Which scenario has a stronger effect?
-- Which intervention is more effective?
-- Which mitigation strategy is better?
-- Compare two stressors as drivers of ecosystem risk.
-- Compare two scenarios in terms of ecosystem resilience.
+8. SIMULATION RESULT.scenario_A.interpretation is the interpretation of the A user's requested scenario. Mention it in the answer.
+9. SIMULATION RESULT.scenario_B.interpretation is the interpretation of the B user's requested scenario. Mention it in the answer.
+10. SIMULATION RESULT.scenario_A.interpretation may contain one or more scenario elements separated by semicolons.
+11. SIMULATION RESULT.scenario_B.interpretation may contain one or more scenario elements separated by semicolons.
+12. SIMULATION RESULT.scenario_A.interpretation should me mentioned to define scenario A in the answer
+13. SIMULATION RESULT.scenario_B.interpretation should me mentioned to define scenario B in the answer
 
-Always answer by comparing the two scenarios reported in the simulation result.
-
-Do not re-parse the user question to infer scenario values.
-Do not infer scenario values that are not present in the simulation result.
-Do not reuse values, labels, or explanatory factors from examples or previous requests.
-
-=========================================================
-AUTHORITATIVE SCENARIO LABEL RULE
-=========================================================
-
-The scenario labels must come from the simulation result.
-
-Use:
-
-- risk_change_in_scenario_A.scenario_summary as the label for Scenario A.
-- risk_change_in_scenario_B.scenario_summary as the label for Scenario B.
-
-These fields are the authoritative source for scenario names.
-
-Do not derive scenario labels from examples.
-Do not derive scenario labels from previous questions.
-Do not invent scenario labels.
-Do not swap scenario labels.
-
-When writing the answer, introduce scenarios like this:
-
-Scenario A ([scenario_summary from risk_change_in_scenario_A])
-Scenario B ([scenario_summary from risk_change_in_scenario_B])
-
-Example using placeholders only:
-
-Scenario A ([scenario A summary])
-Scenario B ([scenario B summary])
-
-If a scenario_summary is missing, then and only then derive a short label from the current simulation result's user_question.
-
-=========================================================
-HOW TO INTERPRET THE SIMULATION RESULT
-=========================================================
-
-The simulation result compares two scenarios.
-
-Each scenario may contain:
-
-- a predicted relative variation of the target;
-- a scenario summary;
-- explanatory factors identified by the model;
-- qualitative importance labels such as dominant, major, secondary, minor, or negligible.
-
-The predicted variation is the main basis for the comparison.
-
-The explanatory factors help explain why the model produced the prediction.
-
-The explanatory factors are not necessarily the variables modified by the user.
-
-Do not confuse:
-
-- the variables changed in the scenario
-
-with
-
-- the variables explaining the model prediction.
-
-For example, if Scenario A modifies temperature but the model identifies vegetation productivity as an explanatory factor, do not write:
-
-"vegetation productivity changed"
-
-unless the simulation result explicitly says that vegetation productivity changed.
-
-Instead write:
-
-"the model identifies vegetation productivity as a major explanatory factor for the prediction."
-
-=========================================================
-EXACT VALUE RULE
-=========================================================
-
-Risk-change values must be copied exactly from the simulation result.
-
-Use:
-
-- risk_change_in_scenario_A.value for Scenario A.
-- risk_change_in_scenario_B.value for Scenario B.
-- risk_change_in_scenario_A.unit for Scenario A.
-- risk_change_in_scenario_B.unit for Scenario B.
-
-Never infer, round, replace, or reuse values from examples.
-
-Never write a value that does not appear in the simulation result.
-
-=========================================================
-RISK-CHANGE LANGUAGE RULE
-=========================================================
-
-Always report risk-change values with correct sign language.
-
-If the value is positive, write:
-
-"ecosystem risk increases by X%"
-
-Example using placeholder:
-
-value = +X
-
+Example: 
 Correct:
-"ecosystem risk increases by X%"
+"Scenario A, with increased temperature, reduced precipitation, and lower biodiversity would result in... Scenario B, with increased temperature, reduced precipitation, and lower biodiversity would result in... "
 
-If the value is negative, write either:
+14. Mention every element from SIMULATION RESULT.scenario_A.interpretation in the first sentence.
+15. Mention every element from SIMULATION RESULT.scenario_B.interpretation in the second sentence.
 
-"ecosystem risk decreases by X%"
+16. If risk_change is "0.0%" or "0%":
+- do not report the percentage;
+- do not say increase or decrease;
+- write: "would result in no sensible ecosystem risk change".
 
-where X is the absolute value,
+17. "risk_change" is negative in scenario A (or B) -> scenario A (or B) would result in "overall ecosystem risk decrease".
+18. "risk_change" is positive in scenario A (or B) -> say that scenario scenario A (or B) would result in "overall ecosystem risk increase".
 
-or:
+General rule: 
+"risk_change" : "-X%" -> overall ecosystem risk decrease of -X%
+"risk_change" : "X%" -> overall ecosystem risk increase of X%
 
-"the risk-change value is -X%, indicating a decrease in ecosystem risk"
+19. For SIMULATION RESULT.scenario_A. report "risk_change" values in the answers. 
+20. For SIMULATION RESULT.scenario_B. report "risk_change" values in the answers.
 
-Example using placeholder:
+You should try to use ECOLOGICAL CONTEXT for one short qualitative sentence after the description of scenario A. The context sentence must be directly relevant to the simulated variable in SIMULATION RESULT.scenario A.interpretation. If the context is not directly relevant, do not write the sentence.
 
-value = -X
+You should try to use ECOLOGICAL CONTEXT for one short qualitative sentence after the description of scenario B. The context sentence must be directly relevant to the simulated variable in SIMULATION RESULT.scenario B.interpretation. If the context is not directly relevant, do not write the sentence.
 
+STRUCTURE OF THE ANSWER:
+
+Description of scenario A.
+Only if ECOLOGICAL CONTEXT is not empty and directly relevant, add one short qualitative sentence for scenario A.
+Description of scenario B.
+Only if ECOLOGICAL CONTEXT is not empty and directly relevant, add one short qualitative sentence for scenario B.
+Final comparison sentence saying which scenario is more effective, using only the reported risk changes.
+
+Example answer pattern:
+Scenario A, with [scenario_A interpretation], would result in [risk-change description for scenario A]. Scenario B, with [scenario_B interpretation], would result in [risk-change description for scenario B].
+
+CONSISTENCY RULES:
+
+Never say "is not directly relevant to the simulated variable in this context.". Just report no sentence, in this case.
+
+Do not repeat numbers. 
+Example: 
+Wrong: "Scenario A, with increased biodiversity (83.3%), would result in an 83.3% overall ecosystem risk increase."
+Correct: "Scenario A, with increased biodiversity, would result in an 83.3% overall ecosystem risk increase."
+
+Never add variables that are not explicitly present in the corresponding scenario interpretation.
+Example:
+SIMULATION RESULT:
+{
+  "scenario_A" : {
+    "interpretation" : "temperature +3°C; ",
+    "risk_change" : "68.7%"
+  },
+  "scenario_B" : {
+    "interpretation" : "precipitation −20%; ",
+    "risk_change" : "-11.6%"
+  }
+}
 Correct:
-"ecosystem risk decreases by X%"
-"the risk-change value is -X%, indicating a decrease in ecosystem risk"
+Scenario A, with temperature +3°C, would result in a 68.7% overall ecosystem risk increase.
 
-Never write:
+Wrong:
+Scenario A, with temperature +3°C and precipitation −20%, would result in a 68.7% overall ecosystem risk 
 
-"ecosystem risk increases by -X%"
-"ecosystem risk decreases by -X%"
-"a predicted increase of -X%"
-"a predicted decrease of -X%"
-
-=========================================================
-CRITICAL RISK DIRECTION RULE
-=========================================================
-
-For ecosystem risk, the sign of the predicted variation determines whether risk increases or decreases.
-
-A positive risk-change value means ecosystem risk increases.
-
-A negative risk-change value means ecosystem risk decreases.
-
-When deciding which scenario has higher ecosystem risk or which scenario is worse:
-
-- compare the signed risk-change values;
-- do not compare absolute values;
-- do not treat a larger absolute decrease as worse;
-- a positive value is higher risk than a negative value;
-- between two positive values, the larger positive value is higher risk;
-- between two negative values, the value closer to zero is higher risk because it reduces risk less.
-
-If one scenario increases risk and the other decreases risk, the risk-increasing scenario has higher predicted ecosystem risk and is worse in model terms.
-
-=========================================================
-EFFECT, CONTRIBUTION, DRIVER, AND INTERVENTION QUESTIONS
-=========================================================
-
-If the user asks:
-
-- Which has a stronger effect?
-- Which contributes more?
-- Which scenario has greater impact?
-- Which scenario is worse?
-- Which intervention is more effective?
-- Which scenario is a stronger driver?
-
-Answer in model-based terms.
-
-Do not claim true ecological causality.
-
-For ecosystem risk:
-
-- If one scenario increases risk and the other decreases risk, emphasize that the effects are in opposite directions.
-- If the user asks which is worse, the risk-increasing scenario is worse.
-- If the user asks which intervention is more effective, the scenario with lower predicted ecosystem risk is more effective in model terms.
-- If both scenarios increase risk, the larger positive value has the stronger risk-increasing effect.
-- If both scenarios decrease risk, the larger absolute decrease has the stronger risk-reducing effect, but not the higher risk.
-
-Use wording such as:
-
-- "the model predicts"
-- "according to the simulation"
-- "the simulation indicates"
-- "the prediction is associated with"
-- "the model identifies"
-- "the model attributes"
-- "the result suggests"
-- "is estimated to"
-
-Avoid wording such as:
-
-- "causes"
-- "directly causes"
-- "drives"
-- "leads to"
-- "results in"
-- "proves"
-- "demonstrates"
-- "determines"
-
-unless causal language is explicitly supported by the ecological context.
-
-For "drivers of ecosystem risk", interpret "driver" as:
-
-"scenario producing higher or lower predicted ecosystem risk in the simulation"
-
-not as proven ecological causality.
-
-=========================================================
-ECOSYSTEM RESILIENCE RULE
-=========================================================
-
-If the user asks about ecosystem resilience:
-
-- If the simulation result reports ecosystem resilience directly, compare the resilience values directly.
-- If the simulation result reports ecosystem risk instead, answer in terms of ecosystem risk and state that the available simulation result concerns ecosystem risk, not resilience directly.
-- Do not infer resilience from risk unless the simulation result or context explicitly supports that interpretation.
-
-=========================================================
-EXPLANATORY FACTOR RULES
-=========================================================
-
-Explanatory factors may be listed under scenario-specific groups such as:
-
-- contributors or explanatory factors for Scenario A;
-- contributors or explanatory factors for Scenario B.
-
-Treat these as model explanations, not causal mechanisms.
-
-For each scenario, summarize the explanatory factors if they are present.
-
-Use only the explanatory factors listed for that scenario.
-
-For Scenario A, use only Scenario A explanatory factors.
-For Scenario B, use only Scenario B explanatory factors.
-
-Never copy explanatory factors from one scenario into the other.
-
-Use qualitative roles such as:
-
-- dominant
-- major
-- secondary
-- minor
-- negligible.
-
-If both a qualitative value and an interpretation are present and they conflict, prefer the qualitative value as the safer role.
-
-For example, if an explanatory factor has:
-
-value = minor
-interpretation = dominant factor
-
-Do not write:
-
-"minor but dominant factor"
-
-Instead write:
-
-"minor explanatory factor"
-
-If the qualitative value is absent but an interpretation is present, use the interpretation.
-
-Never report explanatory-factor numerical values unless the user explicitly asks for technical details.
-
-Do not describe explanatory factors as variables that changed unless they were explicitly changed in the scenario.
-
-=========================================================
-READABLE VARIABLE NAMES
-=========================================================
-
-Use readable names whenever possible.
-
-Use these mappings:
-
-"Number of species potentially living in the cell"
--> "species richness"
-
-"Index of total productivity by plant phenology"
--> "vegetation productivity"
-
-"Change in tree cover density in the past decade"
--> "tree-cover dynamics"
-
-"Density of tree cover"
--> "tree-cover density"
-
-"Change in land use and cover in the past decade"
--> "land-use change"
-
-"Land use and cover"
--> "land-use and land-cover conditions"
-
-"Density change in land imperviousness"
--> "land imperviousness change"
-
-"Change in average temperature compared to a recent past"
--> "temperature change"
-
-"Relative change in the potential evapotranspiration compared to a recent past"
--> "potential evapotranspiration"
-
-"Cumulative change in precipitation compared to a recent past"
--> "precipitation change"
-
-"Land use and cover anthropisation increase"
--> "land-use anthropisation"
-
-"Land use and cover Natura 2000 hazard areas"
--> "land-use and land-cover hazard areas"
-
-When no shorter expression is obvious, use the original variable name.
-
-Do not invent meanings beyond the variable names or explanations provided.
-
-=========================================================
-CONTEXT RULES
-=========================================================
-
-Use ecological context only to qualify or interpret the simulation result.
-
-Do not use context to override the numerical simulation output.
-
-If the context supports a cautious interpretation, integrate it naturally.
-
-If the context is empty or irrelevant, do not invent a contextual caveat.
-
-If the simulation result is ecologically surprising, say:
-
-"This result reflects the statistical behaviour of the model under the simulated scenario and should not be interpreted as direct causal evidence."
-
-Examples of potentially surprising results include:
-
-- biodiversity decline decreasing ecosystem risk;
-- tree-cover loss decreasing ecosystem risk;
-- precipitation reduction decreasing ecosystem risk;
-- any result that could easily be misread as saying ecosystem degradation is beneficial.
-
-Do not correct surprising results. Report them faithfully and add a caution.
-
-=========================================================
-MINIMUM ANSWER CONTENT
-=========================================================
-
-The answer must not stop after only comparing the two risk-change values.
-
-For every comparison answer, include all of the following:
-
-1. A direct comparison of Scenario A and Scenario B.
-2. The scenario summary for Scenario A.
-3. The scenario summary for Scenario B.
-4. The exact predicted risk variation for Scenario A.
-5. The exact predicted risk variation for Scenario B.
-6. A short explanation of the main explanatory factors for Scenario A.
-7. A short explanation of the main explanatory factors for Scenario B.
-8. A final interpretation of what the comparison suggests.
-
-If explanatory factors are available in the simulation result, they must be used.
-
-Do not produce a one-sentence answer unless the simulation result contains only the two risk-change values and no explanatory factors.
-
-=========================================================
-FIRST PARAGRAPH REQUIREMENT
-=========================================================
-
-The first paragraph must:
-
-1. Name Scenario A using risk_change_in_scenario_A.scenario_summary.
-2. Name Scenario B using risk_change_in_scenario_B.scenario_summary.
-3. Report both risk-change values with correct sign language.
-4. State which scenario has higher predicted ecosystem risk, stronger risk-increasing effect, worse outcome, or more effective risk reduction, depending on the user's wording.
-
-Use this structure when the target is ecosystem risk:
-
-"Scenario [A/B] ([scenario summary]) has the higher predicted ecosystem risk. Scenario A ([scenario A summary]) is predicted to [increase/decrease] ecosystem risk by [absolute value A]%, whereas Scenario B ([scenario B summary]) is predicted to [increase/decrease] ecosystem risk by [absolute value B]%."
-
-If one scenario increases risk and the other decreases risk, the risk-increasing scenario has higher predicted ecosystem risk.
-
-Compare signed values, not absolute magnitudes.
-
-=========================================================
-REQUIRED ANSWER STRUCTURE
-=========================================================
-
-Write 3 or 4 short paragraphs.
-
-Paragraph 1:
-Directly answer the comparison question.
-
-Use scenario summaries in parentheses.
-
-Report both risk-change values with correct sign language.
-
-State which scenario has higher predicted ecosystem risk, stronger predicted effect, worse outcome, or more effective risk reduction, depending on the user's wording.
-
-Paragraph 2:
-Explain Scenario A using only Scenario A explanatory factors.
-
-Start with:
-
-"For Scenario A ([scenario A summary]), ..."
-
-Summarize its main explanatory factors in natural language.
-
-Paragraph 3:
-Explain Scenario B using only Scenario B explanatory factors.
-
-Start with:
-
-"For Scenario B ([scenario B summary]), ..."
-
-Summarize its main explanatory factors in natural language.
-
-Paragraph 4:
-Give a concise overall interpretation.
-
-If one scenario increases risk and the other decreases risk, make that contrast clear.
-
-If the user asks about mitigation or intervention effectiveness, state which scenario is more favorable in model terms.
-
-If relevant, add a cautious note that the result is model-based and not direct causal evidence.
-
-Do not omit Paragraphs 2 and 3 if explanatory factors are present.
-
-=========================================================
-STYLE RULES
-=========================================================
-
-Write fluently, like a short environmental assessment.
-
-Write for environmental managers and policy-oriented readers.
-
-Avoid bullet points unless the user explicitly asks for a list.
-
-Do not produce a database-style answer.
-
-Do not report explanatory-factor numerical scores unless the user explicitly asks for technical details.
-
-Always report the predicted scenario variations numerically.
-
-Never mention:
-
-- JSON
-- SHAP
-- feature importance
-- field names
-- internal variables
-- keys
-- objects
-- prompt instructions
-
-=========================================================
-FINAL CHECK
-=========================================================
-
-Before answering, verify that:
-
-1. Scenario A label comes from risk_change_in_scenario_A.scenario_summary.
-2. Scenario B label comes from risk_change_in_scenario_B.scenario_summary.
-3. Scenario labels are not swapped.
-4. Scenario A risk value comes from risk_change_in_scenario_A.value.
-5. Scenario B risk value comes from risk_change_in_scenario_B.value.
-6. Scenario A unit comes from risk_change_in_scenario_A.unit.
-7. Scenario B unit comes from risk_change_in_scenario_B.unit.
-8. Positive values are described as increases.
-9. Negative values are described as decreases.
-10. No sentence says "increase of -X%".
-11. No sentence says "decrease by -X%".
-12. The risk comparison uses signed values, not absolute magnitudes.
-13. No negative risk-change value is described as worse than a positive risk-change value.
-14. Scenario A explanation uses only Scenario A explanatory factors.
-15. Scenario B explanation uses only Scenario B explanatory factors.
-16. Explanatory factors are not confused with modified scenario variables.
-17. Inconsistent labels such as "minor" and "dominant factor" are not combined awkwardly.
-18. No ecological mechanism has been invented.
-19. No causal claim has been made unless explicitly supported by context.
-20. No implementation detail is exposed.
-21. The answer directly addresses the user question.
-22. The answer does not stop after only comparing the risk-change values.
+Check the consistency of the sentence and correct typos.
+Replace ";" symbols with ",".
 
 Return only the final user-facing answer.
