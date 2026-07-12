@@ -1,28 +1,26 @@
 package it.cnr.ncss.detectors.tasks;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import it.cnr.ncss.detectors.models.KernelShapExplainer;
-import it.cnr.ncss.detectors.models.RandomForestModel;
+import it.cnr.ncss.detectors.models.StatisticalExplainer;
 import it.cnr.ncss.llm.KbManager;
 import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.StringUtilsDTO;
+import it.cnr.ncss.utils.UtilsDTO;
 import weka.core.Instances;
 
 public class RiskImportanceTask extends AbstractTask {
 
 	public static String cached_model;
 	ContributionReport report;
+	ImportanceReport importanceReport;
 	
 	public RiskImportanceTask(Llm ollama) throws Exception {
 		super(ollama);
@@ -32,6 +30,57 @@ public class RiskImportanceTask extends AbstractTask {
 	@SuppressWarnings("unchecked")
 	@Override
 	public String handle(String question) throws Exception {
+
+		System.out.println("[RISK IMPORTANCE] estimating multivariate relations");
+		String risk_column = conf.getProperty("risk_column");
+		String highRiskLabel = conf.getProperty("high_risk_label");
+		String lowRiskLabel = conf.getProperty("low_risk_label");
+		
+		Map<String, Double> explanation = null;
+		KbManager kb = new KbManager();
+		List<List<Object>> matrix = kb.getFeatureMatrix();
+		String [] features = kb.getFeatures();
+		
+		Instances dataset = UtilsDTO.matrixToWekaInstance(matrix, kb.getFeatures(), risk_column);
+		
+		StatisticalExplainer statEx = new StatisticalExplainer();
+		
+		explanation = statEx.explain(dataset, highRiskLabel, lowRiskLabel);
+		
+		System.out.println("[RISK IMPORTANCE] explanation: \n"+explanation.toString().replace(",", "\n"));
+		importanceReport = new ImportanceReport();
+		
+		importanceReport.setReport("High ecosystem risk is due to the concurrency of high levels of the variables in [variable_ranking] in specific areas, the variables are ordered by strength in the high-risk regions. The [lesser_contributing_variables] indicate variables with important but not exceptionally high values in the high-risk areas.");
+		
+		List<String> variables = new ArrayList<String>();
+		
+		for (String key:explanation.keySet()) {
+			variables.add(key.toLowerCase());
+		}
+		
+		
+		importanceReport.setVariableRanking(variables);
+		List<String> lesservariables = new ArrayList<String>();
+		
+		for (String key:features) {
+			
+			if (!key.equals(risk_column) && !explanation.keySet().contains(key)) {
+				lesservariables.add(key.toLowerCase());
+			}
+		}
+		
+		importanceReport.setLesser_contributing_variables(lesservariables);
+		
+		importanceReport.setAdditional_remarks("Ecosystem risk lowering can be achieved by avoiding this concurrency, by lowering the climatic and anthropogenic stressors while keeping the ecological variables at their levels.");
+		
+		System.out.println("[RISK IMPORTANCE] risk importance report: \n"+importanceReport.toJson());
+		
+		String answer = generateAnswer(question);
+		return answer;
+	}
+	
+	/*
+	public String handle1(String question) throws Exception {
 
 		System.out.println("[RISK IMPORTANCE] estimating multivariate relations");
 		String risk_column = conf.getProperty("risk_column");
@@ -76,7 +125,7 @@ public class RiskImportanceTask extends AbstractTask {
 			oos.close();
 		}
 		
-		report = new ContributionReport();
+		report = new ImportanceReport();
 		
 		report.analysis = new ContributionReport.Analysis(
 		        "ecosystem risk",
@@ -135,7 +184,7 @@ public class RiskImportanceTask extends AbstractTask {
 		String answer = generateAnswer(question);
 		return answer;
 	}
-
+*/
 	@Override
 	public String buildPrompt(String query, List<String> docs, String promptFile) throws Exception {
 
@@ -143,22 +192,24 @@ public class RiskImportanceTask extends AbstractTask {
 		if (docs != null) {
 			context = String.join("\n\n", docs.stream().toList());
 		}
-
+/*
 		report.context.add(
 		        context
 		);
-		
+	*/	
 		String promptText = StringUtilsDTO.getText(new File(answerFile));
-		//String uuid = ""+UUID.randomUUID();
-		//java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_template_"+uuid+".txt"),promptText);
+		String uuid = ""+UUID.randomUUID();
+		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_template_"+uuid+".txt"),promptText);
 
-		String knowledgejson = report.toJson();
+		//String knowledgejson = report.toJson();
+		String knowledgejson = importanceReport.toJson();
 		
 		
 		promptText = promptText.replace("{{KNOWLEDGE}}", knowledgejson);
+		promptText = promptText.replace("{{CONTEXT}}", context);
 		promptText = promptText.replace("{{USER_REQUEST}}", query);
 		
-		//java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_"+uuid+".txt"),promptText);
+		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_"+uuid+".txt"),promptText);
 		
 		String prompt = """
 				%s
@@ -168,7 +219,48 @@ public class RiskImportanceTask extends AbstractTask {
 		return prompt;
 	}
 	
-	
+	public class ImportanceReport {
+		
+		public String report;
+		public List<String> variable_ranking;
+		public List<String> lesser_contributing_variables;
+		public List<String> getLesser_contributing_variables() {
+			return lesser_contributing_variables;
+		}
+
+		public void setLesser_contributing_variables(List<String> lesser_contributing_variables) {
+			this.lesser_contributing_variables = lesser_contributing_variables;
+		}
+
+		public String additional_remarks;
+		
+		public String getAdditional_remarks() {
+			return additional_remarks;
+		}
+
+		public void setAdditional_remarks(String additional_remarks) {
+			this.additional_remarks = additional_remarks;
+		}
+
+		public ImportanceReport() {
+			this.report = "";
+		}
+		
+		public void setReport(String report) {
+			this.report = report;
+		}
+		
+		public void setVariableRanking(List<String> variable_ranking) {
+			this.variable_ranking = variable_ranking;
+		}
+		
+		public String toJson() throws Exception {
+	        ObjectMapper mapper = new ObjectMapper();
+	        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+	        return mapper.writeValueAsString(this);
+	    }
+		
+	}
 	
 	public class ContributionReport {
 

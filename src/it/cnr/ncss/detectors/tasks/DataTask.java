@@ -35,7 +35,7 @@ public class DataTask extends AbstractTask {
 		int i = 0;
 		for (String head:headers) {
 			double average = UtilsDTO.averageColumn(lines, i);
-			availableData.append(head+":"+average+"\n");
+			availableData.append(head+": "+average+"\n");
 			i++;
 		}
 
@@ -62,7 +62,7 @@ public class DataTask extends AbstractTask {
 				%s
 				""".formatted(promptText);
 
-		//System.out.println("[DATA] prompt:\n"+prompt);
+		System.out.println("[DATA] prompt:\n"+prompt);
 		return prompt;
 	}
 }

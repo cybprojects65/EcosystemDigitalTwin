@@ -132,6 +132,9 @@ public class Llm {
 		req.options.put("num_ctx", Integer.parseInt(config.getProperty("num_ctx")));
 		//req.options.put("num_predict", 4096);
 		req.options.put("num_predict", Integer.parseInt(config.getProperty("num_predict")));
+		req.options.put("temperature", Integer.parseInt(config.getProperty("temperature")));
+		req.options.put("top_p", Integer.parseInt(config.getProperty("top_p")));
+		req.options.put("seed", 42);
 		
 		String json = mapper.writeValueAsString(req);
 
@@ -241,7 +244,7 @@ public class Llm {
 
 		double threshold_for_feature_name_similarity = Double
 				.parseDouble(config.getProperty("threshold_for_feature_name_similarity"));
-		double[] queryEmbedding = embed(question, false);
+		double[] queryEmbedding = embed(question.toLowerCase(), false);
 
 		// get the most similar features
 		String normalized = null;
@@ -249,7 +252,7 @@ public class Llm {
 		for (String head : headers) {
 
 			// similarity
-			double[] exampleEmbedding = embed(head, true);
+			double[] exampleEmbedding = embed(head.toLowerCase(), true);
 			double score = StringUtilsDTO.cosineSimilarity(queryEmbedding, exampleEmbedding);
 			// get the feautres values
 			// System.out.println("[F-NORMALIZATION] feature " + head + " vs " + question +

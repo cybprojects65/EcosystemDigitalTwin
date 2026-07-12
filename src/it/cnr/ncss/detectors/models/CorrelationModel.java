@@ -67,7 +67,7 @@ public class CorrelationModel {
 
 	    if (a < 0.30)
 	        //return r > 0 ? "weakly positive" : "weakly negative";
-	    	return r > 0 ? "neutral" : "neutral";
+	    	return r > 0 ? "positive" : "negative";
 	    	
 	    if (a < 0.50)
 	        return r > 0 ? "moderately positive" : "moderately negative";
@@ -87,6 +87,9 @@ public class CorrelationModel {
 		boolean isCategorialSource = UtilsDTO.isCategorical(sourceColumn);
 		boolean isCategorialTarget = UtilsDTO.isCategorical(targetColumn);
 		
+		if (isCategorialTarget || isCategorialSource)
+			System.out.print(isCategorialTarget);
+			
 		if (isCategorialSource && isCategorialTarget) {
 			double corr = UtilsDTO.cramerV(sourceColumn, targetColumn);
 			interp.put(cramerInterpretation(corr),corr);

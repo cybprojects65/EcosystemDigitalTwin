@@ -33,6 +33,7 @@ public class RiskVariationTask extends AbstractTask{
 
 	public String information_extraction_json;
 	SimulationResultReport report;
+	SimplifiedSimulationResultReport simpleReport;
 	
 	@Override
 	public String handle(String question) throws Exception {
@@ -42,6 +43,8 @@ public class RiskVariationTask extends AbstractTask{
 		information_extraction_json = llm.sendRequestWithJsonOutputString(question,this.conf.getProperty("risk_variation_extraction_prompt"));
 		String risk_column = conf.getProperty("risk_column");
 		int trainingClassIndex = Integer.parseInt(conf.getProperty("risk_index_to_predict"));
+		String high_risk_label = conf.getProperty("high_risk_label");
+		
 		KbManager kb = new KbManager();
 		ObjectMapper mapper = new ObjectMapper();
 		SimulationScenario simulation = (SimulationScenario) mapper.readValue(information_extraction_json, SimulationScenario.class);
@@ -84,15 +87,21 @@ public class RiskVariationTask extends AbstractTask{
 				if (variation >1)
 					variation  = variation /100;
 			}
+			
+			if (variableNameNorm.toLowerCase().contains("loss"))
+				variation = -1*variation;
+
+			System.out.println("[RISK VARIATION] normalised variation: " + variation);
+			
 			reanalysedMatrix = kb.reanalysis(reanalysedMatrix, variableNameNorm, variation , ispercentage);
 			
 		}
 
-		System.out.println("[RISK VARIATION] training baseline RF");
+		
 		
 		String cached_model = new File(conf.getProperty("cache_folder"), "risk_variation_rf.bin").getAbsolutePath();
 		RandomForestModel rf = null;
-				
+		System.out.println("[RISK VARIATION] checking RF in the cache");		
 		try {
 			ObjectInputStream ooi = new ObjectInputStream(new FileInputStream(cached_model));
 			rf = (RandomForestModel) ooi.readObject();
@@ -105,6 +114,8 @@ public class RiskVariationTask extends AbstractTask{
 		List<List<Object>> matrix = kb.getFeatureMatrix();
 		
 		if(rf==null) {
+			
+			System.out.println("[RISK VARIATION] training baseline RF");
 			rf = new RandomForestModel();
 			rf.trainRandomForest(matrix, kb.getFeatures(), risk_column);
 			System.out.println("[RISK VARIATION] caching the model");
@@ -114,18 +125,51 @@ public class RiskVariationTask extends AbstractTask{
 			
 		}
 		
+		//Instances dataset = rf.getTrainingSet();
+		//List<double[]> testPreditions = rf.predict(reanalysedMatrix);
+		//List<double[]> baselinePredictions = rf.predictProbabilityTrainingSet();
+
+		System.out.println("[RISK VARIATION] predicting the simulated dataset");
 		
-		Instances dataset = rf.getTrainingSet();
+		List<String> testPreditions = rf.predictClass(reanalysedMatrix);
+		/*
+		int i=0;
+		for (String tp:testPreditions) {
+			if (tp.equals(high_risk_label))
+				System.out.println("--- "+i+" ....");
+			i++;
+		}
+		*/
 		
+		System.out.println("[RISK VARIATION] predicting the baseline training set");
+		List<String> baselinePredictions = rf.predictClass(matrix);
+		
+		double relativeVar = rf.outputRelativeVariation(baselinePredictions, testPreditions , high_risk_label);
+		
+		relativeVar = UtilsDTO.toPercentage(relativeVar);
+		
+		System.out.println("[RISK VARIATION] relative variation of risk: "+relativeVar+"%");
+		
+		
+		simpleReport = new SimplifiedSimulationResultReport();
+		
+		simpleReport.risk_change = UtilsDTO.roundToDigits(relativeVar, 3)+"%";
+		simpleReport.interpretation = "";
+		
+		for (ScenarioVariable v: variables) {
+			if (v.original_expression !=null && v.original_expression.trim().length()>0)
+				simpleReport.interpretation += v.original_expression+"; ";
+		}
+		System.out.println("[RISK VARIATION] report:\n "+simpleReport.toJson());
+		
+		//compare the means over the column against the baseline 75p without doing relative variations
+		//System.exit(0);
+		/*
 		System.out.println("[RISK VARIATION] explaining the relations");
 		// initialise explainer
 		KernelShapExplainer explainer = new KernelShapExplainer(rf.getModel(), dataset, 42);
 		Map<String, Double> explanation = explainer.explain(dataset, trainingClassIndex);
-		
-		
-		List<double[]> testPreditions = rf.predict(reanalysedMatrix);
-		List<double[]> baselinePredictions = rf.predictProbabilityTrainingSet();
-		
+				
 		double relativeVar = rf.outputRelativeVariation(baselinePredictions, testPreditions , trainingClassIndex);
 		
 		Map<String, Double> explanationSimulated = explainer.explain(rf.getLatestTestSet(), trainingClassIndex);
@@ -179,6 +223,7 @@ public class RiskVariationTask extends AbstractTask{
 			}
 		}
 		
+		*/
 		
 		String answer = generateAnswer(question);
 		return answer;
@@ -199,7 +244,9 @@ public class RiskVariationTask extends AbstractTask{
 		String uuid = ""+UUID.randomUUID();
 		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_template_"+uuid+".txt"),promptText);
 		
-		String knowledgejson = report.toJson();
+		//String knowledgejson = report.toJson();
+		String knowledgejson = simpleReport.toJson();
+		
 		
 		promptText = promptText.replace("{{KNOWLEDGE}}", knowledgejson);
 		promptText = promptText.replace("{{USER_REQUEST}}", query);
@@ -288,6 +335,18 @@ public class RiskVariationTask extends AbstractTask{
 	    }
 	}
 
+	@JsonIgnoreProperties(ignoreUnknown = true)
+	public static class SimplifiedSimulationResultReport {
+
+	    public String interpretation;
+	    public String risk_change;
+	    
+	    public String toJson() throws Exception {
+	        ObjectMapper mapper = new ObjectMapper();
+	        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+	        return mapper.writeValueAsString(this);
+	    }
+	}
 
 	@JsonIgnoreProperties(ignoreUnknown = true)
 	public class SimulationResultReport {

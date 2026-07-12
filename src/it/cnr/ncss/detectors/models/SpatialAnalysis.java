@@ -586,6 +586,13 @@ public class SpatialAnalysis {
 		}
 		
 		public String toJson() throws Exception {
+			
+			suitable_habitat_cover_percentage = UtilsDTO.roundToDigits(suitable_habitat_cover_percentage, 2);
+			largest_presence_area_percentage_of_suitable_habitat = UtilsDTO.roundToDigits(largest_presence_area_percentage_of_suitable_habitat, 2);
+			mean_presence_area_size_cells = UtilsDTO.roundToDigits(mean_presence_area_size_cells, 2);
+			median_presence_area_size_cells = UtilsDTO.roundToDigits(median_presence_area_size_cells, 2);
+			core_to_satellite_mean_distance_cells = UtilsDTO.roundToDigits(core_to_satellite_mean_distance_cells, 2);
+			
 		    ObjectMapper mapper = new ObjectMapper();
 		    mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 		    mapper.enable(SerializationFeature.INDENT_OUTPUT);

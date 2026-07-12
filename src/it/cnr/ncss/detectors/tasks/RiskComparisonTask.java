@@ -18,13 +18,14 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import it.cnr.ncss.detectors.models.KernelShapExplainer;
 import it.cnr.ncss.detectors.models.RandomForestModel;
 import it.cnr.ncss.detectors.tasks.RiskComparisonTask.ComparisonScenario.ScenarioVariable;
+import it.cnr.ncss.detectors.tasks.RiskVariationTask.SimplifiedSimulationResultReport;
 import it.cnr.ncss.llm.KbManager;
 import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.StringUtilsDTO;
 import it.cnr.ncss.utils.UtilsDTO;
 import weka.core.Instances;
 
-public class RiskComparisonTask extends AbstractTask {
+public class RiskComparisonTask extends RiskVariationTask {
 
 	public RiskComparisonTask(Llm ollama) throws Exception {
 		super(ollama);
@@ -32,7 +33,7 @@ public class RiskComparisonTask extends AbstractTask {
 	}
 
 	public String information_extraction_json;
-	SimulationResultReport report;
+	SimpleSimulationReport report;
 
 	public List<List<Object>> buildScenarioMatrix(List<ScenarioVariable> variables, List<List<Object>> baseline)
 			throws Exception {
@@ -104,7 +105,9 @@ public class RiskComparisonTask extends AbstractTask {
 		information_extraction_json = llm.sendRequestWithJsonOutputString(question,
 				this.conf.getProperty("risk_comparison_extraction_prompt"));
 		String risk_column = conf.getProperty("risk_column");
-		int trainingClassIndex = Integer.parseInt(conf.getProperty("risk_index_to_predict"));
+		String high_risk_label = conf.getProperty("high_risk_label");
+		
+		
 		KbManager kb = new KbManager();
 		ObjectMapper mapper = new ObjectMapper();
 		ComparisonScenario simulation = (ComparisonScenario) mapper.readValue(information_extraction_json,
@@ -112,15 +115,15 @@ public class RiskComparisonTask extends AbstractTask {
 
 		// read the result
 		List<ScenarioVariable> variablesA = simulation.scenario_a;
-		String original_expression_A = "first simulation scenario";
-		try {		original_expression_A = variablesA.get(0).original_expression; }catch(Exception e) {}
+		
 		System.out.println("[RISK COMPARISON] processing scenario A");
+		
 		List<List<Object>> baseline = kb.getFeatureMatrix();
 		List<List<Object>> scenarioA_Matrix = buildScenarioMatrix(variablesA, baseline);
+		
 		System.out.println("[RISK COMPARISON] processing scenario B");
 		List<ScenarioVariable> variablesB = simulation.scenario_b;
-		String original_expression_B = "second simulation scenario";
-		try {		original_expression_B = variablesB.get(0).original_expression; }catch(Exception e) {}
+		
 		List<List<Object>> scenarioB_Matrix = buildScenarioMatrix(variablesB, baseline);
 
 		System.out.println("[RISK COMPARISON] training baseline RF");
@@ -150,119 +153,69 @@ public class RiskComparisonTask extends AbstractTask {
 			oos.close();
 
 		}
-
-		Instances dataset = rf.getTrainingSet();
-
-		System.out.println("[RISK VARIATION] explaining the relations");
+		
 		// initialise explainer
-		KernelShapExplainer explainer = new KernelShapExplainer(rf.getModel(), dataset, 42);
-		Map<String, Double> explanation = explainer.explain(dataset, trainingClassIndex);
-		List<double[]> baselinePredictions = rf.predictProbabilityTrainingSet();
-		
-		List<double[]> testPreditions = rf.predict(scenarioA_Matrix);
-		double relativeVar = rf.outputRelativeVariation(baselinePredictions, testPreditions , trainingClassIndex);
-		Map<String, Double> explanationSimulated = explainer.explain(rf.getLatestTestSet(), trainingClassIndex);
-		double relativeVarA = UtilsDTO.toPercentage(relativeVar);
-		System.out.println("[RISK VARIATION] relative variation of risk in scenario A: "+relativeVarA+"%");
-		Map<String, Double> importanceForDeltaA = explainer.deltaShap( explanation ,explanationSimulated);
-		System.out.println("[RISK VARIATION] relative variations of shap in scenario A:\n");
+		List<String> baselinePredictions = rf.predictClass(matrix);
+		List<String> testPreditionsA = rf.predictClass(scenarioA_Matrix);
+
+		double relativeVarA = rf.outputRelativeVariation(baselinePredictions, testPreditionsA , high_risk_label);
+		relativeVarA = UtilsDTO.toPercentage(relativeVarA);
+		System.out.println("[RISK COMPARISON] relative variation of risk in scenario A: "+relativeVarA+"%");
 		
 		
-		testPreditions = rf.predict(scenarioB_Matrix);
-		relativeVar = rf.outputRelativeVariation(baselinePredictions, testPreditions , trainingClassIndex);
-		explanationSimulated = explainer.explain(rf.getLatestTestSet(), trainingClassIndex);
-		double relativeVarB = UtilsDTO.toPercentage(relativeVar);
-		System.out.println("[RISK VARIATION] relative variation of risk in scenario B: "+relativeVarB+"%");
-		Map<String, Double> importanceForDeltaB = explainer.deltaShap( explanation ,explanationSimulated);
-		System.out.println("[RISK VARIATION] relative variations of shap in scenario B:\n");
+		List<String> testPreditionsB = rf.predictClass(scenarioB_Matrix);		
+		double relativeVarB = rf.outputRelativeVariation(baselinePredictions, testPreditionsB , high_risk_label);
+		relativeVarB = UtilsDTO.toPercentage(relativeVarB);
+		System.out.println("[RISK COMPARISON] relative variation of risk in scenario B: "+relativeVarB+"%");
 		
-		report = new SimulationResultReport(
-		        question,
-		        "ecosystem risk",
-		        new SimulationResultReport.RiskChange("relative variation", relativeVarA, "%", original_expression_A),
-		        new SimulationResultReport.RiskChange("relative variation", relativeVarB, "%", original_expression_B)
-		);
+		SimplifiedSimulationResultReport simpleReportA = new SimplifiedSimulationResultReport();
+		simpleReportA.risk_change = UtilsDTO.roundToDigits(relativeVarA, 3)+"%";
+		simpleReportA.interpretation = "";
 		
-		for (String key:importanceForDeltaA.keySet()) {
-			Double val = importanceForDeltaA.get(key);
-			if (Math.abs(val)>0.1) {
-				
-				String contrib = "";
-				if (Math.abs(val)>1)
-					contrib = "major";
-				else
-					contrib = "minor";
-				
-				if (relativeVar>0 && val>0) {
-					System.out.println(key+" incr-> "+val+"\n");
-				report.addContributor(
-				        key,
-				        key,
-				        contrib,
-				        "interpretation",
-				        "dominant factor",
-				        "A"
-				);
-				
-				}else if (relativeVar<0 && val<0) {
-					
-					System.out.println(key+" decr-> "+val+"\n");
-						report.addContributor(
-				        key,
-				        key,
-				        contrib,
-				        "interpretation",
-				        "dominant factor",
-				        "A"
-				);
-				
-				}
-			}
+		for (ScenarioVariable v: variablesA) {
+			if (v.original_expression !=null && v.original_expression.trim().length()>0)
+				simpleReportA.interpretation += v.original_expression+"; ";
 		}
 		
-		for (String key:importanceForDeltaB.keySet()) {
-			Double val = importanceForDeltaB.get(key);
-			if (Math.abs(val)>0.1) {
-				
-				String contrib = "";
-				if (Math.abs(val)>1)
-					contrib = "major";
-				else
-					contrib = "minor";
-				
-				if (relativeVar>0 && val>0) {
-					System.out.println(key+" incr-> "+val+"\n");
-				report.addContributor(
-				        key,
-				        key,
-				        contrib,
-				        "interpretation",
-				        "dominant factor",
-				        "B"
-				);
-				
-				}else if (relativeVar<0 && val<0) {
-					
-					System.out.println(key+" decr-> "+val+"\n");
-						report.addContributor(
-				        key,
-				        key,
-				        contrib,
-				        "interpretation",
-				        "dominant factor",
-				        "B"
-				);
-				
-				}
-			}
+		SimplifiedSimulationResultReport simpleReportB = new SimplifiedSimulationResultReport();
+		simpleReportB.risk_change = UtilsDTO.roundToDigits(relativeVarB, 3)+"%";
+		simpleReportB.interpretation = "";
+		
+		for (ScenarioVariable v: variablesB) {
+			if (v.original_expression !=null && v.original_expression.trim().length()>0)
+				simpleReportB.interpretation += v.original_expression+"; ";
 		}
 		
+		report = new SimpleSimulationReport(simpleReportA, simpleReportB);
 		
+		System.out.println("[RISK COMPARISON] report:\n "+report.toJson());
 		
 		String answer = generateAnswer(question);
 		return answer;
 	}
 
+	
+	public static class SimpleSimulationReport {
+
+	    public SimplifiedSimulationResultReport scenario_A;
+	    public SimplifiedSimulationResultReport scenario_B;
+
+	    public SimpleSimulationReport(
+	            SimplifiedSimulationResultReport scenario_A,
+	            SimplifiedSimulationResultReport scenario_B) {
+
+	        this.scenario_A = scenario_A;
+	        this.scenario_B = scenario_B;
+	    }
+
+	    public String toJson() throws Exception {
+	        ObjectMapper mapper = new ObjectMapper();
+	        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+	        return mapper.writeValueAsString(this);
+	    }
+	}
+	
+	
 	@Override
 	public String buildPrompt(String query, List<String> docs, String promptFile) throws Exception {
 

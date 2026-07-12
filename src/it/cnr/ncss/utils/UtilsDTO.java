@@ -1,14 +1,22 @@
 package it.cnr.ncss.utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
+
+import weka.core.Attribute;
+import weka.core.DenseInstance;
+import weka.core.Instance;
+import weka.core.Instances;
 
 public class UtilsDTO {
 
@@ -27,6 +35,15 @@ public class UtilsDTO {
 		return bestidx;
 	}
 	
+	public static double averageOfList(List<Double> values) {
+	    double sum = 0.0;
+
+	    for (Double d : values) {
+	        sum += d;
+	    }
+
+	    return sum / (double) values.size();
+	}
 	
 	public static double averageColumn(List<String> csvlines, int column) throws Exception{
 		
@@ -580,7 +597,142 @@ public class UtilsDTO {
 	    return bd.doubleValue();
 	}
 	
+	public static double[] getNumericColumnFromWekaInstances(Instances data, int columnIndex) {
+	    if (data == null) {
+	        throw new IllegalArgumentException("Instances object cannot be null");
+	    }
+
+	    if (columnIndex < 0 || columnIndex >= data.numAttributes()) {
+	        throw new IllegalArgumentException(
+	            "Invalid column index: " + columnIndex +
+	            ". Valid range is 0 to " + (data.numAttributes() - 1)
+	        );
+	    }
+
+	    double[] column = new double[data.numInstances()];
+
+	    for (int i = 0; i < data.numInstances(); i++) {
+	        Instance row = data.instance(i);
+	        column[i] = row.value(columnIndex);
+	    }
+
+	    return column;
+	}
 	
+	
+	public static double[] quartiles(double[] values) {
+	    if (values == null || values.length == 0) {
+	        throw new IllegalArgumentException("Input vector cannot be null or empty");
+	    }
+
+	    double[] clean = Arrays.stream(values)
+	            .filter(v -> !Double.isNaN(v))
+	            .sorted()
+	            .toArray();
+
+	    if (clean.length == 0) {
+	        throw new IllegalArgumentException("Input vector contains only NaN values");
+	    }
+
+	    double q1 = percentile(clean, 25);
+	    double q2 = percentile(clean, 50); // median
+	    double q3 = percentile(clean, 75);
+
+	    return new double[] { q1, q2, q3 };
+	}
+
+	public static double percentile(double[] sortedValues, double percentile) {
+	    if (sortedValues.length == 1) {
+	        return sortedValues[0];
+	    }
+
+	    double index = percentile / 100.0 * (sortedValues.length - 1);
+	    int lower = (int) Math.floor(index);
+	    int upper = (int) Math.ceil(index);
+
+	    if (lower == upper) {
+	        return sortedValues[lower];
+	    }
+
+	    double weight = index - lower;
+	    return sortedValues[lower] * (1.0 - weight) + sortedValues[upper] * weight;
+	}
+	
+	
+	public static Object firstNonNullValue(List<List<Object>> rows, int column) {
+        for (List<Object> row : rows) {
+            if (row.get(column) != null) {
+                return row.get(column);
+            }
+        }
+        throw new IllegalArgumentException("Column " + column + " contains only null values");
+    }
+	
+	public static List<String> collectCategoricalValues(List<List<Object>> rows, int column) {
+        Set<String> values = new LinkedHashSet<>();
+
+        for (List<Object> row : rows) {
+            Object value = row.get(column);
+            if (value != null) {
+                values.add(value.toString());
+            }
+        }
+
+        return new ArrayList<>(values);
+    }
+	
+	public static Instances matrixToWekaInstance(List<List<Object>> rows, String[] featureNames, String targetName) {
+		
+		int numColumns = rows.get(0).size();
+        int targetIndex = numColumns - 1;
+        for (int i = 0;i<featureNames.length;i++){
+        	if (featureNames[i].equals(targetName)) {
+        		targetIndex = i;
+        		break;
+        	}
+        }
+        
+        ArrayList<Attribute> attributes = new ArrayList<>();
+
+        //for (int col = 0; col < targetIndex; col++) {
+        for (int col = 0; col < numColumns; col++) {
+            Object firstValue = firstNonNullValue(rows, col);
+            
+            if (firstValue instanceof Number) {
+                attributes.add(new Attribute(featureNames[col]));
+                System.out.println("[MatrixToWekaInstance] Numeric: "+featureNames[col]);
+            } else {
+                List<String> values = collectCategoricalValues(rows, col);
+                attributes.add(new Attribute(featureNames[col], values));
+                System.out.println("[MatrixToWekaInstance] Categorial: "+featureNames[col]);
+            }
+        }
+        
+        
+        Instances dataset = new Instances("dataset", attributes, rows.size());
+        dataset.setClassIndex(targetIndex);
+        System.out.println("[MatrixToWekaInstance] Building the training set");
+        for (List<Object> row : rows) {
+            DenseInstance instance = new DenseInstance(numColumns);
+
+            for (int col = 0; col < numColumns; col++) {
+                Object value = row.get(col);
+                Attribute attr = attributes.get(col);
+
+                if (value == null) {
+                    instance.setMissing(col);
+                } else if (attr.isNumeric()) {
+                    instance.setValue(attr, ((Number) value).doubleValue());
+                } else {
+                    instance.setValue(attr, value.toString());
+                }
+            }
+
+            dataset.add(instance);
+        }
+        
+        return dataset;
+	}
 }
 
 

@@ -12,6 +12,7 @@ import it.cnr.ncss.detectors.models.ASCManager.AscData;
 import it.cnr.ncss.llm.KbManager;
 import it.cnr.ncss.utils.Config;
 import it.cnr.ncss.utils.StringUtilsDTO;
+import it.cnr.ncss.utils.UtilsDTO;
 
 public class ENMManager {
 
@@ -174,7 +175,7 @@ public class ENMManager {
 				for (Double fv : featureValues) {
 					if (v > fv) {
 						featureNames.add(j, contrib);
-						featureValues.add(j, v);
+						featureValues.add(j, UtilsDTO.roundToDigits(v,2));
 						found = true;
 						break;
 					}
@@ -183,7 +184,7 @@ public class ENMManager {
 
 				if (!found) {
 					featureNames.add(contrib);
-					featureValues.add(v);
+					featureValues.add(UtilsDTO.roundToDigits(v,2));
 				}
 			}
 		}
@@ -197,7 +198,7 @@ public class ENMManager {
 					sb.append("\"" + header.replace("\"", "").trim() + "\":");
 					Double valD = null;
 					try {
-						valD = Double.parseDouble(values[i]);
+						valD = UtilsDTO.roundToDigits(Double.parseDouble(values[i]),2);
 						sb.append("" + valD);
 					} catch (Exception e) {
 
@@ -220,7 +221,7 @@ public class ENMManager {
 
 			cumulativeContrib += value;
 
-			sb.append("\"" + contrib + "\":" + value);
+			sb.append("\"" + contrib + "\":" + UtilsDTO.roundToDigits(value,3));
 
 			if (cumulativeContrib > 85)
 				break;

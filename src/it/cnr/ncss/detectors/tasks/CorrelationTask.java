@@ -168,7 +168,9 @@ public class CorrelationTask extends AbstractTask {
 		System.out.println("[CORRELATION] source: " + entity.getSource().getName());
 		System.out.println("[CORRELATION] target: " + entity.getTarget().getName());
 		System.out.println("[CORRELATION] polarity: " + entity.getPolarity());
-
+		
+		String risk_feature = conf.getProperty("risk_column");
+		
 		String sourceUser = entity.getSource().getName();
 		String source = entity.getSource().getName();
 		if (source != null && !source.equals("driver") && source.length() > 0) {
@@ -194,7 +196,9 @@ public class CorrelationTask extends AbstractTask {
 		associationSummary = new StringBuffer();
 
 		for (String key : associations.keySet()) {
-			if (source==null)
+			if (source!=null && source.equals(risk_feature))
+				continue;
+			else if (source==null)
 				associationSummary.append(key + " -> " + targetUser +" : " + associations.get(key).keySet().toString().replaceAll("[\\[\\]]", "") + "\n");
 			else if (source!=null && key.equals(source))
 				associationSummary.append(sourceUser + " -> " + targetUser+" : " + associations.get(key).keySet().toString().replaceAll("[\\[\\]]", "") + "\n");
@@ -217,8 +221,8 @@ public class CorrelationTask extends AbstractTask {
 		
 
 		String promptText = StringUtilsDTO.getText(new File(answerFile));
-		//String uuid = ""+UUID.randomUUID();
-		//java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_template_"+uuid+".txt"),promptText);
+		String uuid = ""+UUID.randomUUID();
+		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_template_"+uuid+".txt"),promptText);
 		
 		promptText = promptText.replace("{{EXTRACTED_JSON}}", information_extraction_json);
 		promptText = promptText.replace("{{CORRELATIVE_INTERPRETATIONS}}", associationSummary);	
@@ -226,7 +230,7 @@ public class CorrelationTask extends AbstractTask {
 		promptText = promptText.replace("{{CONTEXTUAL_INFORMATION}}", context);
 		
 		//System.out.println("[CORRELATION] prompt:\n"+promptText);
-		//java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_"+uuid+".txt"),promptText);
+		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_"+uuid+".txt"),promptText);
 
 
 		

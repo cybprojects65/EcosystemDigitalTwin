@@ -62,13 +62,13 @@ public class RandomForestModel implements Serializable{
 
 	        //for (int col = 0; col < targetIndex; col++) {
 	        for (int col = 0; col < numColumns; col++) {
-	            Object firstValue = firstNonNullValue(rows, col);
+	            Object firstValue = UtilsDTO.firstNonNullValue(rows, col);
 	            
 	            if (firstValue instanceof Number) {
 	                attributes.add(new Attribute(featureNames[col]));
 	                System.out.println("[RANDOM FOREST] Numeric: "+featureNames[col]);
 	            } else {
-	                List<String> values = collectCategoricalValues(rows, col);
+	                List<String> values = UtilsDTO.collectCategoricalValues(rows, col);
 	                attributes.add(new Attribute(featureNames[col], values));
 	                System.out.println("[RANDOM FOREST] Categorial: "+featureNames[col]);
 	            }
@@ -107,27 +107,9 @@ public class RandomForestModel implements Serializable{
 	        return forest;
 	    }
 
-	    private static Object firstNonNullValue(List<List<Object>> rows, int column) {
-	        for (List<Object> row : rows) {
-	            if (row.get(column) != null) {
-	                return row.get(column);
-	            }
-	        }
-	        throw new IllegalArgumentException("Column " + column + " contains only null values");
-	    }
+	    
 
-	    private static List<String> collectCategoricalValues(List<List<Object>> rows, int column) {
-	        Set<String> values = new LinkedHashSet<>();
-
-	        for (List<Object> row : rows) {
-	            Object value = row.get(column);
-	            if (value != null) {
-	                values.add(value.toString());
-	            }
-	        }
-
-	        return new ArrayList<>(values);
-	    }
+	    
 	
 	
 	    public List<double[]> predictProbabilityTrainingSet() throws Exception {
@@ -175,6 +157,44 @@ public class RandomForestModel implements Serializable{
 	        return predictions;
 	    }
 	    
+	    
+	    public List<String> predictClass(List<List<Object>> simulation) throws Exception {
+	    	
+	    	testset = new Instances("test_data", attributes, simulation.size());
+	    	testset.setClassIndex(trainingset.classIndex());
+	    	int numColumns = simulation.get(0).size();
+	    	
+	        System.out.println("[RANDOM FOREST] Building the test set");
+	        for (List<Object> row : simulation) {
+	            DenseInstance instance = new DenseInstance(numColumns);
+	            for (int col = 0; col < numColumns; col++) {
+	                Object value = row.get(col);
+	                Attribute attr = attributes.get(col);
+
+	                if (value == null) {
+	                    instance.setMissing(col);
+	                } else if (attr.isNumeric()) {
+	                    instance.setValue(attr, ((Number) value).doubleValue());
+	                } else {
+	                    instance.setValue(attr, value.toString());
+	                }
+	            }
+
+	            testset.add(instance);
+	        }
+	        
+	    	List<String> predictions = new ArrayList<String>();
+	    	Attribute classAttribute = testset.classAttribute();
+	    	
+	    	for (Instance instance:testset) {
+	    		 double predictedIndex = forest.classifyInstance(instance);
+    	         String predictedLabel = classAttribute.value((int) predictedIndex);
+    	        predictions.add(predictedLabel);
+	    	}
+	    	
+	        return predictions;
+	    }
+
 	    public Instances getLatestTestSet() {
 	    	return testset;
 	    }
@@ -196,6 +216,22 @@ public class RandomForestModel implements Serializable{
 	    	return var;
 	    }
 	    
+	    public double outputRelativeVariation(List<String> proj1, List<String> proj2, String classToCompare) throws Exception {
+	    	
+	    	double sum1 = 0;
+	    	for(String p1:proj1) {
+	    		if (p1.equals(classToCompare))
+	    			sum1=sum1+1;
+	    	}
+	    	double sum2 = 0;
+	    	for(String p2:proj2) {    		
+	    		if (p2.equals(classToCompare))
+	    			sum2=sum2+1;
+	    	}
+	    	double var = (sum2-sum1)/sum1;
+	    	return var;
+	    }
+
 	public static void main(String[] args) throws Exception{
 		 RandomForestModel rf = new RandomForestModel();
 		 KbManager kb = new KbManager();
