@@ -69,7 +69,7 @@ public class DigitalTwin {
 		//String query = "give me the latest data";
 		
 		
-		String query = "Does a single environmental factor dominate habitat suitability for Alcedo atthis?";
+		String query = "Which environmental variables are available in the dataset?";
 		//String query = "Assess ecosystem risk under a scenario with increased temperature and reduced precipitation.";
 		//String query = "Assess ecosystem risk under a scenario with temperature increase by 1%";
 		//

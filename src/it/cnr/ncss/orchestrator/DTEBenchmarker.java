@@ -23,11 +23,27 @@ public static void main(String[] args) throws Exception{
 		    DigitalTwin dt = new DigitalTwin();
 		    String response = dt.manageRequest(query);
 		    
+		    System.out.println("full response:\n"+response);
+		    
+		    if (response.contains("<think>")) {
+		    	
+		    	response = response.substring(response.indexOf("</think>")+"</think>".length()).trim();
+		    	
+		    }
 		    response = response.replace("\"", "\"\"");
 		    
 		    response = response.replace("\r\n", "\n").replace("\r", "\n");
 		    
 		    bw.write("\"" + response + "\"\r\n");
+		    System.out.println("-------------------------------");
+		    System.out.println("QUERY");
+		    System.out.println("-------------------------------");
+		    System.out.println(query);
+		    System.out.println("-------------------------------");
+		    System.out.println("ANSWER");
+		    System.out.println("-------------------------------");
+		    System.out.println(response);
+		    System.out.println("-------------------------------");
 		    
 		    System.out.print(i + " ");
 		    if (i % 10 == 0) {

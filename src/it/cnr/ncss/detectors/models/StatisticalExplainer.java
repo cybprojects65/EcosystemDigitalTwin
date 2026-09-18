@@ -100,7 +100,11 @@ public class StatisticalExplainer {
 			double averageInClass = UtilsDTO.averageOfList(classValues);
 			
 			if (averageInClass>=perc75) {
-				double strength = (averageInClass-perc75)/(double) perc75;
+				double strength =0;
+				if (perc75!=0)
+					strength = (averageInClass-perc75)/(double) perc75;
+				else
+					strength = (averageInClass-perc75);
 				String columnName = dataset.attribute(i).name();
 				contributions.put(columnName, strength);
 			}
