@@ -1,0 +1,100 @@
+What is the relationship between current land use and land use increase in the Massaciuccoli basin?
+How strongly is current land use associated with increasing land imperviousness?
+Is current land use correlated with tree cover density?
+Is tree cover loss associated with current land use?
+What association exists between current land use and grassland presence?
+How closely is grassland loss associated with current land use?
+What is the relationship between current land use and plant productivity?
+Is current land use correlated with temperature increase?
+How strongly is current land use associated with increasing atmospheric aridity?
+Is precipitation decrease correlated with current land use?
+What association exists between current land use and animal biodiversity?
+How strongly is land use increase associated with increasing land imperviousness?
+What is the relationship between land use increase and tree cover density?
+Is land use increase associated with tree cover loss?
+How closely is land use increase associated with grassland presence?
+Is grassland loss associated with land use increase?
+What association exists between land use increase and plant productivity?
+Is temperature increase correlated with land use increase?
+How strongly is land use increase associated with increasing atmospheric aridity?
+What is the relationship between land use increase and precipitation decrease?
+Is land use increase associated with animal species richness?
+Is increasing land imperviousness correlated with tree cover density?
+What association exists between increasing land imperviousness and tree cover loss?
+How strongly is grassland presence associated with increasing land imperviousness?
+Is grassland loss associated with increasing land imperviousness?
+What is the relationship between increasing land imperviousness and plant productivity?
+Is increasing land imperviousness correlated with temperature increase?
+How closely are increases in land imperviousness and atmospheric aridity associated?
+Is precipitation decrease correlated with increasing land imperviousness?
+What association exists between increasing land imperviousness and animal biodiversity?
+How strongly is tree cover density associated with tree cover loss?
+What is the relationship between tree cover density and grassland presence?
+Is grassland loss associated with tree cover density?
+Is tree cover density correlated with plant productivity?
+What is the direction and strength of the correlation between tree cover density and temperature increase?
+Is tree cover density correlated with increasing atmospheric aridity?
+How strongly is tree cover density correlated with precipitation decrease?
+What is the relationship between tree cover density and animal species richness?
+Is tree cover loss associated with grassland presence?
+How strongly are tree cover loss and grassland loss associated?
+What association exists between tree cover loss and plant productivity?
+Is tree cover loss associated with temperature increase?
+How closely is tree cover loss associated with increasing atmospheric aridity?
+Is precipitation decrease associated with tree cover loss?
+What is the strength of the association between tree cover loss and animal biodiversity?
+Are grassland presence and grassland loss statistically associated?
+What association exists between grassland presence and plant productivity?
+Is grassland presence associated with temperature increase?
+How strongly is grassland presence associated with increasing atmospheric aridity?
+What is the relationship between grassland presence and precipitation decrease?
+Is grassland presence associated with animal species richness?
+How strongly is grassland loss associated with plant productivity?
+Is grassland loss associated with temperature increase?
+What association exists between grassland loss and increasing atmospheric aridity?
+Is grassland loss associated with precipitation decrease?
+How closely is grassland loss associated with animal biodiversity?
+What is the direction and strength of the correlation between plant productivity and temperature increase?
+Is plant productivity correlated with increasing atmospheric aridity?
+How strongly is plant productivity correlated with precipitation decrease?
+What is the relationship between plant productivity and animal species richness?
+Are temperature increase and atmospheric aridity increase correlated?
+What is the direction of the correlation between temperature increase and precipitation decrease?
+How strongly is temperature increase correlated with animal biodiversity?
+Is atmospheric aridity increase correlated with precipitation decrease?
+What is the relationship between increasing atmospheric aridity and animal species richness?
+Is precipitation decrease correlated with animal biodiversity?
+Which stressors are most strongly associated with current land use?
+What are the main correlates of land use increase across the basin?
+Which ecosystem variables are most closely associated with increasing land imperviousness?
+What factors correlate most strongly with tree cover density?
+Which stressors have the strongest associations with tree cover loss?
+What ecosystem variables are associated with grassland presence?
+Which factors are most closely associated with grassland loss?
+What are the main correlates of plant productivity?
+Which stressors correlate most strongly with temperature increase?
+What factors are associated with atmospheric aridity increase across the area?
+Which ecosystem variables correlate most strongly with precipitation decrease?
+What factors are most strongly associated with animal biodiversity?
+Which numerical stressors are positively correlated with animal species richness?
+Which numerical stressors are negatively correlated with animal species richness?
+What numerical variables show positive correlations with plant productivity?
+What numerical variables show negative correlations with plant productivity?
+Which numerical stressors are positively correlated with tree cover density?
+Which numerical stressors are negatively correlated with tree cover density?
+Which numerical variables show positive correlations with temperature increase?
+Which numerical variables show negative correlations with temperature increase?
+What numerical stressors are positively correlated with atmospheric aridity increase?
+What numerical stressors are negatively correlated with atmospheric aridity increase?
+Which numerical variables show positive correlations with precipitation decrease?
+Which numerical variables show negative correlations with precipitation decrease?
+How is temperature increase correlated with animal biodiversity, plant productivity, and tree cover density?
+What associations does atmospheric aridity increase have with animal biodiversity, grassland presence, and grassland loss?
+How is precipitation decrease associated with tree cover density, tree cover loss, and plant productivity?
+What associations exist between current land use and animal biodiversity, tree cover density, and grassland presence?
+How is land use increase associated with tree cover loss, grassland loss, and increasing land imperviousness?
+What are the associations between increasing land imperviousness and animal biodiversity, plant productivity, and temperature increase?
+How is tree cover density associated with animal biodiversity, grassland presence, and atmospheric aridity increase?
+What associations does tree cover loss have with animal biodiversity, plant productivity, and precipitation decrease?
+How is grassland presence associated with animal biodiversity, current land use, and temperature increase?
+What associations does plant productivity have with animal biodiversity, land use increase, and grassland loss?

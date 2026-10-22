@@ -1,4 +1,6 @@
 Show me the latest environmental data
+give me the latest data on grassland
+which are the latest data on tree cover that you host?
 Get the current data for the lake
 Retrieve the latest dataset values
 Show all available data for the current simulation

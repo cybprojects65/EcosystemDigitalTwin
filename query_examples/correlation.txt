@@ -28,6 +28,7 @@ Which environmental factors are most related to precipitation change in the lake
 Which variable contributes most to precipitation change in the Massaciuccoli ecosystem?
 What factors drive changes in precipitation change in the basin?
 What are the main drivers of precipitation change across the Massaciuccoli basin?
+What drives temperature change?
 Which environmental variables are most strongly associated with biodiversity patterns in the Massaciuccoli basin?
 Which environmental factors are most related to biodiversity patterns in the lake ecosystem?
 Which variable contributes most to biodiversity patterns in the Massaciuccoli ecosystem?
