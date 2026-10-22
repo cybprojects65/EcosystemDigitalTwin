@@ -69,11 +69,16 @@ public class DigitalTwin {
 		//String query = "give me the latest data";
 		
 		
-		String query = "Which environmental variables are available in the dataset?";
+		//String query = "Which environmental variables are available in the dataset?";
+		//String query = "give me the latest data on temperature";
+		
 		//String query = "Assess ecosystem risk under a scenario with increased temperature and reduced precipitation.";
 		//String query = "Assess ecosystem risk under a scenario with temperature increase by 1%";
 		//
-		// String query = "give me the latest data on precipitation";
+		 //String query = "give me the latest data on precipitation";
+		
+		String query = "which are the latest data on tree cover that you host?";
+		
 		// String query = "which factors increase temperature?";
 		// String query = "which factors have no effect on temperature?";
 		// String query = "Does tree cover alone control biodiversity?";

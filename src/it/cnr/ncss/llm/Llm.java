@@ -6,6 +6,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -270,7 +271,113 @@ public class Llm {
 
 		return normalized;
 	}
+	
+	public List<String> normalizeFeatureNameSet(String question) throws Exception {
 
+		// get the header
+		KbManager kb = new KbManager();
+		String headers[] = kb.getAllFeatures();
+
+		double threshold_for_feature_name_similarity = Double
+				.parseDouble(config.getProperty("threshold_for_feature_name_similarity"));
+		double[] queryEmbedding = embed(question.toLowerCase(), false);
+
+		// get the most similar features
+		
+		List<String> compliantVariables = new ArrayList<String>();
+		List<Double> compliantVariableScores = new ArrayList<Double>();
+		
+		for (String head : headers) {
+
+			// similarity
+			double[] exampleEmbedding = embed(head.toLowerCase(), true);
+			double score = StringUtilsDTO.cosineSimilarity(queryEmbedding, exampleEmbedding);
+			// get the feautres values
+			// System.out.println("[F-NORMALIZATION] feature " + head + " vs " + question +
+			// ": " + score);
+
+			if (score > threshold_for_feature_name_similarity) {
+				boolean found = false;
+				for (int i = 0; i< compliantVariables.size(); i++) {
+					
+					double scorePrev = compliantVariableScores.get(i);
+					
+					if (score>scorePrev) {
+						
+						compliantVariables.add(i,head);
+						compliantVariableScores.add(i,score);
+						found = true;
+						break;
+					}
+					
+				}
+				
+				if (!found) {
+					compliantVariables.add(head);
+					compliantVariableScores.add(score);
+				}
+				
+				
+			}
+		}
+
+		cacheEmbedding();
+
+		return compliantVariables;
+	}
+	
+	public List<String> normalizeFeatureNameSetToReference(String question, String references []) throws Exception {
+
+		// get the header
+		
+		double threshold_for_feature_name_similarity = Double
+				.parseDouble(config.getProperty("strict_threshold_for_feature_name_similarity"));
+		double[] queryEmbedding = embed(question.toLowerCase(), false);
+
+		// get the most similar features
+		
+		List<String> compliantVariables = new ArrayList<String>();
+		List<Double> compliantVariableScores = new ArrayList<Double>();
+		
+		for (String head : references) {
+
+			// similarity
+			double[] exampleEmbedding = embed(head.toLowerCase(), true);
+			double score = StringUtilsDTO.cosineSimilarity(queryEmbedding, exampleEmbedding);
+			// get the feautres values
+			// System.out.println("[F-NORMALIZATION] feature " + head + " vs " + question +
+			// ": " + score);
+
+			if (score > threshold_for_feature_name_similarity) {
+				boolean found = false;
+				for (int i = 0; i< compliantVariables.size(); i++) {
+					
+					double scorePrev = compliantVariableScores.get(i);
+					
+					if (score>scorePrev) {
+						
+						compliantVariables.add(i,head);
+						compliantVariableScores.add(i,score);
+						found = true;
+						break;
+					}
+					
+				}
+				
+				if (!found) {
+					compliantVariables.add(head);
+					compliantVariableScores.add(score);
+				}
+				
+				
+			}
+		}
+
+		cacheEmbedding();
+
+		return compliantVariables;
+	}
+	
 	public static void main(String[] args) throws Exception {
 		String query = "translate from english to italian: sky appears blue because of a phenomenon called Rayleigh scattering, named after the British physicist Lord Rayleigh";
 		Llm ollama = new Llm();

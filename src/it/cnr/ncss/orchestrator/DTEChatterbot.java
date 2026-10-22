@@ -8,6 +8,10 @@ import it.cnr.ncss.utils.StringUtilsDTO;
 
 public class DTEChatterbot {
 
+	//TODO: revise the reasoning when information is inconsistent: e.g., what causes tree cover density loss? (A and B are equal); what's the current state of the ecosystem? (A = B = empty)
+	//TODO: fix issue on latest data retrieval: give me the latest data on temperature (mapping is incorrect)
+	//TODO: add loss or increase if undefined in the variable's name: which are the main negative effects on biodiversity?
+	
 	public static void main(String[] args) throws Exception{
 		
 		DigitalTwin dt = new DigitalTwin();
