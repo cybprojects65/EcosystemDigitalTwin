@@ -226,3 +226,203 @@ Which variables in the dataset capture the main ecological dynamics of the basin
 Which aspects of ecosystem functioning are represented in the dataset?
 Which ecological variables are available in the dataset for ecosystem assessment?
 Which ecological variables are represented in the dataset?
+What environmental data are available for the Massaciuccoli Lake basin?
+Which variables does the digital twin contain?
+Show me the available ecosystem datasets.
+What information can I retrieve about the basin?
+List the variables in the harmonised ecosystem dataset.
+List the variables in the live dataset.
+Which climatic variables are available?
+Which biological variables are available?
+Which land-cover variables are available?
+Which variables describe human activities?
+What data are available about vegetation?
+What biodiversity information does the digital twin provide?
+Which variables describe changes in environmental conditions?
+What information is available about land use?
+What information is available about impervious surfaces?
+What tree-cover data are available?
+What grassland data are available?
+What plant-productivity data are available?
+What temperature data are available?
+What atmospheric-aridity data are available?
+What precipitation data are available?
+Which datasets describe slowly changing ecosystem conditions?
+Which datasets are periodically refreshed?
+Which variables appear in both the harmonised and live datasets?
+Which variables are available only in the harmonised ecosystem dataset?
+Which live variables include changes from the preceding year?
+What is the latest reporting year available in the live dataset?
+What period does the harmonised ecosystem dataset represent?
+What geographical area do the datasets cover?
+What spatial resolution is used for the ecosystem data?
+How many spatial cells are represented in the ecosystem dataset?
+Which coordinate reference system is used?
+Are the ecosystem variables aligned to a common spatial grid?
+What units are used for each available variable?
+Which variables are expressed as percentages?
+Which variables are encoded as presence or absence?
+Which variables are represented on a scale from zero to one?
+Which variables are measured relative to a historical baseline?
+What reference period is used for climatic changes?
+How frequently is the live dataset updated?
+What does the current land-use variable represent?
+How is current land use encoded?
+What does a current land-use value of zero mean?
+What does a current land-use value of one mean?
+What does the land use increase variable measure?
+How is land use increase encoded?
+What does a land use increase value of 0.5 represent?
+What does a land use increase value of one represent?
+What does a land use increase value of zero represent?
+What does land imperviousness increase measure?
+What units are used for land imperviousness increase?
+What does tree cover density represent?
+In what units is tree cover density expressed?
+What does the tree cover loss variable record?
+How is tree cover loss encoded?
+What does a tree cover loss value of one indicate?
+What does a tree cover loss value of zero indicate?
+What does the grassland presence variable represent?
+How is grassland presence encoded?
+What does a grassland presence value of one mean?
+What does a grassland presence value of zero mean?
+What does the grassland loss variable record?
+How is grassland loss encoded?
+What does a grassland loss value of one indicate?
+What does a grassland loss value of zero indicate?
+What does the plant-productivity variable measure?
+What units are used for plant productivity?
+What is the plant phenology index used in the dataset?
+What does the temperature increase variable represent?
+What units are used for temperature increase?
+At what height is the air temperature represented by the temperature variable?
+What baseline is used to calculate temperature increase?
+What does atmospheric aridity increase represent?
+How is potential evapotranspiration represented in the ecosystem dataset?
+What baseline is used for atmospheric aridity increase?
+What does the precipitation decrease variable measure?
+What units are used for precipitation decrease?
+What baseline is used for the precipitation variable?
+What does the animal-biodiversity variable represent?
+Which animal groups are included in the biodiversity index?
+Does the harmonised biodiversity variable describe potentially present species or observed occurrences?
+What does the live biodiversity variable measure?
+How is species richness calculated from GBIF observations?
+What is the spatial aggregation used for live species observations?
+How is live temperature change defined?
+How is live evaporation change defined?
+How is live rainfall-derived water availability expressed?
+What does the live tree-cover percentage represent?
+What does the live grassland-cover percentage represent?
+What does the live percentage of land used for human activities represent?
+Show me the latest available environmental observations.
+Give me the most recent annual summary for the basin.
+What is the latest available temperature-change value?
+Show me the latest annual temperature anomaly.
+What is the most recent temperature change relative to the historical baseline?
+What is the latest available evaporation-change value?
+Show me the latest annual evaporation change relative to the reference period.
+What is the most recent rainfall-derived water-availability value?
+Show me the latest water availability as a percentage of the historical reference.
+What is the latest available animal-biodiversity value?
+How many animal species per spatial cell are reported in the latest live summary?
+Show me the most recent average observed species richness.
+What is the latest percentage of impervious land?
+Show me the most recent land-imperviousness value.
+What is the latest tree-cover density?
+Show me the most recent percentage of tree cover.
+What is the latest grassland-cover percentage?
+Show me the most recent grassland-cover value.
+What is the latest percentage of land used for human activities?
+Show me the most recent live land-use value.
+Retrieve the latest temperature and evaporation changes.
+Show me the latest temperature change and rainfall-derived water availability.
+Give me the latest evaporation change and water-availability value.
+Retrieve the latest tree-cover and grassland-cover percentages.
+Show me the latest land-use and imperviousness percentages.
+Give me the latest animal-biodiversity and tree-cover values.
+Show me the latest animal-biodiversity and grassland-cover values.
+Retrieve the latest temperature-change and animal-biodiversity values.
+Show me the latest water-availability and animal-biodiversity values.
+Give me the latest evaporation-change and tree-cover values.
+Show me all climatic values in the latest live dataset.
+Show me all land-cover values in the latest live dataset.
+Retrieve the latest live values describing human pressure.
+Give me the latest vegetation-cover measurements.
+Show me the latest biodiversity and climatic observations.
+Retrieve the latest land-use, tree-cover, and grassland-cover percentages.
+Show me the latest imperviousness, tree-cover, and biodiversity values.
+Give me the latest temperature, evaporation, and water-availability information.
+Show me every available live variable with its current value.
+Provide the latest live values together with their units and reporting year.
+What change in temperature is reported relative to the preceding year?
+Show me the latest year-to-year temperature change.
+What change in evaporation is reported relative to the preceding year?
+Show me the latest year-to-year evaporation change.
+What change in rainfall-derived water availability is reported relative to the preceding year?
+Show me the latest year-to-year water-availability change.
+What change in animal biodiversity is reported relative to the preceding year?
+Show me the latest year-to-year change in observed species richness.
+What change in land imperviousness is reported relative to the preceding year?
+Show me the latest year-to-year imperviousness change.
+What change in tree-cover density is reported relative to the preceding year?
+Show me the latest year-to-year tree-cover change.
+What change in grassland cover is reported relative to the preceding year?
+Show me the latest year-to-year grassland-cover change.
+What change in land used for human activities is reported relative to the preceding year?
+Show me the latest year-to-year land-use change.
+List the reported annual changes for all live climatic variables.
+List the reported annual changes for all live land-cover variables.
+Show me all available changes from the preceding year.
+Which live variables increased according to the latest reported annual changes?
+Which live variables decreased according to the latest reported annual changes?
+Which live variables show no reported change from the preceding year?
+Does the latest dataset report an annual increase or decrease in temperature?
+Does the latest dataset report an annual increase or decrease in evaporation?
+Does the latest dataset report an annual increase or decrease in water availability?
+Does the latest dataset report an annual increase or decrease in animal biodiversity?
+Does the latest dataset report an annual increase or decrease in imperviousness?
+Does the latest dataset report an annual increase or decrease in tree cover?
+Does the latest dataset report an annual increase or decrease in grassland cover?
+Does the latest dataset report an annual increase or decrease in human land use?
+Show me the latest temperature value alongside its reported annual change.
+Show me the latest evaporation value alongside its reported annual change.
+Show me the latest water-availability value alongside its reported annual change.
+Show me the latest biodiversity value alongside its reported annual change.
+Show me the latest imperviousness value alongside its reported annual change.
+Show me the latest tree-cover value alongside its reported annual change.
+Show me the latest grassland-cover value alongside its reported annual change.
+Show me the latest human land-use value alongside its reported annual change.
+Give me the latest climatic values together with their changes from the preceding year.
+Give me the latest land-cover values together with their changes from the preceding year.
+Where do the harmonised ecosystem data come from?
+Which sources supply the live dataset?
+What is the source of the live temperature observations?
+What is the source of the live evaporation observations?
+What is the source of the live rainfall observations?
+Where do the live land-use data come from?
+Where do the live imperviousness data come from?
+Where do the live tree-cover data come from?
+Where do the live grassland data come from?
+Where do the live species-occurrence data come from?
+Which available observations originate from SIR Toscana?
+Which available variables are supplied through GEOscopio?
+Which biodiversity information is obtained from GBIF?
+Which variable uses the Corine Land Cover inventory?
+What temporal aggregation is applied to the live observations?
+Are the latest climatic values annual summaries or instantaneous measurements?
+What reporting period accompanies the latest biodiversity summary?
+What reporting period accompanies the latest land-cover summary?
+Are update dates available for the live data?
+Show me the available source and date information for each live variable.
+List the available variables with a short description of each.
+Show me the harmonised stressor names alongside their extended descriptions.
+Present the live variable names, units, and latest values in a table.
+Present the latest live values and their reported annual changes in a table.
+Give me a compact inventory of climatic data, including sources and reference periods.
+Give me a compact inventory of vegetation data, including definitions and units.
+Give me a compact inventory of human-pressure data, including sources and encodings.
+Show me how biodiversity is represented in the harmonised and live datasets.
+List the available historical-baseline comparisons separately from the reported year-to-year changes.
+Give me a complete data summary covering available variables, latest observations, annual changes, sources, and reporting periods.
