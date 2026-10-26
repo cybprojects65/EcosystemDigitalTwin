@@ -76,8 +76,11 @@ public class DigitalTwin {
 		//String query = "Assess ecosystem risk under a scenario with temperature increase by 1%";
 		//
 		 //String query = "give me the latest data on precipitation";
+		//String query = "which are the latest data on tree cover that you host?";
+
 		
-		String query = "which are the latest data on tree cover that you host?";
+		//String query = "Which environmental variables are most strongly associated with biodiversity patterns in the Massaciuccoli basin?";
+		String query = "Where do the live land-use data come from?";
 		
 		// String query = "which factors increase temperature?";
 		// String query = "which factors have no effect on temperature?";
