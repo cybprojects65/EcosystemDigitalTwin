@@ -256,8 +256,7 @@ public class Llm {
 			double[] exampleEmbedding = embed(head.toLowerCase(), true);
 			double score = StringUtilsDTO.cosineSimilarity(queryEmbedding, exampleEmbedding);
 			// get the feautres values
-			// System.out.println("[F-NORMALIZATION] feature " + head + " vs " + question +
-			// ": " + score);
+			//System.out.println("[F-NORMALIZATION] feature " + head + " vs " + question + ": " + score);
 
 			if (score > threshold_for_feature_name_similarity) {
 				if (score > maxscore) {

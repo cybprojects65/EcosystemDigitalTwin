@@ -26,7 +26,10 @@ public class Router {
 	}
 	
 	public Intents lightroute(String q) throws Exception{
-		
+		//TODO: FIRST-LEVEL TESTING DONE FOR THE FOLLOWING CATEGORIES
+		//DATA
+		//CHAT/UNKNOWN
+		//
 		
 	    //String q = StringUtilsDTO.normalizeQuery(query);
 	    System.out.println("[ROUTER] routing request: "+q);

@@ -718,4 +718,19 @@ public class UtilsDTO {
 		return BigDecimal.valueOf(value).stripTrailingZeros().toPlainString();
 	}
 
+	public static double roundDecimal(double value, int ndec) {
+
+		int i = 1;
+		for (int k=1;k<=ndec;k++) {
+			
+			i = 10*i;
+			
+		}
+		
+		long numInt = Math.round(value*i);
+		
+		return (double) numInt/(double)i; 
+	}
+
+	
 }

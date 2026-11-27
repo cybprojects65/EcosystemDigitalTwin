@@ -10,11 +10,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import it.cnr.ncss.detectors.models.CorrelationModel;
 import it.cnr.ncss.llm.Llm;
 import it.cnr.ncss.utils.StringUtilsDTO;
+import it.cnr.ncss.utils.UtilsDTO;
 
 public class CorrelationTask extends AbstractTask {
 
 	public String information_extraction_json;
 	public StringBuffer associationSummary;
+	public Map<String, Map<String, Double>> associations;
+	private String targetUser;
+	private String source;
+	private String target;
+	private String raw;
 	
 	public static class CorrelationQueryInterpretation {
 
@@ -24,8 +30,7 @@ public class CorrelationTask extends AbstractTask {
 		private String relation;
 		private String polarity;
 		private double confidence;
-		
-		
+
 		public CorrelationQueryInterpretation() {
 		}
 
@@ -156,59 +161,155 @@ public class CorrelationTask extends AbstractTask {
 	public String handle(String question) throws Exception {
 		// get the IE template
 		// send query to the LLM
+		
+		//TODO: manage multiple variables vs multiple variables
+		
 		System.out.println("[CORRELATION] informationRetrieval through LLM");
 
-		information_extraction_json = llm.sendRequestWithJsonOutputString(question,this.conf.getProperty("correlation_extraction_prompt"));
-		
+		information_extraction_json = llm.sendRequestWithJsonOutputString(question,
+				this.conf.getProperty("correlation_extraction_prompt"));
+
 		ObjectMapper mapper = new ObjectMapper();
-		CorrelationQueryInterpretation entity = (CorrelationQueryInterpretation) mapper.readValue(information_extraction_json, CorrelationQueryInterpretation.class);
-		
+		CorrelationQueryInterpretation entity = (CorrelationQueryInterpretation) mapper
+				.readValue(information_extraction_json, CorrelationQueryInterpretation.class);
+
 		// read the result
 		System.out.println("[CORRELATION] intent: " + entity.getIntent());
 		System.out.println("[CORRELATION] source: " + entity.getSource().getName());
 		System.out.println("[CORRELATION] target: " + entity.getTarget().getName());
 		System.out.println("[CORRELATION] polarity: " + entity.getPolarity());
-		
+
 		String risk_feature = conf.getProperty("risk_column");
-		
-		String sourceUser = entity.getSource().getName();
-		String source = entity.getSource().getName();
+
+		String sourceUser = entity.getSource().getName().replace("_", " ");
+
+		source = entity.getSource().getName();
 		if (source != null && !source.equals("driver") && source.length() > 0) {
 			source = llm.normalizeFeatureName(source);
 		} else
 			source = null;
-		
-		String targetUser = entity.getTarget().getName();
-		String target = entity.getTarget().getName();
-		if (target != null && !target.equals("driver") && target.length() > 0) {
+
+		targetUser = entity.getTarget().getName().replace("_", " ");
+		target = entity.getTarget().getName();
+		if (target != null && !target.equals("driver") && !target.startsWith("ecosystem") && target.length() > 0) {
 			target = llm.normalizeFeatureName(target);
 		} else
 			target = null;
 
+		if (target == null && source != null) {
+			System.out.println("[CORRELATION] switching source (!=null) and target (=null)");
+
+			target = source;
+			targetUser = target;
+			source = null;
+
+		}
+
+		if (target == null && source == null) {
+			System.out.println("[CORRELATION] target is null - guessing target from normalization");
+			target = llm.normalizeFeatureName(question);
+			targetUser = target;
+			source = null;
+
+		}
+
 		System.out.println("[CORRELATION] normalised source: " + source);
 		System.out.println("[CORRELATION] normalised target: " + target);
 
-		// manage the request with all cases
-		CorrelationModel model = new CorrelationModel();
-		Map<String, Map<String, Double>> associations = model.correlateAll(source, target);
-		System.out.println("[CORRELATION] full analysis:\n"+associations.toString().replace(",", "\n") );
+		if (target == null && source == null) {
+			associations = null;
+		} else {
+			// manage the request with all cases
+			CorrelationModel model = new CorrelationModel();
+			associations = model.correlateAll(target);
+			System.out.println("[CORRELATION] full analysis:\n" + associations.toString().replace(",", "\n"));
 
-		associationSummary = new StringBuffer();
+			associationSummary = new StringBuffer();
 
-		for (String key : associations.keySet()) {
-			if (source!=null && source.equals(risk_feature))
-				continue;
-			else if (source==null)
-				associationSummary.append(key + " -> " + targetUser +" : " + associations.get(key).keySet().toString().replaceAll("[\\[\\]]", "") + "\n");
-			else if (source!=null && key.equals(source))
-				associationSummary.append(sourceUser + " -> " + targetUser+" : " + associations.get(key).keySet().toString().replaceAll("[\\[\\]]", "") + "\n");
+			for (String key : associations.keySet()) {
+				if (source != null && source.equals(risk_feature))
+					continue;
+				else if (source == null)
+					associationSummary.append(key + " -> " + target + " : "
+							+ associations.get(key).keySet().toString().replaceAll("[\\[\\]]", "") + "\n");
+				else if (source != null && key.equals(source))
+					associationSummary.append(source + " -> " + target + " : "
+							+ associations.get(key).keySet().toString().replaceAll("[\\[\\]]", "") + "\n");
+
+			}
+			System.out.println("[CORRELATION] correlation outcome:\n" + associationSummary.toString());
+		}
+
+		String answer = generateAnswer(question);
+
+		return answer;
+	}
+
+	@Override
+	public String generateAnswer(String query) {
+
+		System.out.println("\n[CORRELATION] ANSWER QUERY START");
+
+		try {
+			raw = "";
+			if (associations == null) {
+				raw = "Sorry, I could not manage the requested query for correlation\n";
+			} else if (associationSummary.length() > 0) {
+				if (source != null) {
+					//raw = "Highlight of the correlation(s) between the requested variables:\n";
+					//raw += associationSummary + "\n";
+
+					//raw += "Additionally, the overall correlations between the requested target and currently available variables are the following:\n";
+					raw = "Report of the correlations between pertinent variables:\n";
+					raw += formatAssociationSummary(associations, target);
+				}else {
+					
+						raw = "Report of the correlations between pertinent variables:\n";
+						raw += formatAssociationSummary(associations, target);
+					
+				}
+			} else {
+				raw = "The overall correlations between the requested target currently available variables are the following:\n";
+				raw += formatAssociationSummary(associations, target);
+			}
+
+			System.out.println("\n[CORRELATION] RAW ANSWER: \n"+raw);
+			
+			System.out.println("\n[CORRELATION] ANSWER QUERY END");
+			
+			
+			String answer = super.generateAnswer(query);
+			
+			answer+="\n\n**Numerical details**\n\n"+raw;
+			
+			return answer.trim();
+
+		} catch (Exception e) {
+			System.out.println("[CORRELATION ERROR] " + e.getMessage());
+			return "An error occurred while generating the answer for correlation request.";
+		}
+
+	}
+
+	private String formatAssociationSummary(Map<String, Map<String, Double>> associations, String targetVariableName) {
+		StringBuffer sb = new StringBuffer();
+
+		for (String variable : associations.keySet()) {
+			Map<String, Double> association = associations.get(variable);
+			for (String correlationLabel : association.keySet()) {
+
+				Double correlationValue = association.get(correlationLabel);
+				double correlationValueUser = UtilsDTO.roundDecimal(correlationValue.doubleValue(), 3);
+
+				sb.append(variable + " -> " + targetVariableName + " : " + correlationLabel + " (corr. coeff.="
+						+ correlationValueUser + ")" + "\n");
+
+			}
 
 		}
-		System.out.println("[CORRELATION] correlation outcome:\n" + associationSummary.toString());
-		
-		String answer = generateAnswer(question);
-		
-		return answer;
+
+		return sb.toString();
+
 	}
 
 	@Override
@@ -218,26 +319,24 @@ public class CorrelationTask extends AbstractTask {
 		if (docs != null) {
 			context = String.join("\n\n", docs.stream().toList());
 		}
-		
 
 		String promptText = StringUtilsDTO.getText(new File(answerFile));
-		String uuid = ""+UUID.randomUUID();
-		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_template_"+uuid+".txt"),promptText);
-		
+		String uuid = "" + UUID.randomUUID();
+		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_template_" + uuid + ".txt"),
+				promptText);
+
 		promptText = promptText.replace("{{EXTRACTED_JSON}}", information_extraction_json);
-		promptText = promptText.replace("{{CORRELATIVE_INTERPRETATIONS}}", associationSummary);	
+		promptText = promptText.replace("{{CORRELATIVE_INTERPRETATIONS}}", raw);
 		promptText = promptText.replace("{{USER_REQUEST}}", query);
 		promptText = promptText.replace("{{CONTEXTUAL_INFORMATION}}", context);
-		
-		//System.out.println("[CORRELATION] prompt:\n"+promptText);
-		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_"+uuid+".txt"),promptText);
 
+		// System.out.println("[CORRELATION] prompt:\n"+promptText);
+		java.nio.file.Files.writeString(java.nio.file.Path.of("./prompt_testing/prompt_" + uuid + ".txt"), promptText);
 
-		
 		String prompt = """
 				%s
 				""".formatted(promptText);
-		
+
 		return prompt;
 	}
 

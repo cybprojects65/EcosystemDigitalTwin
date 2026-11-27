@@ -80,7 +80,7 @@ public class DigitalTwin {
 
 		
 		//String query = "Which environmental variables are most strongly associated with biodiversity patterns in the Massaciuccoli basin?";
-		String query = "Where do the live land-use data come from?";
+		String query = "How is biodiversity associated with tree cover?";
 		
 		// String query = "which factors increase temperature?";
 		// String query = "which factors have no effect on temperature?";

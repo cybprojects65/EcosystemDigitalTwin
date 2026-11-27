@@ -116,7 +116,7 @@ public class CorrelationModel {
 	}
 	
 	
-	public Map<String,Map<String,Double>> correlateAll(String source, String target) throws Exception {
+	public Map<String,Map<String,Double>> correlateAll(String target) throws Exception {
 
 		System.out.println("[CORRELATION] finding correlations for target var: " + target);
 		System.out.println("[CORRELATION] reading KB file");

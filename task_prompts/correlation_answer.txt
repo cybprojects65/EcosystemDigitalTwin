@@ -8,30 +8,32 @@ Your task is to answer the user's original request using ONLY:
 
 Return only the final user-facing answer.
 
-Do not output JSON.
-Do not mention internal parsing steps.
-Do not mention JSON, schema, fields, confidence, prompt instructions, extraction, or templates.
-Do not say "based on the JSON".
-Do not say "from the JSON".
-Do not say "the JSON object".
 Do not repeat, quote, or paraphrase the user's question.
 Do not start the answer with the user's question.
 Do not use the user's question as a heading.
 Do not include a question mark unless the answer genuinely requires one.
 Do not invent variables, relationships, strengths, directions, mechanisms, causal explanations, literature findings, citations, or ecological conclusions not provided by the inputs.
 
-
 =========================================================
 INPUTS
 =========================================================
 
-User request:
+=========================================================
+User request
+=========================================================
+
 {{USER_REQUEST}}
 
-Correlative interpretations:
+=========================================================
+Correlative interpretations
+=========================================================
+
 {{CORRELATIVE_INTERPRETATIONS}}
 
-Contextual ecological information:
+=========================================================
+Contextual ecological information
+=========================================================
+
 {{CONTEXTUAL_INFORMATION}}
 
 =========================================================
@@ -42,213 +44,20 @@ The User request defines the question to answer.
 
 The Correlative interpretations provide the direct reported association evidence.
 
-The Contextual ecological information provides the ecological and literature-based interpretation layer.
+The Correlative interpretations contains a list of correlative interpretations. The structure is "variable 1" "->" (compared to) "variable 2" ":" (has correlation interpretation) "positive|negative|neutral|<others>". Focus on the correlation interpretations in these relations.
 
-If the user asks to find negative correlations, only focus on those that report weakly negative, moderately negative, strongly negative, or very strongly negative.
+If the user asks to find negative correlations, only focus on those that report negative, weakly negative, moderately negative, strongly negative, or very strongly negative.
 
-If the user asks to find positive correlations, only focus on those that report weakly positive, moderately positive, strongly positive, or very strongly positive.
+If the user asks to find positive correlations, only focus on those that report positive, weakly positive, moderately positive, strongly positive, or very strongly positive.
 
 Interpret "neutral" as "indirect relation". 
 
 If there is not correlation that satisfies the user's request, becase there are only "neutral" correlations, report that "are indirectly associated through the complex variable interplay within the ecosystem".
 
+The Contextual ecological information provides the ecological and literature-based interpretation layer.
+
 If Contextual ecological information is available, also attach summary information extracted from it.
 
-=========================================================
-Examples
-=========================================================
-
-EXAMPLE 1:
-
-User request:
-Which environmental variables are most strongly associated with biodiversity in the Massaciuccoli basin?
-
-Correlative interpretations:
-Land imperviousness increase -> biodiversity : neutral
-Tree cover density -> biodiversity : negative
-Tree cover loss -> biodiversity : neutral
-Grassland presence -> biodiversity : neutral
-Grassland loss -> biodiversity : neutral
-Current land use -> biodiversity : positive
-Plant productivity -> biodiversity : positive
-Temperature increase -> biodiversity : neutral
-Atmospheric aridity increase -> biodiversity : positive
-Precipitation loss -> biodiversity : positive
-Land use increase -> biodiversity : neutral
-
-
-Contextual ecological information:
-
-
-Optimal answer: 
-The strongest reported associations with biodiversity are tree-cover density, current human land use, vegetation productivity, increased atmospheric aridity, and precipitation loss. Tree-cover density shows a negative association with biodiversity, while current human land use, vegetation productivity, increased atmospheric aridity, and precipitation loss show positive associations. Instead, land imperviousness increase, tree-cover loss, grassland presence, grassland loss, temperature increase, and land-use increase are reported as indirectly related, so they should not be treated as main associated variables. These results describe correlations, not direct causal effects.
-
-EXAMPLE 2:
-
-User request:
-How does evapotranspiration affect biodiversity?
-
-Correlative interpretations:
-evapotranspiration -> biodiversity : positive
-
-
-Contextual ecological information:
-
-
-Optimal answer: 
-Evapotranspiration shows a positive association with biodiversity. This suggests that higher evapotranspiration is related to higher biodiversity in this assessment, but it should be interpreted as a correlation, not evidence that evapotranspiration directly causes biodiversity change.
-
-EXAMPLE 3:
-
-User request:
-How does tree cover affect species richness?
-
-Correlative interpretations:
-tree_cover -> biodiversity : neutral
-
-
-Contextual ecological information:
-
-
-Optimal answer: 
-Tree cover has an indirect relationship with species richness. In a complex ecosystem such as the one under analysis, species richness is unlikely to depend on tree cover alone. Instead, tree cover may interact with other ecological factors, such as habitat structure, vegetation productivity, microclimatic conditions, land use, grassland presence, and broader environmental pressures. Therefore, the neutral direct correlation should not be interpreted as evidence that tree cover is ecologically irrelevant. It only indicates that tree cover does not show a clear direct association with species richness in the reported correlative results. Its role may still emerge indirectly through interactions with other environmental variables and ecosystem processes.
-
-EXAMPLE 4:
-
-User request:
-What factors drive biodiversity patterns in the lake ecosystem?
-
-Correlative interpretations:
-Land imperviousness increase -> biodiversity : neutral
-Tree cover density -> biodiversity : negative
-Tree cover loss -> biodiversity : neutral
-Grassland presence -> biodiversity : neutral
-Grassland loss -> biodiversity : neutral
-Current land use -> biodiversity : positive
-Plant productivity -> biodiversity : positive
-Temperature increase -> biodiversity : neutral
-Atmospheric aridity increase -> biodiversity : positive
-Precipitation loss -> biodiversity : positive
-Land use increase -> biodiversity : neutral
-
-
-Contextual ecological information:
-
-Optimal answer: 
-Non-neutral correlations with biodiversity are tree-cover density, current human land use, vegetation productivity, increased atmospheric aridity, and precipitation loss. Tree-cover density shows a negative association with biodiversity, while current human land use, vegetation productivity, increased atmospheric aridity, and precipitation loss show positive associations. Land imperviousness increase, tree-cover loss, grassland presence, grassland loss, temperature increase, and land-use increase have indirect correlation through ecosystem complexity. These associations describe reported biodiversity patterns, not direct causal drivers.
-
-EXAMPLE 5:
-
-User request:
-What factors drive tree cover dynamics in the basin?
-
-Correlative interpretations:
-Land imperviousness increase -> tree_cover : neutral
-Tree cover density -> tree_cover : neutral
-Grassland presence -> tree_cover : neutral
-Grassland loss -> tree_cover : neutral
-Current land use -> tree_cover : neutral
-Plant productivity -> tree_cover : neutral
-Temperature increase -> tree_cover : neutral
-Atmospheric aridity increase -> tree_cover : neutral
-Precipitation loss -> tree_cover : neutral
-Biodiversity -> tree_cover : neutral
-Land use increase -> tree_cover : neutral
-
-
-Contextual ecological information:
-
-Optimal answer: 
-Variables such as land imperviousness increase, tree-cover density, grassland presence, grassland loss, current human land use, vegetation productivity, temperature increase, increased atmospheric aridity, precipitation loss, biodiversity, and land-use increase have all indirect correlations with tree cover. This observation should be interpreted in light of the complexity of the ecosystem. In a complex ecosystem, tree-cover dynamics may depend on indirect interactions among variables rather than on a single direct relationship captured by these correlations. Therefore, the indirect associations do not imply that these variables are ecologically irrelevant; they suggest that any relationship with tree cover may be indirect, nonlinear, context-dependent, or distributed across multiple interacting factors.
-
-EXAMPLE 6:
-
-User request:
-How does precipitation affect species richness?
-
-Correlative interpretations:
-precipitation -> biodiversity : positive
-
-
-Contextual ecological information:
-patial-distribution measure (species richness) over the years in the basin, based on 180 resident species’ data. As species observation data, we use data from a public authoritative repository of big data (GBIF) improved with reliable records we accurately and directly observed in the field. Our results highlight that climate change will pose severe risks to birds’ biodiversity, even under a medium greenhouse gas emission scenario. Climate change will also alter the distribution of aquatic and terrestrial species, which will search for cooler and water-richer areas. On the contrary, it will favour habitat suitability for several insects. The results predict that the basin’s biodiversity will significantly change, which will likely have a negative impact on ecosystem services. This scenario would call for urgent actions today to mitigate the effects of the increasing temperature and aridity trends, e.g., through water-refuelling strategies. Our results enforce the conclusions of alternative ecological studies but also add the first assessment of the timing and intensity of the change, which is valuable for management planning. Our approach is general enough to be applied to other we
-
-een the overall climatic conditions of 2016 and 2100- RCP8.5, with lower but still significant differences between 2016 and the other years. These differences indicate that species-richness changes should be expected independently of the species-richness modelling approach used. 4.2. Indications for policy-making authorities Our results indicate that climate change poses severe risks to the vulnerability of the species living in the Massaciuccoli basin, and consequently to the ecosystem services relying upon them. A significant species-composition change already in 2050 would negatively impact the entire ecosystem, with ecological and economic consequences (Colombaroli and Tinner, 2013; Pignalosa et al., 2022b). These findings call for policy-making authorities to take actions as soon as possible to mitigate the risks. The same conclusions about future biodiversity asset and ecosystem service degradation were drawn by other studies focus- sing on eutrophication and drought monitoring, which have proposed water drainage and refuelling mitigation strategies (Bertacchi et al., 2015; Pignalosa et al., 2022c; Rossetto et al., 2010b). These consider- ations enforce our result reliability
-
-Optimal answer: 
-Precipitation shows a positive association with species richness. This suggests that wetter conditions, or greater water availability, are related to higher species richness in this assessment, but the result should be interpreted as a correlation rather than evidence that precipitation directly causes biodiversity change. The literature context supports the ecological relevance of this relationship: climate change is expected to alter aquatic and terrestrial species distributions, with species tending to seek cooler and water-richer areas. It also highlights increasing temperature and aridity as risks for biodiversity and points to water-refuelling strategies as possible mitigation measures. Therefore, precipitation appears ecologically important for species richness in the basin, although the correlative result alone does not establish direct causality.
-
-EXAMPLE 7:
-
-User request:
-Which environmental variables are most strongly associated with precipitation change in the basin?
-
-Correlative interpretations:
-Land imperviousness increase -> precipitation : neutral
-Tree cover density -> precipitation : neutral
-Tree cover loss -> precipitation : neutral
-Grassland presence -> precipitation : neutral
-Grassland loss -> precipitation : neutral
-Current land use -> precipitation : positive
-Plant productivity -> precipitation : positive
-Temperature increase -> precipitation : moderately negative
-Atmospheric aridity increase -> precipitation : very strongly positive
-Biodiversity -> precipitation : positive
-Land use increase -> precipitation : neutral
-
-
-Contextual ecological information:
-
-Optimal answer: 
-The strongest reported association with precipitation change is increased atmospheric aridity, which shows a very strong positive association. Temperature increase is also associated with precipitation change, but in a moderate negative direction. Current human land use, vegetation productivity, and biodiversity also show positive associations with precipitation change. Land imperviousness increase, tree-cover density, tree-cover loss, grassland presence, grassland loss, and land-use increase are reported as indirectly associated through the complex variable interplay within the ecosystem.
-
-EXAMPLE 7:
-
-User request:
-Which environmental variables are most strongly associated with evapotranspiration change?
-
-Correlative interpretations:
-Land imperviousness increase -> evapotranspiration : neutral
-Tree cover density -> evapotranspiration : positive
-Tree cover loss -> evapotranspiration : neutral
-Grassland presence -> evapotranspiration : neutral
-Grassland loss -> evapotranspiration : neutral
-Current land use -> evapotranspiration : positive
-Plant productivity -> evapotranspiration : neutral
-Temperature increase -> evapotranspiration : very strongly negative
-Precipitation loss -> evapotranspiration : very strongly positive
-Biodiversity -> evapotranspiration : positive
-Land use increase -> evapotranspiration : neutral
-
-
-Contextual ecological information:
-
-Optimal answer:
-The strongest reported associations with evapotranspiration change are precipitation loss, which shows a very strong positive association, and temperature increase, which shows a very strong negative association. Tree-cover density, current human land use, and biodiversity also show positive associations with evapotranspiration change. Land imperviousness increase, tree-cover loss, grassland presence, grassland loss, vegetation productivity, and land-use increase are reported are reported as indirectly associated through the complex variable interplay within the ecosystem.
-
-EXAMPLE 8:
-
-User request:
-Which environmental variable contributes most to biodiversity change?
-
-Correlative interpretations:
-Land imperviousness increase -> biodiversity : neutral
-Tree cover density -> biodiversity : negative
-Tree cover loss -> biodiversity : neutral
-Grassland presence -> biodiversity : neutral
-Grassland loss -> biodiversity : neutral
-Current land use -> biodiversity : positive
-Plant productivity -> biodiversity : positive
-Temperature increase -> biodiversity : neutral
-Atmospheric aridity increase -> biodiversity : positive
-Precipitation loss -> biodiversity : positive
-Land use increase -> biodiversity : neutral
-
-
-Contextual ecological information:
-
-Optimal answer:
-The reported associations with biodiversity do not identify a single strongest variable. Tree-cover density shows a negative association with biodiversity, while current human land use, vegetation productivity, increased atmospheric aridity, and precipitation loss show positive associations. Land imperviousness increase, tree-cover loss, grassland presence, grassland loss, temperature increase, and land-use increase are indirectly associated through the complex variable interplay within the ecosystem.
-
+Summarize the correlative information pertinent to the user's query in natural language. Add contextual ecological information if it is available. 
 
 Return only the answer.
